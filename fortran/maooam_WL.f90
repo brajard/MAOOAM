@@ -4,7 +4,7 @@
 !> model MAOOAM - WL parameterization. 
 !
 !> @copyright                                                               
-!> 2017 Jonathan Demaeyer.
+!> 2018 Jonathan Demaeyer.
 !> See LICENSE.txt for license information.                                  
 !
 !---------------------------------------------------------------------------!
@@ -26,7 +26,7 @@ PROGRAM maooam_wl
   REAL(KIND=8) :: t=0.D0                             !< Time variable
   REAL(KIND=8) :: t_up                     !< Update time for the progress bar  
 
-  PRINT*, 'Model MAOOAM v1.2 WL'
+  PRINT*, 'Model MAOOAM v1.3 WL'
   PRINT*, 'Loading information...'
 
   CALL init_aotensor     ! Initialize the aotensor 

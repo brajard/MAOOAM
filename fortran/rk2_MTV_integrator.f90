@@ -4,7 +4,7 @@
 !>  Module with the MTV rk2 integration routines.
 !
 !> @copyright                                                               
-!> 2017 Jonathan Demaeyer.
+!> 2018 Jonathan Demaeyer.
 !> See LICENSE.txt for license information.                                  
 !
 !---------------------------------------------------------------------------!

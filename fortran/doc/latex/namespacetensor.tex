@@ -19,10 +19,32 @@ type \hyperlink{structtensor_1_1coolist__elem4}{coolist\+\_\+elem4}
 \subsection*{Functions/\+Subroutines}
 \begin{DoxyCompactItemize}
 \item 
-subroutine, public \hyperlink{namespacetensor_a4a88ee8077278486c5128ad97617969e}{copy\+\_\+tensor} (src, dst)
-\begin{DoxyCompactList}\small\item\em Routine to copy a rank-\/3 tensor. \end{DoxyCompactList}\item 
+subroutine, public \hyperlink{namespacetensor_a14f95c256cdf137ca0767ddb3c87deea}{copy\+\_\+coo} (src, dst)
+\begin{DoxyCompactList}\small\item\em Routine to copy a coolist. \end{DoxyCompactList}\item 
+subroutine, public \hyperlink{namespacetensor_a75d1a9ca8b39e9ad4b151a7b4b45c70f}{mat\+\_\+to\+\_\+coo} (src, dst)
+\begin{DoxyCompactList}\small\item\em Routine to convert a matrix to a tensor. \end{DoxyCompactList}\item 
+subroutine, public \hyperlink{namespacetensor_a11054027a386918658f8948231af53b1}{sparse\+\_\+mul3} (coolist\+\_\+ijk, arr\+\_\+j, arr\+\_\+k, res)
+\begin{DoxyCompactList}\small\item\em Sparse multiplication of a tensor with two vectors\+: ${\displaystyle \sum_{j,k=0}^{ndim}} \mathcal{T}_{i,j,k} \, a_j \,b_k$. \end{DoxyCompactList}\item 
+subroutine, public \hyperlink{namespacetensor_add2a6aa993cd8a23be60d1643b5c7942}{jsparse\+\_\+mul} (coolist\+\_\+ijk, arr\+\_\+j, jcoo\+\_\+ij)
+\begin{DoxyCompactList}\small\item\em Sparse multiplication of two tensors to determine the Jacobian\+: \[J_{i,j} = {\displaystyle \sum_{k=0}^{ndim}} \left( \mathcal{T}_{i,j,k} + \mathcal{T}_{i,k,j} \right) \, a_k.\] It\textquotesingle{}s implemented slightly differently\+: for every $\mathcal{T}_{i,j,k}$, we add to $J_{i,j}$ as follows\+: \[J_{i,j} = J_{i,j} + \mathcal{T}_{i,j,k} \, a_k \\ J_{i,k} = J_{i,k} + \mathcal{T}_{i,j,k} \, a_j\] This version return a coolist (sparse tensor). \end{DoxyCompactList}\item 
+subroutine, public \hyperlink{namespacetensor_a4135cf70df5030070922ff199c79cc03}{jsparse\+\_\+mul\+\_\+mat} (coolist\+\_\+ijk, arr\+\_\+j, jcoo\+\_\+ij)
+\begin{DoxyCompactList}\small\item\em Sparse multiplication of two tensors to determine the Jacobian\+: \[J_{i,j} = {\displaystyle \sum_{k=0}^{ndim}} \left( \mathcal{T}_{i,j,k} + \mathcal{T}_{i,k,j} \right) \, a_k.\] It\textquotesingle{}s implemented slightly differently\+: for every $\mathcal{T}_{i,j,k}$, we add to $J_{i,j}$ as follows\+: \[J_{i,j} = J_{i,j} + \mathcal{T}_{i,j,k} \, a_k \\ J_{i,k} = J_{i,k} + \mathcal{T}_{i,j,k} \, a_j\] This version return a matrix. \end{DoxyCompactList}\item 
+subroutine, public \hyperlink{namespacetensor_a70230d57c615d9548905bc023f5fc01d}{sparse\+\_\+mul2} (coolist\+\_\+ij, arr\+\_\+j, res)
+\begin{DoxyCompactList}\small\item\em Sparse multiplication of a 2d sparse tensor with a vector\+: ${\displaystyle \sum_{j=0}^{ndim}} \mathcal{T}_{i,j,k} \, a_j $. \end{DoxyCompactList}\item 
+subroutine, public \hyperlink{namespacetensor_a364522b80ab0f4785c331eb74fa1ba04}{simplify} (tensor)
+\begin{DoxyCompactList}\small\item\em Routine to simplify a coolist (sparse tensor). For each index $i$, it upper triangularize the matrix \[\mathcal{T}_{i,j,k} \qquad 0 \leq j,k \leq ndim.\]. \end{DoxyCompactList}\item 
+subroutine, public \hyperlink{namespacetensor_a7f144457b3535357ab582fc3ff0da3a0}{add\+\_\+elem} (t, i, j, k, v)
+\begin{DoxyCompactList}\small\item\em Subroutine to add element to a coolist. \end{DoxyCompactList}\item 
+subroutine, public \hyperlink{namespacetensor_ac86b7b23b35e64127e04b31d7cfc7ae9}{add\+\_\+check} (t, i, j, k, v, dst)
+\begin{DoxyCompactList}\small\item\em Subroutine to add element to a coolist and check for overflow. Once the t buffer tensor is full, add it to the destination buffer. \end{DoxyCompactList}\item 
 subroutine, public \hyperlink{namespacetensor_aad7cd55f3a4cec4676cc7ca34b05f1a8}{add\+\_\+to\+\_\+tensor} (src, dst)
 \begin{DoxyCompactList}\small\item\em Routine to add a rank-\/3 tensor to another one. \end{DoxyCompactList}\item 
+subroutine, public \hyperlink{namespacetensor_a1fbaf180beb7fe8ab83ade2f576db80f}{print\+\_\+tensor} (t, s)
+\begin{DoxyCompactList}\small\item\em Routine to print a rank 3 tensor coolist. \end{DoxyCompactList}\item 
+subroutine, public \hyperlink{namespacetensor_ab9cef88cb38333ed2c063cdf08f28060}{write\+\_\+tensor\+\_\+to\+\_\+file} (s, t)
+\begin{DoxyCompactList}\small\item\em Load a rank-\/4 tensor coolist from a file definition. \end{DoxyCompactList}\item 
+subroutine, public \hyperlink{namespacetensor_ac4c6ebce7aee73aebac2514e45f7cc78}{load\+\_\+tensor\+\_\+from\+\_\+file} (s, t)
+\begin{DoxyCompactList}\small\item\em Load a rank-\/4 tensor coolist from a file definition. \end{DoxyCompactList}\item 
 subroutine, public \hyperlink{namespacetensor_a4c63a1dd16bf751220f016b41bdaa78c}{add\+\_\+matc\+\_\+to\+\_\+tensor} (i, src, dst)
 \begin{DoxyCompactList}\small\item\em Routine to add a matrix to a rank-\/3 tensor. \end{DoxyCompactList}\item 
 subroutine, public \hyperlink{namespacetensor_ab32e3f9d0aab15d2fa34dc3e509ee8bf}{add\+\_\+matc\+\_\+to\+\_\+tensor4} (i, j, src, dst)
@@ -35,34 +57,22 @@ subroutine, public \hyperlink{namespacetensor_a4dd51ee85d6dffa3350880defc9823e8}
 \begin{DoxyCompactList}\small\item\em Routine to add a vector to a rank-\/4 tensor. \end{DoxyCompactList}\item 
 subroutine, public \hyperlink{namespacetensor_adfadc0660ec0e87b9d0dd3c383919d6b}{add\+\_\+vec\+\_\+ijk\+\_\+to\+\_\+tensor4} (i, j, k, src, dst)
 \begin{DoxyCompactList}\small\item\em Routine to add a vector to a rank-\/4 tensor. \end{DoxyCompactList}\item 
-subroutine, public \hyperlink{namespacetensor_a75d1a9ca8b39e9ad4b151a7b4b45c70f}{mat\+\_\+to\+\_\+coo} (src, dst)
-\begin{DoxyCompactList}\small\item\em Routine to convert a matrix to a rank-\/3 tensor. \end{DoxyCompactList}\item 
 subroutine, public \hyperlink{namespacetensor_a39f5944ef78c2d2aaac59477d8c6848f}{tensor\+\_\+to\+\_\+coo} (src, dst)
 \begin{DoxyCompactList}\small\item\em Routine to convert a rank-\/3 tensor from matrix to coolist representation. \end{DoxyCompactList}\item 
 subroutine, public \hyperlink{namespacetensor_ae8308730212d86ee401775f02f631310}{tensor4\+\_\+to\+\_\+coo4} (src, dst)
 \begin{DoxyCompactList}\small\item\em Routine to convert a rank-\/4 tensor from matrix to coolist representation. \end{DoxyCompactList}\item 
-subroutine, public \hyperlink{namespacetensor_a5747516cd8a6fc9079fbb82d1b18dd98}{print\+\_\+tensor} (t)
-\begin{DoxyCompactList}\small\item\em Routine to print a rank 3 tensor coolist. \end{DoxyCompactList}\item 
 subroutine, public \hyperlink{namespacetensor_acb57d076f51b89419e4e8254ce13dd62}{print\+\_\+tensor4} (t)
 \begin{DoxyCompactList}\small\item\em Routine to print a rank-\/4 tensor coolist. \end{DoxyCompactList}\item 
-subroutine, public \hyperlink{namespacetensor_a11054027a386918658f8948231af53b1}{sparse\+\_\+mul3} (coolist\+\_\+ijk, arr\+\_\+j, arr\+\_\+k, res)
-\begin{DoxyCompactList}\small\item\em Sparse multiplication of a rank-\/3 tensor coolist with two vectors\+: ${\displaystyle \sum_{j,k=0}^{ndim}} \mathcal{T}_{i,j,k} \, a_j \,b_k$. \end{DoxyCompactList}\item 
 subroutine, public \hyperlink{namespacetensor_a08965e1040a94fc58c1efa9ff9639118}{sparse\+\_\+mul3\+\_\+mat} (coolist\+\_\+ijk, arr\+\_\+k, res)
 \begin{DoxyCompactList}\small\item\em Sparse multiplication of a rank-\/3 tensor coolist with a vector\+: ${\displaystyle \sum_{k=0}^{ndim}} \mathcal{T}_{i,j,k} \, b_k$. Its output is a matrix. \end{DoxyCompactList}\item 
 subroutine, public \hyperlink{namespacetensor_ab365e6dbb17e7fb26fef90649dd9e445}{sparse\+\_\+mul4} (coolist\+\_\+ijkl, arr\+\_\+j, arr\+\_\+k, arr\+\_\+l, res)
 \begin{DoxyCompactList}\small\item\em Sparse multiplication of a rank-\/4 tensor coolist with three vectors\+: ${\displaystyle \sum_{j,k,l=0}^{ndim}} \mathcal{T}_{i,j,k,l} \, a_j \,b_k \, c_l $. \end{DoxyCompactList}\item 
 subroutine, public \hyperlink{namespacetensor_a2fda12a024f8e3d0d6a167f264f6d000}{sparse\+\_\+mul4\+\_\+mat} (coolist\+\_\+ijkl, arr\+\_\+k, arr\+\_\+l, res)
 \begin{DoxyCompactList}\small\item\em Sparse multiplication of a tensor with two vectors\+: ${\displaystyle \sum_{k,l=0}^{ndim}} \mathcal{T}_{i,j,k,l} \,b_k \, c_l $. \end{DoxyCompactList}\item 
-subroutine, public \hyperlink{namespacetensor_add2a6aa993cd8a23be60d1643b5c7942}{jsparse\+\_\+mul} (coolist\+\_\+ijk, arr\+\_\+j, jcoo\+\_\+ij)
-\begin{DoxyCompactList}\small\item\em Sparse multiplication of two tensors to determine the Jacobian\+: \[J_{i,j} = {\displaystyle \sum_{k=0}^{ndim}} \left( \mathcal{T}_{i,j,k} + \mathcal{T}_{i,k,j} \right) \, a_k.\] It\textquotesingle{}s implemented slightly differently\+: for every $\mathcal{T}_{i,j,k}$, we add to $J_{i,j}$ as follows\+: \[J_{i,j} = J_{i,j} + \mathcal{T}_{i,j,k} \, a_k \\ J_{i,k} = J_{i,k} + \mathcal{T}_{i,j,k} \, a_j\] This version return a coolist (sparse tensor). \end{DoxyCompactList}\item 
-subroutine, public \hyperlink{namespacetensor_a4135cf70df5030070922ff199c79cc03}{jsparse\+\_\+mul\+\_\+mat} (coolist\+\_\+ijk, arr\+\_\+j, jcoo\+\_\+ij)
-\begin{DoxyCompactList}\small\item\em Sparse multiplication of two tensors to determine the Jacobian\+: \[J_{i,j} = {\displaystyle \sum_{k=0}^{ndim}} \left( \mathcal{T}_{i,j,k} + \mathcal{T}_{i,k,j} \right) \, a_k.\] It\textquotesingle{}s implemented slightly differently\+: for every $\mathcal{T}_{i,j,k}$, we add to $J_{i,j}$ as follows\+: \[J_{i,j} = J_{i,j} + \mathcal{T}_{i,j,k} \, a_k \\ J_{i,k} = J_{i,k} + \mathcal{T}_{i,j,k} \, a_j\] This version return a matrix. \end{DoxyCompactList}\item 
 subroutine, public \hyperlink{namespacetensor_ad9b09d91fb1bd425122c4f1ee2f0eb12}{sparse\+\_\+mul2\+\_\+j} (coolist\+\_\+ijk, arr\+\_\+j, res)
 \begin{DoxyCompactList}\small\item\em Sparse multiplication of a 3d sparse tensor with a vectors\+: ${\displaystyle \sum_{j=0}^{ndim}} \mathcal{T}_{i,j,k} \, a_j $. \end{DoxyCompactList}\item 
 subroutine, public \hyperlink{namespacetensor_a90e31e5e782d63d7f05ee3c9aed370e0}{sparse\+\_\+mul2\+\_\+k} (coolist\+\_\+ijk, arr\+\_\+k, res)
 \begin{DoxyCompactList}\small\item\em Sparse multiplication of a rank-\/3 sparse tensor coolist with a vector\+: ${\displaystyle \sum_{k=0}^{ndim}} \mathcal{T}_{i,j,k} \, a_k $. \end{DoxyCompactList}\item 
-subroutine, public \hyperlink{namespacetensor_a364522b80ab0f4785c331eb74fa1ba04}{simplify} (tensor)
-\begin{DoxyCompactList}\small\item\em Routine to simplify a coolist (sparse tensor). For each index $i$, it upper triangularize the matrix \[\mathcal{T}_{i,j,k} \qquad 0 \leq j,k \leq ndim.\]. \end{DoxyCompactList}\item 
 subroutine, public \hyperlink{namespacetensor_a52784eb2977ec36f8ab5ba240b497633}{coo\+\_\+to\+\_\+mat\+\_\+ik} (src, dst)
 \begin{DoxyCompactList}\small\item\em Routine to convert a rank-\/3 tensor coolist component into a matrix with i and k indices. \end{DoxyCompactList}\item 
 subroutine, public \hyperlink{namespacetensor_af104cb6f7354f1465eb53e0f3738a3d0}{coo\+\_\+to\+\_\+mat\+\_\+ij} (src, dst)
@@ -102,7 +112,7 @@ real(kind=8), parameter \hyperlink{namespacetensor_a2a2ab182d86107e62533c3f00436
 Tensor utility module. 
 
 \begin{DoxyCopyright}{Copyright}
-2015-\/2017 Lesley De Cruz \& Jonathan Demaeyer. See \hyperlink{LICENSE_8txt}{L\+I\+C\+E\+N\+S\+E.\+txt} for license information. 
+2015-\/2018 Lesley De Cruz \& Jonathan Demaeyer. See \hyperlink{LICENSE_8txt}{L\+I\+C\+E\+N\+S\+E.\+txt} for license information. 
 \end{DoxyCopyright}
 \begin{DoxyRemark}{Remarks}
 coolist is a type and also means \char`\"{}coordinate list\char`\"{} 
@@ -110,6 +120,102 @@ coolist is a type and also means \char`\"{}coordinate list\char`\"{}
 
 
 \subsection{Function/\+Subroutine Documentation}
+\index{tensor@{tensor}!add\+\_\+check@{add\+\_\+check}}
+\index{add\+\_\+check@{add\+\_\+check}!tensor@{tensor}}
+\subsubsection[{\texorpdfstring{add\+\_\+check(t, i, j, k, v, dst)}{add_check(t, i, j, k, v, dst)}}]{\setlength{\rightskip}{0pt plus 5cm}subroutine, public tensor\+::add\+\_\+check (
+\begin{DoxyParamCaption}
+\item[{type({\bf coolist}), dimension(ndim), intent(inout)}]{t, }
+\item[{integer, intent(in)}]{i, }
+\item[{integer, intent(in)}]{j, }
+\item[{integer, intent(in)}]{k, }
+\item[{real(kind=8), intent(in)}]{v, }
+\item[{type({\bf coolist}), dimension(ndim), intent(inout)}]{dst}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacetensor_ac86b7b23b35e64127e04b31d7cfc7ae9}{}\label{namespacetensor_ac86b7b23b35e64127e04b31d7cfc7ae9}
+
+
+Subroutine to add element to a coolist and check for overflow. Once the t buffer tensor is full, add it to the destination buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & temporary buffer tensor for the destination tensor \\
+\hline
+{\em i} & tensor $i$ index \\
+\hline
+{\em j} & tensor $j$ index \\
+\hline
+{\em k} & tensor $k$ index \\
+\hline
+{\em v} & value to add \\
+\hline
+{\em dst} & destination tensor \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 332 of file tensor.\+f90.
+
+
+\begin{DoxyCode}
+332     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist}{coolist}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(INOUT)} :: t
+333     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist}{coolist}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(INOUT)} :: dst
+334     \textcolor{keywordtype}{INTEGER}, \textcolor{keywordtype}{INTENT(IN)} :: i,j,k
+335     \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{INTENT(IN)} :: v
+336     \textcolor{keywordtype}{INTEGER} :: n
+337     \textcolor{keyword}{CALL }add\_elem(t,i,j,k,v)
+338     \textcolor{keywordflow}{IF} (t(i)%nelems==\textcolor{keyword}{size}(t(i)%elems)) \textcolor{keywordflow}{THEN}
+339        \textcolor{keyword}{CALL }\hyperlink{namespacetensor_aad7cd55f3a4cec4676cc7ca34b05f1a8}{add\_to\_tensor}(t,dst)
+340        \textcolor{keywordflow}{DO} n=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
+341            t(n)%nelems=0
+342 \textcolor{keywordflow}{       ENDDO}
+343 \textcolor{keywordflow}{    ENDIF}
+\end{DoxyCode}
+\index{tensor@{tensor}!add\+\_\+elem@{add\+\_\+elem}}
+\index{add\+\_\+elem@{add\+\_\+elem}!tensor@{tensor}}
+\subsubsection[{\texorpdfstring{add\+\_\+elem(t, i, j, k, v)}{add_elem(t, i, j, k, v)}}]{\setlength{\rightskip}{0pt plus 5cm}subroutine, public tensor\+::add\+\_\+elem (
+\begin{DoxyParamCaption}
+\item[{type({\bf coolist}), dimension(ndim), intent(inout)}]{t, }
+\item[{integer, intent(in)}]{i, }
+\item[{integer, intent(in)}]{j, }
+\item[{integer, intent(in)}]{k, }
+\item[{real(kind=8), intent(in)}]{v}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacetensor_a7f144457b3535357ab582fc3ff0da3a0}{}\label{namespacetensor_a7f144457b3535357ab582fc3ff0da3a0}
+
+
+Subroutine to add element to a coolist. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & destination tensor \\
+\hline
+{\em i} & tensor $i$ index \\
+\hline
+{\em j} & tensor $j$ index \\
+\hline
+{\em k} & tensor $k$ index \\
+\hline
+{\em v} & value to add \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 310 of file tensor.\+f90.
+
+
+\begin{DoxyCode}
+310     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist}{coolist}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(INOUT)} :: t
+311     \textcolor{keywordtype}{INTEGER}, \textcolor{keywordtype}{INTENT(IN)} :: i,j,k
+312     \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{INTENT(IN)} :: v
+313     \textcolor{keywordtype}{INTEGER} :: n
+314     \textcolor{keywordflow}{IF} (abs(v) .ge. real\_eps) \textcolor{keywordflow}{THEN}
+315        n=(t(i)%nelems)+1
+316        t(i)%elems(n)%j=j
+317        t(i)%elems(n)%k=k
+318        t(i)%elems(n)%v=v
+319        t(i)%nelems=n
+320 \textcolor{keywordflow}{    END IF}
+\end{DoxyCode}
 \index{tensor@{tensor}!add\+\_\+matc\+\_\+to\+\_\+tensor@{add\+\_\+matc\+\_\+to\+\_\+tensor}}
 \index{add\+\_\+matc\+\_\+to\+\_\+tensor@{add\+\_\+matc\+\_\+to\+\_\+tensor}!tensor@{tensor}}
 \subsubsection[{\texorpdfstring{add\+\_\+matc\+\_\+to\+\_\+tensor(i, src, dst)}{add_matc_to_tensor(i, src, dst)}}]{\setlength{\rightskip}{0pt plus 5cm}subroutine, public tensor\+::add\+\_\+matc\+\_\+to\+\_\+tensor (
@@ -134,64 +240,64 @@ Routine to add a matrix to a rank-\/3 tensor.
 \end{DoxyParams}
 
 
-Definition at line 144 of file tensor.\+f90.
+Definition at line 474 of file tensor.\+f90.
 
 
 \begin{DoxyCode}
-144     \textcolor{keywordtype}{INTEGER}, \textcolor{keywordtype}{INTENT(IN)} :: i
-145     \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(ndim,ndim)}, \textcolor{keywordtype}{INTENT(IN)} :: src
-146     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist}{coolist}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(INOUT)} :: dst
-147     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist__elem}{coolist\_elem}), \textcolor{keywordtype}{DIMENSION(:)}, \textcolor{keywordtype}{ALLOCATABLE} :: celems
-148     \textcolor{keywordtype}{INTEGER} :: j,k,r,n,nsrc,allocstat
-149 
-150     nsrc=0
-151     \textcolor{keywordflow}{DO} j=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
-152        \textcolor{keywordflow}{DO} k=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
-153           \textcolor{keywordflow}{IF} (abs(src(j,k))>real\_eps) nsrc=nsrc+1
-154 \textcolor{keywordflow}{       END DO}
-155 \textcolor{keywordflow}{    END DO}
-156 
-157     \textcolor{keywordflow}{IF} (dst(i)%nelems==0) \textcolor{keywordflow}{THEN}
-158        \textcolor{keywordflow}{IF} (\textcolor{keyword}{ALLOCATED}(dst(i)%elems)) \textcolor{keywordflow}{THEN}
-159           \textcolor{keyword}{DEALLOCATE}(dst(i)%elems, \hyperlink{namespacestat}{stat}=allocstat)
-160           \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Deallocation problem ! ***"}
-161 \textcolor{keywordflow}{       ENDIF}
-162        \textcolor{keyword}{ALLOCATE}(dst(i)%elems(nsrc), \hyperlink{namespacestat}{stat}=allocstat)
-163        \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
-164        n=0
-165     \textcolor{keywordflow}{ELSE}
-166        n=dst(i)%nelems
-167        \textcolor{keyword}{ALLOCATE}(celems(n), \hyperlink{namespacestat}{stat}=allocstat)
-168        \textcolor{keywordflow}{DO} j=1,n
-169           celems(j)%j=dst(i)%elems(j)%j
-170           celems(j)%k=dst(i)%elems(j)%k
-171           celems(j)%v=dst(i)%elems(j)%v
-172 \textcolor{keywordflow}{       ENDDO}
-173        \textcolor{keyword}{DEALLOCATE}(dst(i)%elems, \hyperlink{namespacestat}{stat}=allocstat)
-174        \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Deallocation problem ! ***"}
-175        \textcolor{keyword}{ALLOCATE}(dst(i)%elems(nsrc+n), \hyperlink{namespacestat}{stat}=allocstat)
-176        \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
-177        \textcolor{keywordflow}{DO} j=1,n
-178           dst(i)%elems(j)%j=celems(j)%j
-179           dst(i)%elems(j)%k=celems(j)%k
-180           dst(i)%elems(j)%v=celems(j)%v
-181 \textcolor{keywordflow}{       ENDDO}
-182        \textcolor{keyword}{DEALLOCATE}(celems, \hyperlink{namespacestat}{stat}=allocstat)
-183        \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Deallocation problem ! ***"}
-184 \textcolor{keywordflow}{    ENDIF}
-185     r=0
-186     \textcolor{keywordflow}{DO} j=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
-187        \textcolor{keywordflow}{DO} k=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
-188           \textcolor{keywordflow}{IF} (abs(src(j,k))>real\_eps) \textcolor{keywordflow}{THEN}
-189              r=r+1
-190              dst(i)%elems(n+r)%j=j
-191              dst(i)%elems(n+r)%k=k
-192              dst(i)%elems(n+r)%v=src(j,k)
-193 \textcolor{keywordflow}{          ENDIF}
-194 \textcolor{keywordflow}{       ENDDO}
-195 \textcolor{keywordflow}{    END DO}
-196     dst(i)%nelems=nsrc+n
-197     
+474     \textcolor{keywordtype}{INTEGER}, \textcolor{keywordtype}{INTENT(IN)} :: i
+475     \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(ndim,ndim)}, \textcolor{keywordtype}{INTENT(IN)} :: src
+476     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist}{coolist}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(INOUT)} :: dst
+477     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist__elem}{coolist\_elem}), \textcolor{keywordtype}{DIMENSION(:)}, \textcolor{keywordtype}{ALLOCATABLE} :: celems
+478     \textcolor{keywordtype}{INTEGER} :: j,k,r,n,nsrc,allocstat
+479 
+480     nsrc=0
+481     \textcolor{keywordflow}{DO} j=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
+482        \textcolor{keywordflow}{DO} k=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
+483           \textcolor{keywordflow}{IF} (abs(src(j,k))>real\_eps) nsrc=nsrc+1
+484 \textcolor{keywordflow}{       END DO}
+485 \textcolor{keywordflow}{    END DO}
+486 
+487     \textcolor{keywordflow}{IF} (dst(i)%nelems==0) \textcolor{keywordflow}{THEN}
+488        \textcolor{keywordflow}{IF} (\textcolor{keyword}{ALLOCATED}(dst(i)%elems)) \textcolor{keywordflow}{THEN}
+489           \textcolor{keyword}{DEALLOCATE}(dst(i)%elems, \hyperlink{namespacestat}{stat}=allocstat)
+490           \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Deallocation problem ! ***"}
+491 \textcolor{keywordflow}{       ENDIF}
+492        \textcolor{keyword}{ALLOCATE}(dst(i)%elems(nsrc), \hyperlink{namespacestat}{stat}=allocstat)
+493        \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
+494        n=0
+495     \textcolor{keywordflow}{ELSE}
+496        n=dst(i)%nelems
+497        \textcolor{keyword}{ALLOCATE}(celems(n), \hyperlink{namespacestat}{stat}=allocstat)
+498        \textcolor{keywordflow}{DO} j=1,n
+499           celems(j)%j=dst(i)%elems(j)%j
+500           celems(j)%k=dst(i)%elems(j)%k
+501           celems(j)%v=dst(i)%elems(j)%v
+502 \textcolor{keywordflow}{       ENDDO}
+503        \textcolor{keyword}{DEALLOCATE}(dst(i)%elems, \hyperlink{namespacestat}{stat}=allocstat)
+504        \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Deallocation problem ! ***"}
+505        \textcolor{keyword}{ALLOCATE}(dst(i)%elems(nsrc+n), \hyperlink{namespacestat}{stat}=allocstat)
+506        \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
+507        \textcolor{keywordflow}{DO} j=1,n
+508           dst(i)%elems(j)%j=celems(j)%j
+509           dst(i)%elems(j)%k=celems(j)%k
+510           dst(i)%elems(j)%v=celems(j)%v
+511 \textcolor{keywordflow}{       ENDDO}
+512        \textcolor{keyword}{DEALLOCATE}(celems, \hyperlink{namespacestat}{stat}=allocstat)
+513        \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Deallocation problem ! ***"}
+514 \textcolor{keywordflow}{    ENDIF}
+515     r=0
+516     \textcolor{keywordflow}{DO} j=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
+517        \textcolor{keywordflow}{DO} k=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
+518           \textcolor{keywordflow}{IF} (abs(src(j,k))>real\_eps) \textcolor{keywordflow}{THEN}
+519              r=r+1
+520              dst(i)%elems(n+r)%j=j
+521              dst(i)%elems(n+r)%k=k
+522              dst(i)%elems(n+r)%v=src(j,k)
+523 \textcolor{keywordflow}{          ENDIF}
+524 \textcolor{keywordflow}{       ENDDO}
+525 \textcolor{keywordflow}{    END DO}
+526     dst(i)%nelems=nsrc+n
+527     
 \end{DoxyCode}
 \index{tensor@{tensor}!add\+\_\+matc\+\_\+to\+\_\+tensor4@{add\+\_\+matc\+\_\+to\+\_\+tensor4}}
 \index{add\+\_\+matc\+\_\+to\+\_\+tensor4@{add\+\_\+matc\+\_\+to\+\_\+tensor4}!tensor@{tensor}}
@@ -220,67 +326,67 @@ Routine to add a matrix to a rank-\/4 tensor.
 \end{DoxyParams}
 
 
-Definition at line 206 of file tensor.\+f90.
+Definition at line 537 of file tensor.\+f90.
 
 
 \begin{DoxyCode}
-206     \textcolor{keywordtype}{INTEGER}, \textcolor{keywordtype}{INTENT(IN)} :: i,j
-207     \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(ndim,ndim)}, \textcolor{keywordtype}{INTENT(IN)} :: src
-208     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist4}{coolist4}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(INOUT)} :: dst
-209     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist__elem4}{coolist\_elem4}), \textcolor{keywordtype}{DIMENSION(:)}, \textcolor{keywordtype}{ALLOCATABLE} :: celems
-210     \textcolor{keywordtype}{INTEGER} :: k,l,r,n,nsrc,allocstat
-211 
-212     nsrc=0
-213     \textcolor{keywordflow}{DO} k=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
-214        \textcolor{keywordflow}{DO} l=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
-215           \textcolor{keywordflow}{IF} (abs(src(k,l))>real\_eps) nsrc=nsrc+1
-216 \textcolor{keywordflow}{       END DO}
-217 \textcolor{keywordflow}{    END DO}
-218 
-219     \textcolor{keywordflow}{IF} (dst(i)%nelems==0) \textcolor{keywordflow}{THEN}
-220        \textcolor{keywordflow}{IF} (\textcolor{keyword}{ALLOCATED}(dst(i)%elems)) \textcolor{keywordflow}{THEN}
-221           \textcolor{keyword}{DEALLOCATE}(dst(i)%elems, \hyperlink{namespacestat}{stat}=allocstat)
-222           \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Deallocation problem ! ***"}
-223 \textcolor{keywordflow}{       ENDIF}
-224        \textcolor{keyword}{ALLOCATE}(dst(i)%elems(nsrc), \hyperlink{namespacestat}{stat}=allocstat)
-225        \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
-226        n=0
-227     \textcolor{keywordflow}{ELSE}
-228        n=dst(i)%nelems
-229        \textcolor{keyword}{ALLOCATE}(celems(n), \hyperlink{namespacestat}{stat}=allocstat)
-230        \textcolor{keywordflow}{DO} k=1,n
-231           celems(k)%j=dst(i)%elems(k)%j
-232           celems(k)%k=dst(i)%elems(k)%k
-233           celems(k)%l=dst(i)%elems(k)%l
-234           celems(k)%v=dst(i)%elems(k)%v
-235 \textcolor{keywordflow}{       ENDDO}
-236        \textcolor{keyword}{DEALLOCATE}(dst(i)%elems, \hyperlink{namespacestat}{stat}=allocstat)
-237        \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Deallocation problem ! ***"}
-238        \textcolor{keyword}{ALLOCATE}(dst(i)%elems(nsrc+n), \hyperlink{namespacestat}{stat}=allocstat)
-239        \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
-240        \textcolor{keywordflow}{DO} k=1,n
-241           dst(i)%elems(k)%j=celems(k)%j
-242           dst(i)%elems(k)%k=celems(k)%k
-243           dst(i)%elems(k)%l=celems(k)%l
-244           dst(i)%elems(k)%v=celems(k)%v
-245 \textcolor{keywordflow}{       ENDDO}
-246        \textcolor{keyword}{DEALLOCATE}(celems, \hyperlink{namespacestat}{stat}=allocstat)
-247        \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Deallocation problem ! ***"}
-248 \textcolor{keywordflow}{    ENDIF}
-249     r=0
-250     \textcolor{keywordflow}{DO} k=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
-251        \textcolor{keywordflow}{DO} l=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
-252           \textcolor{keywordflow}{IF} (abs(src(k,l))>real\_eps) \textcolor{keywordflow}{THEN}
-253              r=r+1
-254              dst(i)%elems(n+r)%j=j
-255              dst(i)%elems(n+r)%k=k
-256              dst(i)%elems(n+r)%l=l
-257              dst(i)%elems(n+r)%v=src(k,l)
-258 \textcolor{keywordflow}{          ENDIF}
-259 \textcolor{keywordflow}{       ENDDO}
-260 \textcolor{keywordflow}{    END DO}
-261     dst(i)%nelems=nsrc+n
-262     
+537     \textcolor{keywordtype}{INTEGER}, \textcolor{keywordtype}{INTENT(IN)} :: i,j
+538     \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(ndim,ndim)}, \textcolor{keywordtype}{INTENT(IN)} :: src
+539     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist4}{coolist4}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(INOUT)} :: dst
+540     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist__elem4}{coolist\_elem4}), \textcolor{keywordtype}{DIMENSION(:)}, \textcolor{keywordtype}{ALLOCATABLE} :: celems
+541     \textcolor{keywordtype}{INTEGER} :: k,l,r,n,nsrc,allocstat
+542 
+543     nsrc=0
+544     \textcolor{keywordflow}{DO} k=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
+545        \textcolor{keywordflow}{DO} l=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
+546           \textcolor{keywordflow}{IF} (abs(src(k,l))>real\_eps) nsrc=nsrc+1
+547 \textcolor{keywordflow}{       END DO}
+548 \textcolor{keywordflow}{    END DO}
+549 
+550     \textcolor{keywordflow}{IF} (dst(i)%nelems==0) \textcolor{keywordflow}{THEN}
+551        \textcolor{keywordflow}{IF} (\textcolor{keyword}{ALLOCATED}(dst(i)%elems)) \textcolor{keywordflow}{THEN}
+552           \textcolor{keyword}{DEALLOCATE}(dst(i)%elems, \hyperlink{namespacestat}{stat}=allocstat)
+553           \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Deallocation problem ! ***"}
+554 \textcolor{keywordflow}{       ENDIF}
+555        \textcolor{keyword}{ALLOCATE}(dst(i)%elems(nsrc), \hyperlink{namespacestat}{stat}=allocstat)
+556        \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
+557        n=0
+558     \textcolor{keywordflow}{ELSE}
+559        n=dst(i)%nelems
+560        \textcolor{keyword}{ALLOCATE}(celems(n), \hyperlink{namespacestat}{stat}=allocstat)
+561        \textcolor{keywordflow}{DO} k=1,n
+562           celems(k)%j=dst(i)%elems(k)%j
+563           celems(k)%k=dst(i)%elems(k)%k
+564           celems(k)%l=dst(i)%elems(k)%l
+565           celems(k)%v=dst(i)%elems(k)%v
+566 \textcolor{keywordflow}{       ENDDO}
+567        \textcolor{keyword}{DEALLOCATE}(dst(i)%elems, \hyperlink{namespacestat}{stat}=allocstat)
+568        \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Deallocation problem ! ***"}
+569        \textcolor{keyword}{ALLOCATE}(dst(i)%elems(nsrc+n), \hyperlink{namespacestat}{stat}=allocstat)
+570        \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
+571        \textcolor{keywordflow}{DO} k=1,n
+572           dst(i)%elems(k)%j=celems(k)%j
+573           dst(i)%elems(k)%k=celems(k)%k
+574           dst(i)%elems(k)%l=celems(k)%l
+575           dst(i)%elems(k)%v=celems(k)%v
+576 \textcolor{keywordflow}{       ENDDO}
+577        \textcolor{keyword}{DEALLOCATE}(celems, \hyperlink{namespacestat}{stat}=allocstat)
+578        \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Deallocation problem ! ***"}
+579 \textcolor{keywordflow}{    ENDIF}
+580     r=0
+581     \textcolor{keywordflow}{DO} k=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
+582        \textcolor{keywordflow}{DO} l=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
+583           \textcolor{keywordflow}{IF} (abs(src(k,l))>real\_eps) \textcolor{keywordflow}{THEN}
+584              r=r+1
+585              dst(i)%elems(n+r)%j=j
+586              dst(i)%elems(n+r)%k=k
+587              dst(i)%elems(n+r)%l=l
+588              dst(i)%elems(n+r)%v=src(k,l)
+589 \textcolor{keywordflow}{          ENDIF}
+590 \textcolor{keywordflow}{       ENDDO}
+591 \textcolor{keywordflow}{    END DO}
+592     dst(i)%nelems=nsrc+n
+593     
 \end{DoxyCode}
 \index{tensor@{tensor}!add\+\_\+to\+\_\+tensor@{add\+\_\+to\+\_\+tensor}}
 \index{add\+\_\+to\+\_\+tensor@{add\+\_\+to\+\_\+tensor}!tensor@{tensor}}
@@ -303,54 +409,54 @@ Routine to add a rank-\/3 tensor to another one.
 \end{DoxyParams}
 
 
-Definition at line 92 of file tensor.\+f90.
+Definition at line 350 of file tensor.\+f90.
 
 
 \begin{DoxyCode}
-92     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist}{coolist}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(IN)} :: src
-93     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist}{coolist}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(INOUT)} :: dst
-94     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist__elem}{coolist\_elem}), \textcolor{keywordtype}{DIMENSION(:)}, \textcolor{keywordtype}{ALLOCATABLE} :: celems
-95     \textcolor{keywordtype}{INTEGER} :: i,j,n,allocstat
-96 
-97     \textcolor{keywordflow}{DO} i=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
-98        \textcolor{keywordflow}{IF} (src(i)%nelems/=0) \textcolor{keywordflow}{THEN}
-99           \textcolor{keywordflow}{IF} (dst(i)%nelems==0) \textcolor{keywordflow}{THEN}
-100              \textcolor{keywordflow}{IF} (\textcolor{keyword}{ALLOCATED}(dst(i)%elems)) \textcolor{keywordflow}{THEN}
-101                 \textcolor{keyword}{DEALLOCATE}(dst(i)%elems, \hyperlink{namespacestat}{stat}=allocstat)
-102                 \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Deallocation problem ! ***"}
-103 \textcolor{keywordflow}{             ENDIF}
-104              \textcolor{keyword}{ALLOCATE}(dst(i)%elems(src(i)%nelems), \hyperlink{namespacestat}{stat}=allocstat)
-105              \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
-106              n=0
-107           \textcolor{keywordflow}{ELSE}
-108              n=dst(i)%nelems
-109              \textcolor{keyword}{ALLOCATE}(celems(n), \hyperlink{namespacestat}{stat}=allocstat)
-110              \textcolor{keywordflow}{DO} j=1,n
-111                 celems(j)%j=dst(i)%elems(j)%j
-112                 celems(j)%k=dst(i)%elems(j)%k
-113                 celems(j)%v=dst(i)%elems(j)%v
-114 \textcolor{keywordflow}{             ENDDO}
-115              \textcolor{keyword}{DEALLOCATE}(dst(i)%elems, \hyperlink{namespacestat}{stat}=allocstat)
-116              \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Deallocation problem ! ***"}
-117              \textcolor{keyword}{ALLOCATE}(dst(i)%elems(src(i)%nelems+n), \hyperlink{namespacestat}{stat}=allocstat)
-118              \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
-119              \textcolor{keywordflow}{DO} j=1,n
-120                 dst(i)%elems(j)%j=celems(j)%j
-121                 dst(i)%elems(j)%k=celems(j)%k
-122                 dst(i)%elems(j)%v=celems(j)%v
-123 \textcolor{keywordflow}{             ENDDO}
-124              \textcolor{keyword}{DEALLOCATE}(celems, \hyperlink{namespacestat}{stat}=allocstat)
-125              \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Deallocation problem ! ***"}
-126 \textcolor{keywordflow}{          ENDIF}
-127           \textcolor{keywordflow}{DO} j=1,src(i)%nelems
-128              dst(i)%elems(n+j)%j=src(i)%elems(j)%j
-129              dst(i)%elems(n+j)%k=src(i)%elems(j)%k
-130              dst(i)%elems(n+j)%v=src(i)%elems(j)%v
-131 \textcolor{keywordflow}{          ENDDO}
-132           dst(i)%nelems=src(i)%nelems+n
-133 \textcolor{keywordflow}{       ENDIF}
-134 \textcolor{keywordflow}{    ENDDO}
-135 
+350     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist}{coolist}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(IN)} :: src
+351     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist}{coolist}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(INOUT)} :: dst
+352     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist__elem}{coolist\_elem}), \textcolor{keywordtype}{DIMENSION(:)}, \textcolor{keywordtype}{ALLOCATABLE} :: celems
+353     \textcolor{keywordtype}{INTEGER} :: i,j,n,allocstat
+354 
+355     \textcolor{keywordflow}{DO} i=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
+356        \textcolor{keywordflow}{IF} (src(i)%nelems/=0) \textcolor{keywordflow}{THEN}
+357           \textcolor{keywordflow}{IF} (dst(i)%nelems==0) \textcolor{keywordflow}{THEN}
+358              \textcolor{keywordflow}{IF} (\textcolor{keyword}{ALLOCATED}(dst(i)%elems)) \textcolor{keywordflow}{THEN}
+359                 \textcolor{keyword}{DEALLOCATE}(dst(i)%elems, \hyperlink{namespacestat}{stat}=allocstat)
+360                 \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Deallocation problem ! ***"}
+361 \textcolor{keywordflow}{             ENDIF}
+362              \textcolor{keyword}{ALLOCATE}(dst(i)%elems(src(i)%nelems), \hyperlink{namespacestat}{stat}=allocstat)
+363              \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
+364              n=0
+365           \textcolor{keywordflow}{ELSE}
+366              n=dst(i)%nelems
+367              \textcolor{keyword}{ALLOCATE}(celems(n), \hyperlink{namespacestat}{stat}=allocstat)
+368              \textcolor{keywordflow}{DO} j=1,n
+369                 celems(j)%j=dst(i)%elems(j)%j
+370                 celems(j)%k=dst(i)%elems(j)%k
+371                 celems(j)%v=dst(i)%elems(j)%v
+372 \textcolor{keywordflow}{             ENDDO}
+373              \textcolor{keyword}{DEALLOCATE}(dst(i)%elems, \hyperlink{namespacestat}{stat}=allocstat)
+374              \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Deallocation problem ! ***"}
+375              \textcolor{keyword}{ALLOCATE}(dst(i)%elems(src(i)%nelems+n), \hyperlink{namespacestat}{stat}=allocstat)
+376              \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
+377              \textcolor{keywordflow}{DO} j=1,n
+378                 dst(i)%elems(j)%j=celems(j)%j
+379                 dst(i)%elems(j)%k=celems(j)%k
+380                 dst(i)%elems(j)%v=celems(j)%v
+381 \textcolor{keywordflow}{             ENDDO}
+382              \textcolor{keyword}{DEALLOCATE}(celems, \hyperlink{namespacestat}{stat}=allocstat)
+383              \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Deallocation problem ! ***"}
+384 \textcolor{keywordflow}{          ENDIF}
+385           \textcolor{keywordflow}{DO} j=1,src(i)%nelems
+386              dst(i)%elems(n+j)%j=src(i)%elems(j)%j
+387              dst(i)%elems(n+j)%k=src(i)%elems(j)%k
+388              dst(i)%elems(n+j)%v=src(i)%elems(j)%v
+389 \textcolor{keywordflow}{          ENDDO}
+390           dst(i)%nelems=src(i)%nelems+n
+391 \textcolor{keywordflow}{       ENDIF}
+392 \textcolor{keywordflow}{    ENDDO}
+393 
 \end{DoxyCode}
 \index{tensor@{tensor}!add\+\_\+vec\+\_\+ijk\+\_\+to\+\_\+tensor4@{add\+\_\+vec\+\_\+ijk\+\_\+to\+\_\+tensor4}}
 \index{add\+\_\+vec\+\_\+ijk\+\_\+to\+\_\+tensor4@{add\+\_\+vec\+\_\+ijk\+\_\+to\+\_\+tensor4}!tensor@{tensor}}
@@ -378,62 +484,62 @@ Routine to add a vector to a rank-\/4 tensor.
 \end{DoxyParams}
 
 
-Definition at line 454 of file tensor.\+f90.
+Definition at line 785 of file tensor.\+f90.
 
 
 \begin{DoxyCode}
-454     \textcolor{keywordtype}{INTEGER}, \textcolor{keywordtype}{INTENT(IN)} :: i,j,k
-455     \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(IN)} :: src
-456     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist4}{coolist4}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(INOUT)} :: dst
-457     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist__elem4}{coolist\_elem4}), \textcolor{keywordtype}{DIMENSION(:)}, \textcolor{keywordtype}{ALLOCATABLE} :: celems
-458     \textcolor{keywordtype}{INTEGER} :: l,ne,r,n,nsrc,allocstat
-459 
-460     nsrc=0
-461     \textcolor{keywordflow}{DO} l=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
-462        \textcolor{keywordflow}{IF} (abs(src(l))>real\_eps) nsrc=nsrc+1
-463 \textcolor{keywordflow}{    ENDDO}
-464 
-465     \textcolor{keywordflow}{IF} (dst(i)%nelems==0) \textcolor{keywordflow}{THEN}
-466        \textcolor{keywordflow}{IF} (\textcolor{keyword}{ALLOCATED}(dst(i)%elems)) \textcolor{keywordflow}{THEN}
-467           \textcolor{keyword}{DEALLOCATE}(dst(i)%elems, \hyperlink{namespacestat}{stat}=allocstat)
-468           \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Deallocation problem ! ***"}
-469 \textcolor{keywordflow}{       ENDIF}
-470        \textcolor{keyword}{ALLOCATE}(dst(i)%elems(nsrc), \hyperlink{namespacestat}{stat}=allocstat)
-471        \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
-472        n=0
-473     \textcolor{keywordflow}{ELSE}
-474        n=dst(i)%nelems
-475        \textcolor{keyword}{ALLOCATE}(celems(n), \hyperlink{namespacestat}{stat}=allocstat)
-476        \textcolor{keywordflow}{DO} ne=1,n
-477           celems(ne)%j=dst(i)%elems(ne)%j
-478           celems(ne)%k=dst(i)%elems(ne)%k
-479           celems(ne)%l=dst(i)%elems(ne)%l
-480           celems(ne)%v=dst(i)%elems(ne)%v
-481 \textcolor{keywordflow}{       ENDDO}
-482        \textcolor{keyword}{DEALLOCATE}(dst(i)%elems, \hyperlink{namespacestat}{stat}=allocstat)
-483        \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Deallocation problem ! ***"}
-484        \textcolor{keyword}{ALLOCATE}(dst(i)%elems(nsrc+n), \hyperlink{namespacestat}{stat}=allocstat)
-485        \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
-486        \textcolor{keywordflow}{DO} ne=1,n
-487           dst(i)%elems(ne)%j=celems(ne)%j
-488           dst(i)%elems(ne)%k=celems(ne)%k
-489           dst(i)%elems(ne)%l=celems(ne)%l
-490           dst(i)%elems(ne)%v=celems(ne)%v
-491 \textcolor{keywordflow}{       ENDDO}
-492        \textcolor{keyword}{DEALLOCATE}(celems, \hyperlink{namespacestat}{stat}=allocstat)
-493        \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Deallocation problem ! ***"}
-494 \textcolor{keywordflow}{    ENDIF}
-495     r=0
-496     \textcolor{keywordflow}{DO} l=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
-497        \textcolor{keywordflow}{IF} (abs(src(l))>real\_eps) \textcolor{keywordflow}{THEN}
-498           r=r+1
-499           dst(i)%elems(n+r)%j=j
-500           dst(i)%elems(n+r)%k=k
-501           dst(i)%elems(n+r)%l=l
-502           dst(i)%elems(n+r)%v=src(l)
-503 \textcolor{keywordflow}{       ENDIF}
-504 \textcolor{keywordflow}{    ENDDO}
-505     dst(i)%nelems=nsrc+n
+785     \textcolor{keywordtype}{INTEGER}, \textcolor{keywordtype}{INTENT(IN)} :: i,j,k
+786     \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(IN)} :: src
+787     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist4}{coolist4}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(INOUT)} :: dst
+788     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist__elem4}{coolist\_elem4}), \textcolor{keywordtype}{DIMENSION(:)}, \textcolor{keywordtype}{ALLOCATABLE} :: celems
+789     \textcolor{keywordtype}{INTEGER} :: l,ne,r,n,nsrc,allocstat
+790 
+791     nsrc=0
+792     \textcolor{keywordflow}{DO} l=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
+793        \textcolor{keywordflow}{IF} (abs(src(l))>real\_eps) nsrc=nsrc+1
+794 \textcolor{keywordflow}{    ENDDO}
+795 
+796     \textcolor{keywordflow}{IF} (dst(i)%nelems==0) \textcolor{keywordflow}{THEN}
+797        \textcolor{keywordflow}{IF} (\textcolor{keyword}{ALLOCATED}(dst(i)%elems)) \textcolor{keywordflow}{THEN}
+798           \textcolor{keyword}{DEALLOCATE}(dst(i)%elems, \hyperlink{namespacestat}{stat}=allocstat)
+799           \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Deallocation problem ! ***"}
+800 \textcolor{keywordflow}{       ENDIF}
+801        \textcolor{keyword}{ALLOCATE}(dst(i)%elems(nsrc), \hyperlink{namespacestat}{stat}=allocstat)
+802        \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
+803        n=0
+804     \textcolor{keywordflow}{ELSE}
+805        n=dst(i)%nelems
+806        \textcolor{keyword}{ALLOCATE}(celems(n), \hyperlink{namespacestat}{stat}=allocstat)
+807        \textcolor{keywordflow}{DO} ne=1,n
+808           celems(ne)%j=dst(i)%elems(ne)%j
+809           celems(ne)%k=dst(i)%elems(ne)%k
+810           celems(ne)%l=dst(i)%elems(ne)%l
+811           celems(ne)%v=dst(i)%elems(ne)%v
+812 \textcolor{keywordflow}{       ENDDO}
+813        \textcolor{keyword}{DEALLOCATE}(dst(i)%elems, \hyperlink{namespacestat}{stat}=allocstat)
+814        \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Deallocation problem ! ***"}
+815        \textcolor{keyword}{ALLOCATE}(dst(i)%elems(nsrc+n), \hyperlink{namespacestat}{stat}=allocstat)
+816        \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
+817        \textcolor{keywordflow}{DO} ne=1,n
+818           dst(i)%elems(ne)%j=celems(ne)%j
+819           dst(i)%elems(ne)%k=celems(ne)%k
+820           dst(i)%elems(ne)%l=celems(ne)%l
+821           dst(i)%elems(ne)%v=celems(ne)%v
+822 \textcolor{keywordflow}{       ENDDO}
+823        \textcolor{keyword}{DEALLOCATE}(celems, \hyperlink{namespacestat}{stat}=allocstat)
+824        \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Deallocation problem ! ***"}
+825 \textcolor{keywordflow}{    ENDIF}
+826     r=0
+827     \textcolor{keywordflow}{DO} l=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
+828        \textcolor{keywordflow}{IF} (abs(src(l))>real\_eps) \textcolor{keywordflow}{THEN}
+829           r=r+1
+830           dst(i)%elems(n+r)%j=j
+831           dst(i)%elems(n+r)%k=k
+832           dst(i)%elems(n+r)%l=l
+833           dst(i)%elems(n+r)%v=src(l)
+834 \textcolor{keywordflow}{       ENDIF}
+835 \textcolor{keywordflow}{    ENDDO}
+836     dst(i)%nelems=nsrc+n
 \end{DoxyCode}
 \index{tensor@{tensor}!add\+\_\+vec\+\_\+ikl\+\_\+to\+\_\+tensor4@{add\+\_\+vec\+\_\+ikl\+\_\+to\+\_\+tensor4}}
 \index{add\+\_\+vec\+\_\+ikl\+\_\+to\+\_\+tensor4@{add\+\_\+vec\+\_\+ikl\+\_\+to\+\_\+tensor4}!tensor@{tensor}}
@@ -461,62 +567,62 @@ Routine to add a vector to a rank-\/4 tensor.
 \end{DoxyParams}
 
 
-Definition at line 395 of file tensor.\+f90.
+Definition at line 726 of file tensor.\+f90.
 
 
 \begin{DoxyCode}
-395     \textcolor{keywordtype}{INTEGER}, \textcolor{keywordtype}{INTENT(IN)} :: i,k,l
-396     \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(IN)} :: src
-397     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist4}{coolist4}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(INOUT)} :: dst
-398     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist__elem4}{coolist\_elem4}), \textcolor{keywordtype}{DIMENSION(:)}, \textcolor{keywordtype}{ALLOCATABLE} :: celems
-399     \textcolor{keywordtype}{INTEGER} :: j,ne,r,n,nsrc,allocstat
-400 
-401     nsrc=0
-402     \textcolor{keywordflow}{DO} j=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
-403        \textcolor{keywordflow}{IF} (abs(src(j))>real\_eps) nsrc=nsrc+1
-404 \textcolor{keywordflow}{    ENDDO}
-405 
-406     \textcolor{keywordflow}{IF} (dst(i)%nelems==0) \textcolor{keywordflow}{THEN}
-407        \textcolor{keywordflow}{IF} (\textcolor{keyword}{ALLOCATED}(dst(i)%elems)) \textcolor{keywordflow}{THEN}
-408           \textcolor{keyword}{DEALLOCATE}(dst(i)%elems, \hyperlink{namespacestat}{stat}=allocstat)
-409           \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Deallocation problem ! ***"}
-410 \textcolor{keywordflow}{       ENDIF}
-411        \textcolor{keyword}{ALLOCATE}(dst(i)%elems(nsrc), \hyperlink{namespacestat}{stat}=allocstat)
-412        \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
-413        n=0
-414     \textcolor{keywordflow}{ELSE}
-415        n=dst(i)%nelems
-416        \textcolor{keyword}{ALLOCATE}(celems(n), \hyperlink{namespacestat}{stat}=allocstat)
-417        \textcolor{keywordflow}{DO} ne=1,n
-418           celems(ne)%j=dst(i)%elems(ne)%j
-419           celems(ne)%k=dst(i)%elems(ne)%k
-420           celems(ne)%l=dst(i)%elems(ne)%l
-421           celems(ne)%v=dst(i)%elems(ne)%v
-422 \textcolor{keywordflow}{       ENDDO}
-423        \textcolor{keyword}{DEALLOCATE}(dst(i)%elems, \hyperlink{namespacestat}{stat}=allocstat)
-424        \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Deallocation problem ! ***"}
-425        \textcolor{keyword}{ALLOCATE}(dst(i)%elems(nsrc+n), \hyperlink{namespacestat}{stat}=allocstat)
-426        \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
-427        \textcolor{keywordflow}{DO} ne=1,n
-428           dst(i)%elems(ne)%j=celems(ne)%j
-429           dst(i)%elems(ne)%k=celems(ne)%k
-430           dst(i)%elems(ne)%l=celems(ne)%l
-431           dst(i)%elems(ne)%v=celems(ne)%v
-432 \textcolor{keywordflow}{       ENDDO}
-433        \textcolor{keyword}{DEALLOCATE}(celems, \hyperlink{namespacestat}{stat}=allocstat)
-434        \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Deallocation problem ! ***"}
-435 \textcolor{keywordflow}{    ENDIF}
-436     r=0
-437     \textcolor{keywordflow}{DO} j=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
-438        \textcolor{keywordflow}{IF} (abs(src(j))>real\_eps) \textcolor{keywordflow}{THEN}
-439           r=r+1
-440           dst(i)%elems(n+r)%j=j
-441           dst(i)%elems(n+r)%k=k
-442           dst(i)%elems(n+r)%l=l
-443           dst(i)%elems(n+r)%v=src(j)
-444 \textcolor{keywordflow}{       ENDIF}
-445 \textcolor{keywordflow}{    ENDDO}
-446     dst(i)%nelems=nsrc+n
+726     \textcolor{keywordtype}{INTEGER}, \textcolor{keywordtype}{INTENT(IN)} :: i,k,l
+727     \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(IN)} :: src
+728     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist4}{coolist4}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(INOUT)} :: dst
+729     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist__elem4}{coolist\_elem4}), \textcolor{keywordtype}{DIMENSION(:)}, \textcolor{keywordtype}{ALLOCATABLE} :: celems
+730     \textcolor{keywordtype}{INTEGER} :: j,ne,r,n,nsrc,allocstat
+731 
+732     nsrc=0
+733     \textcolor{keywordflow}{DO} j=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
+734        \textcolor{keywordflow}{IF} (abs(src(j))>real\_eps) nsrc=nsrc+1
+735 \textcolor{keywordflow}{    ENDDO}
+736 
+737     \textcolor{keywordflow}{IF} (dst(i)%nelems==0) \textcolor{keywordflow}{THEN}
+738        \textcolor{keywordflow}{IF} (\textcolor{keyword}{ALLOCATED}(dst(i)%elems)) \textcolor{keywordflow}{THEN}
+739           \textcolor{keyword}{DEALLOCATE}(dst(i)%elems, \hyperlink{namespacestat}{stat}=allocstat)
+740           \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Deallocation problem ! ***"}
+741 \textcolor{keywordflow}{       ENDIF}
+742        \textcolor{keyword}{ALLOCATE}(dst(i)%elems(nsrc), \hyperlink{namespacestat}{stat}=allocstat)
+743        \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
+744        n=0
+745     \textcolor{keywordflow}{ELSE}
+746        n=dst(i)%nelems
+747        \textcolor{keyword}{ALLOCATE}(celems(n), \hyperlink{namespacestat}{stat}=allocstat)
+748        \textcolor{keywordflow}{DO} ne=1,n
+749           celems(ne)%j=dst(i)%elems(ne)%j
+750           celems(ne)%k=dst(i)%elems(ne)%k
+751           celems(ne)%l=dst(i)%elems(ne)%l
+752           celems(ne)%v=dst(i)%elems(ne)%v
+753 \textcolor{keywordflow}{       ENDDO}
+754        \textcolor{keyword}{DEALLOCATE}(dst(i)%elems, \hyperlink{namespacestat}{stat}=allocstat)
+755        \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Deallocation problem ! ***"}
+756        \textcolor{keyword}{ALLOCATE}(dst(i)%elems(nsrc+n), \hyperlink{namespacestat}{stat}=allocstat)
+757        \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
+758        \textcolor{keywordflow}{DO} ne=1,n
+759           dst(i)%elems(ne)%j=celems(ne)%j
+760           dst(i)%elems(ne)%k=celems(ne)%k
+761           dst(i)%elems(ne)%l=celems(ne)%l
+762           dst(i)%elems(ne)%v=celems(ne)%v
+763 \textcolor{keywordflow}{       ENDDO}
+764        \textcolor{keyword}{DEALLOCATE}(celems, \hyperlink{namespacestat}{stat}=allocstat)
+765        \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Deallocation problem ! ***"}
+766 \textcolor{keywordflow}{    ENDIF}
+767     r=0
+768     \textcolor{keywordflow}{DO} j=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
+769        \textcolor{keywordflow}{IF} (abs(src(j))>real\_eps) \textcolor{keywordflow}{THEN}
+770           r=r+1
+771           dst(i)%elems(n+r)%j=j
+772           dst(i)%elems(n+r)%k=k
+773           dst(i)%elems(n+r)%l=l
+774           dst(i)%elems(n+r)%v=src(j)
+775 \textcolor{keywordflow}{       ENDIF}
+776 \textcolor{keywordflow}{    ENDDO}
+777     dst(i)%nelems=nsrc+n
 \end{DoxyCode}
 \index{tensor@{tensor}!add\+\_\+vec\+\_\+ikl\+\_\+to\+\_\+tensor4\+\_\+perm@{add\+\_\+vec\+\_\+ikl\+\_\+to\+\_\+tensor4\+\_\+perm}}
 \index{add\+\_\+vec\+\_\+ikl\+\_\+to\+\_\+tensor4\+\_\+perm@{add\+\_\+vec\+\_\+ikl\+\_\+to\+\_\+tensor4\+\_\+perm}!tensor@{tensor}}
@@ -544,72 +650,72 @@ Routine to add a vector to a rank-\/4 tensor plus permutation.
 \end{DoxyParams}
 
 
-Definition at line 326 of file tensor.\+f90.
+Definition at line 657 of file tensor.\+f90.
 
 
 \begin{DoxyCode}
-326     \textcolor{keywordtype}{INTEGER}, \textcolor{keywordtype}{INTENT(IN)} :: i,k,l
-327     \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(IN)} :: src
-328     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist4}{coolist4}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(INOUT)} :: dst
-329     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist__elem4}{coolist\_elem4}), \textcolor{keywordtype}{DIMENSION(:)}, \textcolor{keywordtype}{ALLOCATABLE} :: celems
-330     \textcolor{keywordtype}{INTEGER} :: j,ne,r,n,nsrc,allocstat
-331 
-332     nsrc=0
-333     \textcolor{keywordflow}{DO} j=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
-334        \textcolor{keywordflow}{IF} (abs(src(j))>real\_eps) nsrc=nsrc+1
-335 \textcolor{keywordflow}{    ENDDO}
-336     nsrc=nsrc*3
-337     \textcolor{keywordflow}{IF} (dst(i)%nelems==0) \textcolor{keywordflow}{THEN}
-338        \textcolor{keywordflow}{IF} (\textcolor{keyword}{ALLOCATED}(dst(i)%elems)) \textcolor{keywordflow}{THEN}
-339           \textcolor{keyword}{DEALLOCATE}(dst(i)%elems, \hyperlink{namespacestat}{stat}=allocstat)
-340           \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Deallocation problem ! ***"}
-341 \textcolor{keywordflow}{       ENDIF}
-342        \textcolor{keyword}{ALLOCATE}(dst(i)%elems(nsrc), \hyperlink{namespacestat}{stat}=allocstat)
-343        \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
-344        n=0
-345     \textcolor{keywordflow}{ELSE}
-346        n=dst(i)%nelems
-347        \textcolor{keyword}{ALLOCATE}(celems(n), \hyperlink{namespacestat}{stat}=allocstat)
-348        \textcolor{keywordflow}{DO} ne=1,n
-349           celems(ne)%j=dst(i)%elems(ne)%j
-350           celems(ne)%k=dst(i)%elems(ne)%k
-351           celems(ne)%l=dst(i)%elems(ne)%l
-352           celems(ne)%v=dst(i)%elems(ne)%v
-353 \textcolor{keywordflow}{       ENDDO}
-354        \textcolor{keyword}{DEALLOCATE}(dst(i)%elems, \hyperlink{namespacestat}{stat}=allocstat)
-355        \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Deallocation problem ! ***"}
-356        \textcolor{keyword}{ALLOCATE}(dst(i)%elems(nsrc+n), \hyperlink{namespacestat}{stat}=allocstat)
-357        \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
-358        \textcolor{keywordflow}{DO} ne=1,n
-359           dst(i)%elems(ne)%j=celems(ne)%j
-360           dst(i)%elems(ne)%k=celems(ne)%k
-361           dst(i)%elems(ne)%l=celems(ne)%l
-362           dst(i)%elems(ne)%v=celems(ne)%v
-363 \textcolor{keywordflow}{       ENDDO}
-364        \textcolor{keyword}{DEALLOCATE}(celems, \hyperlink{namespacestat}{stat}=allocstat)
-365        \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Deallocation problem ! ***"}
-366 \textcolor{keywordflow}{    ENDIF}
-367     r=0
-368     \textcolor{keywordflow}{DO} j=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
-369        \textcolor{keywordflow}{IF} (abs(src(j))>real\_eps) \textcolor{keywordflow}{THEN}
-370           r=r+1
-371           dst(i)%elems(n+r)%j=j
-372           dst(i)%elems(n+r)%k=k
-373           dst(i)%elems(n+r)%l=l
-374           dst(i)%elems(n+r)%v=src(j)
-375           r=r+1
-376           dst(i)%elems(n+r)%j=k
-377           dst(i)%elems(n+r)%k=l
-378           dst(i)%elems(n+r)%l=j
-379           dst(i)%elems(n+r)%v=src(j)
-380           r=r+1
-381           dst(i)%elems(n+r)%j=l
-382           dst(i)%elems(n+r)%k=j
-383           dst(i)%elems(n+r)%l=k
-384           dst(i)%elems(n+r)%v=src(j)
-385 \textcolor{keywordflow}{       ENDIF}
-386 \textcolor{keywordflow}{    ENDDO}
-387     dst(i)%nelems=nsrc+n
+657     \textcolor{keywordtype}{INTEGER}, \textcolor{keywordtype}{INTENT(IN)} :: i,k,l
+658     \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(IN)} :: src
+659     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist4}{coolist4}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(INOUT)} :: dst
+660     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist__elem4}{coolist\_elem4}), \textcolor{keywordtype}{DIMENSION(:)}, \textcolor{keywordtype}{ALLOCATABLE} :: celems
+661     \textcolor{keywordtype}{INTEGER} :: j,ne,r,n,nsrc,allocstat
+662 
+663     nsrc=0
+664     \textcolor{keywordflow}{DO} j=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
+665        \textcolor{keywordflow}{IF} (abs(src(j))>real\_eps) nsrc=nsrc+1
+666 \textcolor{keywordflow}{    ENDDO}
+667     nsrc=nsrc*3
+668     \textcolor{keywordflow}{IF} (dst(i)%nelems==0) \textcolor{keywordflow}{THEN}
+669        \textcolor{keywordflow}{IF} (\textcolor{keyword}{ALLOCATED}(dst(i)%elems)) \textcolor{keywordflow}{THEN}
+670           \textcolor{keyword}{DEALLOCATE}(dst(i)%elems, \hyperlink{namespacestat}{stat}=allocstat)
+671           \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Deallocation problem ! ***"}
+672 \textcolor{keywordflow}{       ENDIF}
+673        \textcolor{keyword}{ALLOCATE}(dst(i)%elems(nsrc), \hyperlink{namespacestat}{stat}=allocstat)
+674        \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
+675        n=0
+676     \textcolor{keywordflow}{ELSE}
+677        n=dst(i)%nelems
+678        \textcolor{keyword}{ALLOCATE}(celems(n), \hyperlink{namespacestat}{stat}=allocstat)
+679        \textcolor{keywordflow}{DO} ne=1,n
+680           celems(ne)%j=dst(i)%elems(ne)%j
+681           celems(ne)%k=dst(i)%elems(ne)%k
+682           celems(ne)%l=dst(i)%elems(ne)%l
+683           celems(ne)%v=dst(i)%elems(ne)%v
+684 \textcolor{keywordflow}{       ENDDO}
+685        \textcolor{keyword}{DEALLOCATE}(dst(i)%elems, \hyperlink{namespacestat}{stat}=allocstat)
+686        \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Deallocation problem ! ***"}
+687        \textcolor{keyword}{ALLOCATE}(dst(i)%elems(nsrc+n), \hyperlink{namespacestat}{stat}=allocstat)
+688        \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
+689        \textcolor{keywordflow}{DO} ne=1,n
+690           dst(i)%elems(ne)%j=celems(ne)%j
+691           dst(i)%elems(ne)%k=celems(ne)%k
+692           dst(i)%elems(ne)%l=celems(ne)%l
+693           dst(i)%elems(ne)%v=celems(ne)%v
+694 \textcolor{keywordflow}{       ENDDO}
+695        \textcolor{keyword}{DEALLOCATE}(celems, \hyperlink{namespacestat}{stat}=allocstat)
+696        \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Deallocation problem ! ***"}
+697 \textcolor{keywordflow}{    ENDIF}
+698     r=0
+699     \textcolor{keywordflow}{DO} j=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
+700        \textcolor{keywordflow}{IF} (abs(src(j))>real\_eps) \textcolor{keywordflow}{THEN}
+701           r=r+1
+702           dst(i)%elems(n+r)%j=j
+703           dst(i)%elems(n+r)%k=k
+704           dst(i)%elems(n+r)%l=l
+705           dst(i)%elems(n+r)%v=src(j)
+706           r=r+1
+707           dst(i)%elems(n+r)%j=k
+708           dst(i)%elems(n+r)%k=l
+709           dst(i)%elems(n+r)%l=j
+710           dst(i)%elems(n+r)%v=src(j)
+711           r=r+1
+712           dst(i)%elems(n+r)%j=l
+713           dst(i)%elems(n+r)%k=j
+714           dst(i)%elems(n+r)%l=k
+715           dst(i)%elems(n+r)%v=src(j)
+716 \textcolor{keywordflow}{       ENDIF}
+717 \textcolor{keywordflow}{    ENDDO}
+718     dst(i)%nelems=nsrc+n
 \end{DoxyCode}
 \index{tensor@{tensor}!add\+\_\+vec\+\_\+jk\+\_\+to\+\_\+tensor@{add\+\_\+vec\+\_\+jk\+\_\+to\+\_\+tensor}}
 \index{add\+\_\+vec\+\_\+jk\+\_\+to\+\_\+tensor@{add\+\_\+vec\+\_\+jk\+\_\+to\+\_\+tensor}!tensor@{tensor}}
@@ -636,58 +742,58 @@ Routine to add a vector to a rank-\/3 tensor.
 \end{DoxyParams}
 
 
-Definition at line 271 of file tensor.\+f90.
+Definition at line 602 of file tensor.\+f90.
 
 
 \begin{DoxyCode}
-271     \textcolor{keywordtype}{INTEGER}, \textcolor{keywordtype}{INTENT(IN)} :: j,k
-272     \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(IN)} :: src
-273     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist}{coolist}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(INOUT)} :: dst
-274     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist__elem}{coolist\_elem}), \textcolor{keywordtype}{DIMENSION(:)}, \textcolor{keywordtype}{ALLOCATABLE} :: celems
-275     \textcolor{keywordtype}{INTEGER} :: i,l,r,n,nsrc,allocstat
-276 
-277     \textcolor{keywordflow}{DO} i=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
-278        nsrc=0
-279        \textcolor{keywordflow}{IF} (abs(src(i))>real\_eps) nsrc=1
-280        \textcolor{keywordflow}{IF} (dst(i)%nelems==0) \textcolor{keywordflow}{THEN}
-281           \textcolor{keywordflow}{IF} (\textcolor{keyword}{ALLOCATED}(dst(i)%elems)) \textcolor{keywordflow}{THEN}
-282              \textcolor{keyword}{DEALLOCATE}(dst(i)%elems, \hyperlink{namespacestat}{stat}=allocstat)
-283              \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Deallocation problem ! ***"}
-284 \textcolor{keywordflow}{          ENDIF}
-285           \textcolor{keyword}{ALLOCATE}(dst(i)%elems(nsrc), \hyperlink{namespacestat}{stat}=allocstat)
-286           \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
-287           n=0
-288        \textcolor{keywordflow}{ELSE}
-289           n=dst(i)%nelems
-290           \textcolor{keyword}{ALLOCATE}(celems(n), \hyperlink{namespacestat}{stat}=allocstat)
-291           \textcolor{keywordflow}{DO} l=1,n
-292              celems(l)%j=dst(i)%elems(l)%j
-293              celems(l)%k=dst(i)%elems(l)%k
-294              celems(l)%v=dst(i)%elems(l)%v
-295 \textcolor{keywordflow}{          ENDDO}
-296           \textcolor{keyword}{DEALLOCATE}(dst(i)%elems, \hyperlink{namespacestat}{stat}=allocstat)
-297           \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Deallocation problem ! ***"}
-298           \textcolor{keyword}{ALLOCATE}(dst(i)%elems(nsrc+n), \hyperlink{namespacestat}{stat}=allocstat)
-299           \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
-300           \textcolor{keywordflow}{DO} l=1,n
-301              dst(i)%elems(l)%j=celems(l)%j
-302              dst(i)%elems(l)%k=celems(l)%k
-303              dst(i)%elems(l)%v=celems(l)%v
-304 \textcolor{keywordflow}{          ENDDO}
-305           \textcolor{keyword}{DEALLOCATE}(celems, \hyperlink{namespacestat}{stat}=allocstat)
-306           \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Deallocation problem ! ***"}
-307 \textcolor{keywordflow}{       ENDIF}
-308        r=0
-309        \textcolor{keywordflow}{IF} (abs(src(i))>real\_eps) \textcolor{keywordflow}{THEN}
-310           r=r+1
-311           dst(i)%elems(n+r)%j=j
-312           dst(i)%elems(n+r)%k=k
-313           dst(i)%elems(n+r)%v=src(i)
-314 \textcolor{keywordflow}{       ENDIF}
-315        dst(i)%nelems=nsrc+n
-316 \textcolor{keywordflow}{    END DO}
-317     
-318     
+602     \textcolor{keywordtype}{INTEGER}, \textcolor{keywordtype}{INTENT(IN)} :: j,k
+603     \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(IN)} :: src
+604     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist}{coolist}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(INOUT)} :: dst
+605     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist__elem}{coolist\_elem}), \textcolor{keywordtype}{DIMENSION(:)}, \textcolor{keywordtype}{ALLOCATABLE} :: celems
+606     \textcolor{keywordtype}{INTEGER} :: i,l,r,n,nsrc,allocstat
+607 
+608     \textcolor{keywordflow}{DO} i=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
+609        nsrc=0
+610        \textcolor{keywordflow}{IF} (abs(src(i))>real\_eps) nsrc=1
+611        \textcolor{keywordflow}{IF} (dst(i)%nelems==0) \textcolor{keywordflow}{THEN}
+612           \textcolor{keywordflow}{IF} (\textcolor{keyword}{ALLOCATED}(dst(i)%elems)) \textcolor{keywordflow}{THEN}
+613              \textcolor{keyword}{DEALLOCATE}(dst(i)%elems, \hyperlink{namespacestat}{stat}=allocstat)
+614              \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Deallocation problem ! ***"}
+615 \textcolor{keywordflow}{          ENDIF}
+616           \textcolor{keyword}{ALLOCATE}(dst(i)%elems(nsrc), \hyperlink{namespacestat}{stat}=allocstat)
+617           \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
+618           n=0
+619        \textcolor{keywordflow}{ELSE}
+620           n=dst(i)%nelems
+621           \textcolor{keyword}{ALLOCATE}(celems(n), \hyperlink{namespacestat}{stat}=allocstat)
+622           \textcolor{keywordflow}{DO} l=1,n
+623              celems(l)%j=dst(i)%elems(l)%j
+624              celems(l)%k=dst(i)%elems(l)%k
+625              celems(l)%v=dst(i)%elems(l)%v
+626 \textcolor{keywordflow}{          ENDDO}
+627           \textcolor{keyword}{DEALLOCATE}(dst(i)%elems, \hyperlink{namespacestat}{stat}=allocstat)
+628           \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Deallocation problem ! ***"}
+629           \textcolor{keyword}{ALLOCATE}(dst(i)%elems(nsrc+n), \hyperlink{namespacestat}{stat}=allocstat)
+630           \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
+631           \textcolor{keywordflow}{DO} l=1,n
+632              dst(i)%elems(l)%j=celems(l)%j
+633              dst(i)%elems(l)%k=celems(l)%k
+634              dst(i)%elems(l)%v=celems(l)%v
+635 \textcolor{keywordflow}{          ENDDO}
+636           \textcolor{keyword}{DEALLOCATE}(celems, \hyperlink{namespacestat}{stat}=allocstat)
+637           \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Deallocation problem ! ***"}
+638 \textcolor{keywordflow}{       ENDIF}
+639        r=0
+640        \textcolor{keywordflow}{IF} (abs(src(i))>real\_eps) \textcolor{keywordflow}{THEN}
+641           r=r+1
+642           dst(i)%elems(n+r)%j=j
+643           dst(i)%elems(n+r)%k=k
+644           dst(i)%elems(n+r)%v=src(i)
+645 \textcolor{keywordflow}{       ENDIF}
+646        dst(i)%nelems=nsrc+n
+647 \textcolor{keywordflow}{    END DO}
+648     
+649     
 \end{DoxyCode}
 \index{tensor@{tensor}!coo\+\_\+to\+\_\+mat\+\_\+i@{coo\+\_\+to\+\_\+mat\+\_\+i}}
 \index{coo\+\_\+to\+\_\+mat\+\_\+i@{coo\+\_\+to\+\_\+mat\+\_\+i}!tensor@{tensor}}
@@ -713,19 +819,19 @@ Routine to convert a rank-\/3 tensor coolist component into a matrix.
 \end{DoxyParams}
 
 
-Definition at line 971 of file tensor.\+f90.
+Definition at line 1112 of file tensor.\+f90.
 
 
 \begin{DoxyCode}
-971    \textcolor{keywordtype}{INTEGER}, \textcolor{keywordtype}{INTENT(IN)} :: i
-972    \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist}{coolist}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(IN)} :: src
-973    \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(ndim,ndim)}, \textcolor{keywordtype}{INTENT(OUT)} :: dst
-974    \textcolor{keywordtype}{INTEGER} :: n
-975    
-976    dst=0.d0
-977    \textcolor{keywordflow}{DO} n=1,src(i)%nelems
-978       dst(src(i)%elems(n)%j,src(i)%elems(n)%k)=src(i)%elems(n)%v
-979 \textcolor{keywordflow}{   ENDDO}
+1112    \textcolor{keywordtype}{INTEGER}, \textcolor{keywordtype}{INTENT(IN)} :: i
+1113    \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist}{coolist}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(IN)} :: src
+1114    \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(ndim,ndim)}, \textcolor{keywordtype}{INTENT(OUT)} :: dst
+1115    \textcolor{keywordtype}{INTEGER} :: n
+1116    
+1117    dst=0.d0
+1118    \textcolor{keywordflow}{DO} n=1,src(i)%nelems
+1119       dst(src(i)%elems(n)%j,src(i)%elems(n)%k)=src(i)%elems(n)%v
+1120 \textcolor{keywordflow}{   ENDDO}
 \end{DoxyCode}
 \index{tensor@{tensor}!coo\+\_\+to\+\_\+mat\+\_\+ij@{coo\+\_\+to\+\_\+mat\+\_\+ij}}
 \index{coo\+\_\+to\+\_\+mat\+\_\+ij@{coo\+\_\+to\+\_\+mat\+\_\+ij}!tensor@{tensor}}
@@ -748,20 +854,20 @@ Routine to convert a rank-\/3 tensor coolist component into a matrix with i and 
 \end{DoxyParams}
 
 
-Definition at line 938 of file tensor.\+f90.
+Definition at line 1079 of file tensor.\+f90.
 
 
 \begin{DoxyCode}
-938    \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist}{coolist}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(IN)} :: src
-939    \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(ndim,ndim)}, \textcolor{keywordtype}{INTENT(OUT)} :: dst
-940    \textcolor{keywordtype}{INTEGER} :: i,n
-941    
-942    dst=0.d0
-943    \textcolor{keywordflow}{DO} i=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
-944       \textcolor{keywordflow}{DO} n=1,src(i)%nelems
-945          dst(i,src(i)%elems(n)%j)=src(i)%elems(n)%v
-946 \textcolor{keywordflow}{      ENDDO}
-947 \textcolor{keywordflow}{   ENDDO}
+1079    \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist}{coolist}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(IN)} :: src
+1080    \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(ndim,ndim)}, \textcolor{keywordtype}{INTENT(OUT)} :: dst
+1081    \textcolor{keywordtype}{INTEGER} :: i,n
+1082    
+1083    dst=0.d0
+1084    \textcolor{keywordflow}{DO} i=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
+1085       \textcolor{keywordflow}{DO} n=1,src(i)%nelems
+1086          dst(i,src(i)%elems(n)%j)=src(i)%elems(n)%v
+1087 \textcolor{keywordflow}{      ENDDO}
+1088 \textcolor{keywordflow}{   ENDDO}
 \end{DoxyCode}
 \index{tensor@{tensor}!coo\+\_\+to\+\_\+mat\+\_\+ik@{coo\+\_\+to\+\_\+mat\+\_\+ik}}
 \index{coo\+\_\+to\+\_\+mat\+\_\+ik@{coo\+\_\+to\+\_\+mat\+\_\+ik}!tensor@{tensor}}
@@ -784,20 +890,20 @@ Routine to convert a rank-\/3 tensor coolist component into a matrix with i and 
 \end{DoxyParams}
 
 
-Definition at line 922 of file tensor.\+f90.
+Definition at line 1063 of file tensor.\+f90.
 
 
 \begin{DoxyCode}
-922    \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist}{coolist}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(IN)} :: src
-923    \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(ndim,ndim)}, \textcolor{keywordtype}{INTENT(OUT)} :: dst
-924    \textcolor{keywordtype}{INTEGER} :: i,n
-925    
-926    dst=0.d0
-927    \textcolor{keywordflow}{DO} i=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
-928       \textcolor{keywordflow}{DO} n=1,src(i)%nelems
-929          dst(i,src(i)%elems(n)%k)=src(i)%elems(n)%v
-930 \textcolor{keywordflow}{      ENDDO}
-931 \textcolor{keywordflow}{   ENDDO}
+1063    \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist}{coolist}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(IN)} :: src
+1064    \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(ndim,ndim)}, \textcolor{keywordtype}{INTENT(OUT)} :: dst
+1065    \textcolor{keywordtype}{INTEGER} :: i,n
+1066    
+1067    dst=0.d0
+1068    \textcolor{keywordflow}{DO} i=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
+1069       \textcolor{keywordflow}{DO} n=1,src(i)%nelems
+1070          dst(i,src(i)%elems(n)%k)=src(i)%elems(n)%v
+1071 \textcolor{keywordflow}{      ENDDO}
+1072 \textcolor{keywordflow}{   ENDDO}
 \end{DoxyCode}
 \index{tensor@{tensor}!coo\+\_\+to\+\_\+mat\+\_\+j@{coo\+\_\+to\+\_\+mat\+\_\+j}}
 \index{coo\+\_\+to\+\_\+mat\+\_\+j@{coo\+\_\+to\+\_\+mat\+\_\+j}!tensor@{tensor}}
@@ -823,21 +929,21 @@ Routine to convert a rank-\/3 tensor coolist component into a matrix.
 \end{DoxyParams}
 
 
-Definition at line 1007 of file tensor.\+f90.
+Definition at line 1148 of file tensor.\+f90.
 
 
 \begin{DoxyCode}
-1007    \textcolor{keywordtype}{INTEGER}, \textcolor{keywordtype}{INTENT(IN)} :: j
-1008    \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist}{coolist}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(IN)} :: src
-1009    \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(ndim,ndim)}, \textcolor{keywordtype}{INTENT(OUT)} :: dst
-1010    \textcolor{keywordtype}{INTEGER} :: i,n
-1011    
-1012    dst=0.d0
-1013    \textcolor{keywordflow}{DO} i=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
-1014       \textcolor{keywordflow}{DO} n=1,src(i)%nelems
-1015          \textcolor{keywordflow}{IF} (src(i)%elems(n)%j==j) dst(i,src(i)%elems(n)%k)=src(i)%elems(n)%v
-1016 \textcolor{keywordflow}{      ENDDO}
-1017 \textcolor{keywordflow}{   END DO}
+1148    \textcolor{keywordtype}{INTEGER}, \textcolor{keywordtype}{INTENT(IN)} :: j
+1149    \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist}{coolist}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(IN)} :: src
+1150    \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(ndim,ndim)}, \textcolor{keywordtype}{INTENT(OUT)} :: dst
+1151    \textcolor{keywordtype}{INTEGER} :: i,n
+1152    
+1153    dst=0.d0
+1154    \textcolor{keywordflow}{DO} i=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
+1155       \textcolor{keywordflow}{DO} n=1,src(i)%nelems
+1156          \textcolor{keywordflow}{IF} (src(i)%elems(n)%j==j) dst(i,src(i)%elems(n)%k)=src(i)%elems(n)%v
+1157 \textcolor{keywordflow}{      ENDDO}
+1158 \textcolor{keywordflow}{   END DO}
 \end{DoxyCode}
 \index{tensor@{tensor}!coo\+\_\+to\+\_\+vec\+\_\+jk@{coo\+\_\+to\+\_\+vec\+\_\+jk}}
 \index{coo\+\_\+to\+\_\+vec\+\_\+jk@{coo\+\_\+to\+\_\+vec\+\_\+jk}!tensor@{tensor}}
@@ -866,39 +972,39 @@ Routine to convert a rank-\/3 tensor coolist component into a vector.
 \end{DoxyParams}
 
 
-Definition at line 988 of file tensor.\+f90.
+Definition at line 1129 of file tensor.\+f90.
 
 
 \begin{DoxyCode}
-988    \textcolor{keywordtype}{INTEGER}, \textcolor{keywordtype}{INTENT(IN)} :: j,k
-989    \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist}{coolist}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(IN)} :: src
-990    \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(OUT)} :: dst
-991    \textcolor{keywordtype}{INTEGER} :: i,n
-992    
-993    dst=0.d0
-994    \textcolor{keywordflow}{DO} i=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
-995       \textcolor{keywordflow}{DO} n=1,src(i)%nelems
-996          \textcolor{keywordflow}{IF} ((src(i)%elems(n)%j==j).and.(src(i)%elems(n)%k==k)) dst(i)=src(i)%elems(n)%v
-997 \textcolor{keywordflow}{      END DO}
-998 \textcolor{keywordflow}{   ENDDO}
+1129    \textcolor{keywordtype}{INTEGER}, \textcolor{keywordtype}{INTENT(IN)} :: j,k
+1130    \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist}{coolist}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(IN)} :: src
+1131    \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(OUT)} :: dst
+1132    \textcolor{keywordtype}{INTEGER} :: i,n
+1133    
+1134    dst=0.d0
+1135    \textcolor{keywordflow}{DO} i=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
+1136       \textcolor{keywordflow}{DO} n=1,src(i)%nelems
+1137          \textcolor{keywordflow}{IF} ((src(i)%elems(n)%j==j).and.(src(i)%elems(n)%k==k)) dst(i)=src(i)%elems(n)%v
+1138 \textcolor{keywordflow}{      END DO}
+1139 \textcolor{keywordflow}{   ENDDO}
 \end{DoxyCode}
-\index{tensor@{tensor}!copy\+\_\+tensor@{copy\+\_\+tensor}}
-\index{copy\+\_\+tensor@{copy\+\_\+tensor}!tensor@{tensor}}
-\subsubsection[{\texorpdfstring{copy\+\_\+tensor(src, dst)}{copy_tensor(src, dst)}}]{\setlength{\rightskip}{0pt plus 5cm}subroutine, public tensor\+::copy\+\_\+tensor (
+\index{tensor@{tensor}!copy\+\_\+coo@{copy\+\_\+coo}}
+\index{copy\+\_\+coo@{copy\+\_\+coo}!tensor@{tensor}}
+\subsubsection[{\texorpdfstring{copy\+\_\+coo(src, dst)}{copy_coo(src, dst)}}]{\setlength{\rightskip}{0pt plus 5cm}subroutine, public tensor\+::copy\+\_\+coo (
 \begin{DoxyParamCaption}
 \item[{type({\bf coolist}), dimension(ndim), intent(in)}]{src, }
 \item[{type({\bf coolist}), dimension(ndim), intent(out)}]{dst}
 \end{DoxyParamCaption}
-)}\hypertarget{namespacetensor_a4a88ee8077278486c5128ad97617969e}{}\label{namespacetensor_a4a88ee8077278486c5128ad97617969e}
+)}\hypertarget{namespacetensor_a14f95c256cdf137ca0767ddb3c87deea}{}\label{namespacetensor_a14f95c256cdf137ca0767ddb3c87deea}
 
 
-Routine to copy a rank-\/3 tensor. 
+Routine to copy a coolist. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em src} & Source tensor \\
+{\em src} & Source coolist \\
 \hline
-{\em dst} & Destination tensor \\
+{\em dst} & Destination coolist \\
 \hline
 \end{DoxyParams}
 \begin{DoxyRemark}{Remarks}
@@ -906,25 +1012,25 @@ The destination tensor have to be an empty tensor, i.\+e. with unallocated list 
 \end{DoxyRemark}
 
 
-Definition at line 71 of file tensor.\+f90.
+Definition at line 72 of file tensor.\+f90.
 
 
 \begin{DoxyCode}
-71     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist}{coolist}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(IN)} :: src
-72     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist}{coolist}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(OUT)} :: dst
-73     \textcolor{keywordtype}{INTEGER} :: i,j,allocstat
-74 
-75     \textcolor{keywordflow}{DO} i=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
-76        \textcolor{keywordflow}{IF} (dst(i)%nelems/=0) stop \textcolor{stringliteral}{"*** copy\_tensor : Destination coolist not empty ! ***"}
-77        \textcolor{keyword}{ALLOCATE}(dst(i)%elems(src(i)%nelems), \hyperlink{namespacestat}{stat}=allocstat)
-78        \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
-79        \textcolor{keywordflow}{DO} j=1,src(i)%nelems
-80           dst(i)%elems(j)%j=src(i)%elems(j)%j
-81           dst(i)%elems(j)%k=src(i)%elems(j)%k
-82           dst(i)%elems(j)%v=src(i)%elems(j)%v
-83 \textcolor{keywordflow}{       ENDDO}
-84        dst(i)%nelems=src(i)%nelems
-85 \textcolor{keywordflow}{    ENDDO}
+72     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist}{coolist}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(IN)} :: src
+73     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist}{coolist}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(OUT)} :: dst
+74     \textcolor{keywordtype}{INTEGER} :: i,j,allocstat
+75     
+76     \textcolor{keywordflow}{DO} i=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
+77        \textcolor{keywordflow}{IF} (dst(i)%nelems/=0) stop \textcolor{stringliteral}{"*** copy\_coo : Destination coolist not empty ! ***"}
+78        \textcolor{keyword}{ALLOCATE}(dst(i)%elems(src(i)%nelems), \hyperlink{namespacestat}{stat}=allocstat)
+79        \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
+80        \textcolor{keywordflow}{DO} j=1,src(i)%nelems
+81           dst(i)%elems(j)%j=src(i)%elems(j)%j
+82           dst(i)%elems(j)%k=src(i)%elems(j)%k
+83           dst(i)%elems(j)%v=src(i)%elems(j)%v
+84 \textcolor{keywordflow}{       ENDDO}
+85        dst(i)%nelems=src(i)%nelems
+86 \textcolor{keywordflow}{    ENDDO}
 \end{DoxyCode}
 \index{tensor@{tensor}!jsparse\+\_\+mul@{jsparse\+\_\+mul}}
 \index{jsparse\+\_\+mul@{jsparse\+\_\+mul}!tensor@{tensor}}
@@ -950,41 +1056,41 @@ Sparse multiplication of two tensors to determine the Jacobian\+: \[J_{i,j} = {\
 \end{DoxyParams}
 
 
-Definition at line 767 of file tensor.\+f90.
+Definition at line 153 of file tensor.\+f90.
 
 
 \begin{DoxyCode}
-767     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist}{coolist}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(IN)}:: coolist\_ijk
-768     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist}{coolist}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(OUT)}:: jcoo\_ij
-769     \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(0:ndim)}, \textcolor{keywordtype}{INTENT(IN)}  :: arr\_j
-770     \textcolor{keywordtype}{REAL(KIND=8)} :: v
-771     \textcolor{keywordtype}{INTEGER} :: i,j,k,n,nj,allocstat
-772     \textcolor{keywordflow}{DO} i=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
-773        \textcolor{keywordflow}{IF} (jcoo\_ij(i)%nelems/=0) stop \textcolor{stringliteral}{"*** jsparse\_mul : Destination coolist not empty ! ***"}
-774        nj=2*coolist\_ijk(i)%nelems
-775        \textcolor{keyword}{ALLOCATE}(jcoo\_ij(i)%elems(nj), \hyperlink{namespacestat}{stat}=allocstat)
-776        \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
-777        nj=0
-778        \textcolor{keywordflow}{DO} n=1,coolist\_ijk(i)%nelems
-779           j=coolist\_ijk(i)%elems(n)%j
-780           k=coolist\_ijk(i)%elems(n)%k
-781           v=coolist\_ijk(i)%elems(n)%v
-782           \textcolor{keywordflow}{IF} (j /=0) \textcolor{keywordflow}{THEN}
-783              nj=nj+1
-784              jcoo\_ij(i)%elems(nj)%j=j
-785              jcoo\_ij(i)%elems(nj)%k=0
-786              jcoo\_ij(i)%elems(nj)%v=v*arr\_j(k)
-787 \textcolor{keywordflow}{          END IF}
-788 
-789           \textcolor{keywordflow}{IF} (k /=0) \textcolor{keywordflow}{THEN}
-790              nj=nj+1
-791              jcoo\_ij(i)%elems(nj)%j=k
-792              jcoo\_ij(i)%elems(nj)%k=0
-793              jcoo\_ij(i)%elems(nj)%v=v*arr\_j(j)
-794 \textcolor{keywordflow}{          END IF}
-795 \textcolor{keywordflow}{       END DO}
-796        jcoo\_ij(i)%nelems=nj
-797 \textcolor{keywordflow}{    END DO}
+153     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist}{coolist}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(IN)}:: coolist\_ijk
+154     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist}{coolist}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(OUT)}:: jcoo\_ij
+155     \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(0:ndim)}, \textcolor{keywordtype}{INTENT(IN)}  :: arr\_j
+156     \textcolor{keywordtype}{REAL(KIND=8)} :: v
+157     \textcolor{keywordtype}{INTEGER} :: i,j,k,n,nj,allocstat
+158     \textcolor{keywordflow}{DO} i=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
+159        \textcolor{keywordflow}{IF} (jcoo\_ij(i)%nelems/=0) stop \textcolor{stringliteral}{"*** jsparse\_mul : Destination coolist not empty ! ***"}
+160        nj=2*coolist\_ijk(i)%nelems
+161        \textcolor{keyword}{ALLOCATE}(jcoo\_ij(i)%elems(nj), \hyperlink{namespacestat}{stat}=allocstat)
+162        \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
+163        nj=0
+164        \textcolor{keywordflow}{DO} n=1,coolist\_ijk(i)%nelems
+165           j=coolist\_ijk(i)%elems(n)%j
+166           k=coolist\_ijk(i)%elems(n)%k
+167           v=coolist\_ijk(i)%elems(n)%v
+168           \textcolor{keywordflow}{IF} (j /=0) \textcolor{keywordflow}{THEN}
+169              nj=nj+1
+170              jcoo\_ij(i)%elems(nj)%j=j
+171              jcoo\_ij(i)%elems(nj)%k=0
+172              jcoo\_ij(i)%elems(nj)%v=v*arr\_j(k)
+173 \textcolor{keywordflow}{          END IF}
+174 
+175           \textcolor{keywordflow}{IF} (k /=0) \textcolor{keywordflow}{THEN}
+176              nj=nj+1
+177              jcoo\_ij(i)%elems(nj)%j=k
+178              jcoo\_ij(i)%elems(nj)%k=0
+179              jcoo\_ij(i)%elems(nj)%v=v*arr\_j(j)
+180 \textcolor{keywordflow}{          END IF}
+181 \textcolor{keywordflow}{       END DO}
+182        jcoo\_ij(i)%nelems=nj
+183 \textcolor{keywordflow}{    END DO}
 \end{DoxyCode}
 \index{tensor@{tensor}!jsparse\+\_\+mul\+\_\+mat@{jsparse\+\_\+mul\+\_\+mat}}
 \index{jsparse\+\_\+mul\+\_\+mat@{jsparse\+\_\+mul\+\_\+mat}!tensor@{tensor}}
@@ -1010,25 +1116,25 @@ Sparse multiplication of two tensors to determine the Jacobian\+: \[J_{i,j} = {\
 \end{DoxyParams}
 
 
-Definition at line 810 of file tensor.\+f90.
+Definition at line 196 of file tensor.\+f90.
 
 
 \begin{DoxyCode}
-810     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist}{coolist}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(IN)}:: coolist\_ijk
-811     \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(ndim,ndim)}, \textcolor{keywordtype}{INTENT(OUT)}:: jcoo\_ij
-812     \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(0:ndim)}, \textcolor{keywordtype}{INTENT(IN)}  :: arr\_j
-813     \textcolor{keywordtype}{REAL(KIND=8)} :: v
-814     \textcolor{keywordtype}{INTEGER} :: i,j,k,n
-815     jcoo\_ij=0.d0
-816     \textcolor{keywordflow}{DO} i=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
-817        \textcolor{keywordflow}{DO} n=1,coolist\_ijk(i)%nelems
-818           j=coolist\_ijk(i)%elems(n)%j
-819           k=coolist\_ijk(i)%elems(n)%k
-820           v=coolist\_ijk(i)%elems(n)%v
-821           \textcolor{keywordflow}{IF} (j /=0) jcoo\_ij(i,j)=jcoo\_ij(i,j)+v*arr\_j(k)
-822           \textcolor{keywordflow}{IF} (k /=0) jcoo\_ij(i,k)=jcoo\_ij(i,k)+v*arr\_j(j)
-823 \textcolor{keywordflow}{       END DO}
-824 \textcolor{keywordflow}{    END DO}
+196     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist}{coolist}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(IN)}:: coolist\_ijk
+197     \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(ndim,ndim)}, \textcolor{keywordtype}{INTENT(OUT)}:: jcoo\_ij
+198     \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(0:ndim)}, \textcolor{keywordtype}{INTENT(IN)}  :: arr\_j
+199     \textcolor{keywordtype}{REAL(KIND=8)} :: v
+200     \textcolor{keywordtype}{INTEGER} :: i,j,k,n
+201     jcoo\_ij=0.d0
+202     \textcolor{keywordflow}{DO} i=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
+203        \textcolor{keywordflow}{DO} n=1,coolist\_ijk(i)%nelems
+204           j=coolist\_ijk(i)%elems(n)%j
+205           k=coolist\_ijk(i)%elems(n)%k
+206           v=coolist\_ijk(i)%elems(n)%v
+207           \textcolor{keywordflow}{IF} (j /=0) jcoo\_ij(i,j)=jcoo\_ij(i,j)+v*arr\_j(k)
+208           \textcolor{keywordflow}{IF} (k /=0) jcoo\_ij(i,k)=jcoo\_ij(i,k)+v*arr\_j(j)
+209 \textcolor{keywordflow}{       END DO}
+210 \textcolor{keywordflow}{    END DO}
 \end{DoxyCode}
 \index{tensor@{tensor}!load\+\_\+tensor4\+\_\+from\+\_\+file@{load\+\_\+tensor4\+\_\+from\+\_\+file}}
 \index{load\+\_\+tensor4\+\_\+from\+\_\+file@{load\+\_\+tensor4\+\_\+from\+\_\+file}!tensor@{tensor}}
@@ -1054,31 +1160,80 @@ The destination tensor have to be an empty tensor, i.\+e. with unallocated list 
 \end{DoxyRemark}
 
 
-Definition at line 1181 of file tensor.\+f90.
+Definition at line 1322 of file tensor.\+f90.
 
 
 \begin{DoxyCode}
-1181     \textcolor{keywordtype}{CHARACTER (LEN=*)}, \textcolor{keywordtype}{INTENT(IN)} :: s
-1182     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist4}{coolist4}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(OUT)} :: t
-1183     \textcolor{keywordtype}{INTEGER} :: i,ir,j,k,l,n,allocstat
-1184     \textcolor{keywordtype}{REAL(KIND=8)} :: v
-1185     \textcolor{keyword}{OPEN}(30,file=s,status=\textcolor{stringliteral}{'old'})
-1186     \textcolor{keywordflow}{DO} i=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
-1187        \textcolor{keyword}{READ}(30,*) ir,n
-1188        \textcolor{keywordflow}{IF} (n /= 0) \textcolor{keywordflow}{THEN}
-1189           \textcolor{keyword}{ALLOCATE}(t(i)%elems(n), \hyperlink{namespacestat}{stat}=allocstat)
-1190           \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
-1191           t(i)%nelems=n
-1192 \textcolor{keywordflow}{       ENDIF}
-1193        \textcolor{keywordflow}{DO} n=1,t(i)%nelems
-1194           \textcolor{keyword}{READ}(30,*) ir,j,k,l,v
-1195           t(i)%elems(n)%j=j
-1196           t(i)%elems(n)%k=k
-1197           t(i)%elems(n)%l=l
-1198           t(i)%elems(n)%v=v
-1199 \textcolor{keywordflow}{       ENDDO}
-1200 \textcolor{keywordflow}{    END DO}
-1201     \textcolor{keyword}{CLOSE}(30)
+1322     \textcolor{keywordtype}{CHARACTER (LEN=*)}, \textcolor{keywordtype}{INTENT(IN)} :: s
+1323     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist4}{coolist4}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(OUT)} :: t
+1324     \textcolor{keywordtype}{INTEGER} :: i,ir,j,k,l,n,allocstat
+1325     \textcolor{keywordtype}{REAL(KIND=8)} :: v
+1326     \textcolor{keyword}{OPEN}(30,file=s,status=\textcolor{stringliteral}{'old'})
+1327     \textcolor{keywordflow}{DO} i=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
+1328        \textcolor{keyword}{READ}(30,*) ir,n
+1329        \textcolor{keywordflow}{IF} (n /= 0) \textcolor{keywordflow}{THEN}
+1330           \textcolor{keyword}{ALLOCATE}(t(i)%elems(n), \hyperlink{namespacestat}{stat}=allocstat)
+1331           \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
+1332           t(i)%nelems=n
+1333 \textcolor{keywordflow}{       ENDIF}
+1334        \textcolor{keywordflow}{DO} n=1,t(i)%nelems
+1335           \textcolor{keyword}{READ}(30,*) ir,j,k,l,v
+1336           t(i)%elems(n)%j=j
+1337           t(i)%elems(n)%k=k
+1338           t(i)%elems(n)%l=l
+1339           t(i)%elems(n)%v=v
+1340 \textcolor{keywordflow}{       ENDDO}
+1341 \textcolor{keywordflow}{    END DO}
+1342     \textcolor{keyword}{CLOSE}(30)
+\end{DoxyCode}
+\index{tensor@{tensor}!load\+\_\+tensor\+\_\+from\+\_\+file@{load\+\_\+tensor\+\_\+from\+\_\+file}}
+\index{load\+\_\+tensor\+\_\+from\+\_\+file@{load\+\_\+tensor\+\_\+from\+\_\+file}!tensor@{tensor}}
+\subsubsection[{\texorpdfstring{load\+\_\+tensor\+\_\+from\+\_\+file(s, t)}{load_tensor_from_file(s, t)}}]{\setlength{\rightskip}{0pt plus 5cm}subroutine, public tensor\+::load\+\_\+tensor\+\_\+from\+\_\+file (
+\begin{DoxyParamCaption}
+\item[{character (len=$\ast$), intent(in)}]{s, }
+\item[{type({\bf coolist}), dimension(ndim), intent(out)}]{t}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacetensor_ac4c6ebce7aee73aebac2514e45f7cc78}{}\label{namespacetensor_ac4c6ebce7aee73aebac2514e45f7cc78}
+
+
+Load a rank-\/4 tensor coolist from a file definition. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & Filename of the tensor definition file \\
+\hline
+{\em t} & The loaded coolist \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRemark}{Remarks}
+The destination tensor have to be an empty tensor, i.\+e. with unallocated list of elements and nelems set to 0. 
+\end{DoxyRemark}
+
+
+Definition at line 445 of file tensor.\+f90.
+
+
+\begin{DoxyCode}
+445     \textcolor{keywordtype}{CHARACTER (LEN=*)}, \textcolor{keywordtype}{INTENT(IN)} :: s
+446     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist}{coolist}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(OUT)} :: t
+447     \textcolor{keywordtype}{INTEGER} :: i,ir,j,k,n,allocstat
+448     \textcolor{keywordtype}{REAL(KIND=8)} :: v
+449     \textcolor{keyword}{OPEN}(30,file=s,status=\textcolor{stringliteral}{'old'})
+450     \textcolor{keywordflow}{DO} i=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
+451        \textcolor{keyword}{READ}(30,*) ir,n
+452        \textcolor{keywordflow}{IF} (n /= 0) \textcolor{keywordflow}{THEN}
+453           \textcolor{keyword}{ALLOCATE}(t(i)%elems(n), \hyperlink{namespacestat}{stat}=allocstat)
+454           \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
+455           t(i)%nelems=n
+456 \textcolor{keywordflow}{       ENDIF}
+457        \textcolor{keywordflow}{DO} n=1,t(i)%nelems
+458           \textcolor{keyword}{READ}(30,*) ir,j,k,v
+459           t(i)%elems(n)%j=j
+460           t(i)%elems(n)%k=k
+461           t(i)%elems(n)%v=v
+462 \textcolor{keywordflow}{       ENDDO}
+463 \textcolor{keywordflow}{    END DO}
+464     \textcolor{keyword}{CLOSE}(30)
 \end{DoxyCode}
 \index{tensor@{tensor}!mat\+\_\+to\+\_\+coo@{mat\+\_\+to\+\_\+coo}}
 \index{mat\+\_\+to\+\_\+coo@{mat\+\_\+to\+\_\+coo}!tensor@{tensor}}
@@ -1090,7 +1245,7 @@ Definition at line 1181 of file tensor.\+f90.
 )}\hypertarget{namespacetensor_a75d1a9ca8b39e9ad4b151a7b4b45c70f}{}\label{namespacetensor_a75d1a9ca8b39e9ad4b151a7b4b45c70f}
 
 
-Routine to convert a matrix to a rank-\/3 tensor. 
+Routine to convert a matrix to a tensor. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -1101,39 +1256,37 @@ Routine to convert a matrix to a rank-\/3 tensor.
 \end{DoxyParams}
 \begin{DoxyRemark}{Remarks}
 The destination tensor have to be an empty tensor, i.\+e. with unallocated list of elements and nelems set to 0. 
-
-The k component will be set to 0. 
 \end{DoxyRemark}
 
 
-Definition at line 515 of file tensor.\+f90.
+Definition at line 94 of file tensor.\+f90.
 
 
 \begin{DoxyCode}
-515     \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(0:ndim,0:ndim)}, \textcolor{keywordtype}{INTENT(IN)} :: src
-516     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist}{coolist}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(OUT)} :: dst
-517     \textcolor{keywordtype}{INTEGER} :: i,j,n,allocstat
-518     \textcolor{keywordflow}{DO} i=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
-519        n=0
-520        \textcolor{keywordflow}{DO} j=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
-521           \textcolor{keywordflow}{IF} (abs(src(i,j))>real\_eps) n=n+1
-522 \textcolor{keywordflow}{       ENDDO}
-523        \textcolor{keywordflow}{IF} (n/=0) \textcolor{keywordflow}{THEN}
-524           \textcolor{keywordflow}{IF} (dst(i)%nelems/=0) stop \textcolor{stringliteral}{"*** mat\_to\_coo : Destination coolist not empty ! ***"}
-525           \textcolor{keyword}{ALLOCATE}(dst(i)%elems(n), \hyperlink{namespacestat}{stat}=allocstat)
-526           \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
-527           n=0
-528           \textcolor{keywordflow}{DO} j=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
-529              \textcolor{keywordflow}{IF} (abs(src(i,j))>real\_eps) \textcolor{keywordflow}{THEN}
-530                 n=n+1
-531                 dst(i)%elems(n)%j=j
-532                 dst(i)%elems(n)%k=0
-533                 dst(i)%elems(n)%v=src(i,j)
-534 \textcolor{keywordflow}{             ENDIF}
-535 \textcolor{keywordflow}{          ENDDO}
-536 \textcolor{keywordflow}{       ENDIF}
-537        dst(i)%nelems=n
-538 \textcolor{keywordflow}{    ENDDO}
+94     \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(0:ndim,0:ndim)}, \textcolor{keywordtype}{INTENT(IN)} :: src
+95     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist}{coolist}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(OUT)} :: dst
+96     \textcolor{keywordtype}{INTEGER} :: i,j,n,allocstat
+97     \textcolor{keywordflow}{DO} i=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
+98        n=0
+99        \textcolor{keywordflow}{DO} j=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
+100           \textcolor{keywordflow}{IF} (abs(src(i,j))>real\_eps) n=n+1
+101 \textcolor{keywordflow}{       ENDDO}
+102        \textcolor{keywordflow}{IF} (n/=0) \textcolor{keywordflow}{THEN}
+103           \textcolor{keywordflow}{IF} (dst(i)%nelems/=0) stop \textcolor{stringliteral}{"*** mat\_to\_coo : Destination coolist not empty ! ***"}
+104           \textcolor{keyword}{ALLOCATE}(dst(i)%elems(n), \hyperlink{namespacestat}{stat}=allocstat)
+105           \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
+106           n=0
+107           \textcolor{keywordflow}{DO} j=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
+108              \textcolor{keywordflow}{IF} (abs(src(i,j))>real\_eps) \textcolor{keywordflow}{THEN}
+109                 n=n+1
+110                 dst(i)%elems(n)%j=j
+111                 dst(i)%elems(n)%k=0
+112                 dst(i)%elems(n)%v=src(i,j)
+113 \textcolor{keywordflow}{             ENDIF}
+114 \textcolor{keywordflow}{          ENDDO}
+115 \textcolor{keywordflow}{       ENDIF}
+116        dst(i)%nelems=n
+117 \textcolor{keywordflow}{    ENDDO}
 \end{DoxyCode}
 \index{tensor@{tensor}!matc\+\_\+to\+\_\+coo@{matc\+\_\+to\+\_\+coo}}
 \index{matc\+\_\+to\+\_\+coo@{matc\+\_\+to\+\_\+coo}!tensor@{tensor}}
@@ -1161,42 +1314,43 @@ The j component will be set to 0.
 \end{DoxyRemark}
 
 
-Definition at line 1103 of file tensor.\+f90.
+Definition at line 1244 of file tensor.\+f90.
 
 
 \begin{DoxyCode}
-1103    \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(ndim,ndim)}, \textcolor{keywordtype}{INTENT(IN)} :: src
-1104    \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist}{coolist}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(OUT)} :: dst
-1105    \textcolor{keywordtype}{INTEGER} :: i,j,n,allocstat
-1106    \textcolor{keywordflow}{DO} i=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
-1107       n=0
-1108       \textcolor{keywordflow}{DO} j=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
-1109          \textcolor{keywordflow}{IF} (abs(src(i,j))>real\_eps) n=n+1
-1110 \textcolor{keywordflow}{      ENDDO}
-1111       \textcolor{keywordflow}{IF} (n/=0) \textcolor{keywordflow}{THEN}
-1112          \textcolor{keywordflow}{IF} (dst(i)%nelems/=0) stop \textcolor{stringliteral}{"*** mat\_to\_coo : Destination coolist not empty ! ***"}
-1113          \textcolor{keyword}{ALLOCATE}(dst(i)%elems(n), \hyperlink{namespacestat}{stat}=allocstat)
-1114          \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
-1115          n=0
-1116          \textcolor{keywordflow}{DO} j=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
-1117             \textcolor{keywordflow}{IF} (abs(src(i,j))>real\_eps) \textcolor{keywordflow}{THEN}
-1118                n=n+1
-1119                dst(i)%elems(n)%j=0
-1120                dst(i)%elems(n)%k=j
-1121                dst(i)%elems(n)%v=src(i,j)
-1122 \textcolor{keywordflow}{            ENDIF}
-1123 \textcolor{keywordflow}{         ENDDO}
-1124 \textcolor{keywordflow}{      ENDIF}
-1125       dst(i)%nelems=n
-1126 \textcolor{keywordflow}{   ENDDO}
+1244    \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(ndim,ndim)}, \textcolor{keywordtype}{INTENT(IN)} :: src
+1245    \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist}{coolist}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(OUT)} :: dst
+1246    \textcolor{keywordtype}{INTEGER} :: i,j,n,allocstat
+1247    \textcolor{keywordflow}{DO} i=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
+1248       n=0
+1249       \textcolor{keywordflow}{DO} j=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
+1250          \textcolor{keywordflow}{IF} (abs(src(i,j))>real\_eps) n=n+1
+1251 \textcolor{keywordflow}{      ENDDO}
+1252       \textcolor{keywordflow}{IF} (n/=0) \textcolor{keywordflow}{THEN}
+1253          \textcolor{keywordflow}{IF} (dst(i)%nelems/=0) stop \textcolor{stringliteral}{"*** mat\_to\_coo : Destination coolist not empty ! ***"}
+1254          \textcolor{keyword}{ALLOCATE}(dst(i)%elems(n), \hyperlink{namespacestat}{stat}=allocstat)
+1255          \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
+1256          n=0
+1257          \textcolor{keywordflow}{DO} j=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
+1258             \textcolor{keywordflow}{IF} (abs(src(i,j))>real\_eps) \textcolor{keywordflow}{THEN}
+1259                n=n+1
+1260                dst(i)%elems(n)%j=0
+1261                dst(i)%elems(n)%k=j
+1262                dst(i)%elems(n)%v=src(i,j)
+1263 \textcolor{keywordflow}{            ENDIF}
+1264 \textcolor{keywordflow}{         ENDDO}
+1265 \textcolor{keywordflow}{      ENDIF}
+1266       dst(i)%nelems=n
+1267 \textcolor{keywordflow}{   ENDDO}
 \end{DoxyCode}
 \index{tensor@{tensor}!print\+\_\+tensor@{print\+\_\+tensor}}
 \index{print\+\_\+tensor@{print\+\_\+tensor}!tensor@{tensor}}
-\subsubsection[{\texorpdfstring{print\+\_\+tensor(t)}{print_tensor(t)}}]{\setlength{\rightskip}{0pt plus 5cm}subroutine, public tensor\+::print\+\_\+tensor (
+\subsubsection[{\texorpdfstring{print\+\_\+tensor(t, s)}{print_tensor(t, s)}}]{\setlength{\rightskip}{0pt plus 5cm}subroutine, public tensor\+::print\+\_\+tensor (
 \begin{DoxyParamCaption}
-\item[{type({\bf coolist}), dimension(ndim), intent(in)}]{t}
+\item[{type({\bf coolist}), dimension(ndim), intent(in)}]{t, }
+\item[{character, intent(in), optional}]{s}
 \end{DoxyParamCaption}
-)}\hypertarget{namespacetensor_a5747516cd8a6fc9079fbb82d1b18dd98}{}\label{namespacetensor_a5747516cd8a6fc9079fbb82d1b18dd98}
+)}\hypertarget{namespacetensor_a1fbaf180beb7fe8ab83ade2f576db80f}{}\label{namespacetensor_a1fbaf180beb7fe8ab83ade2f576db80f}
 
 
 Routine to print a rank 3 tensor coolist. 
@@ -1208,23 +1362,30 @@ Routine to print a rank 3 tensor coolist.
 \end{DoxyParams}
 
 
-Definition at line 622 of file tensor.\+f90.
+Definition at line 399 of file tensor.\+f90.
 
 
 \begin{DoxyCode}
-622     \textcolor{keywordtype}{USE }\hyperlink{namespaceutil}{util}\textcolor{keywordtype}{, only}: \hyperlink{namespaceutil_a1df36d0696c9183ceb6bb770f1d88111}{str}
-623     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist}{coolist}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(IN)} :: t
-624     \textcolor{keywordtype}{INTEGER} :: i,n,j,k
-625     \textcolor{keywordflow}{DO} i=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
-626        \textcolor{keywordflow}{DO} n=1,t(i)%nelems
-627           j=t(i)%elems(n)%j
-628           k=t(i)%elems(n)%k
-629           \textcolor{keywordflow}{IF}( abs(t(i)%elems(n)%v) .GE. real\_eps) \textcolor{keywordflow}{THEN}
-630              \textcolor{keyword}{write}(*,\textcolor{stringliteral}{"(A,ES12.5)"}) \textcolor{stringliteral}{"tensor["}//trim(\hyperlink{namespaceutil_a1df36d0696c9183ceb6bb770f1d88111}{str}(i))//\textcolor{stringliteral}{"]["}//trim(\hyperlink{namespaceutil_a1df36d0696c9183ceb6bb770f1d88111}{str}(j)) &
-631                   &//\textcolor{stringliteral}{"]["}//trim(\hyperlink{namespaceutil_a1df36d0696c9183ceb6bb770f1d88111}{str}(k))//\textcolor{stringliteral}{"] = "},t(i)%elems(n)%v
-632 \textcolor{keywordflow}{          END IF}
-633 \textcolor{keywordflow}{       END DO}
-634 \textcolor{keywordflow}{    END DO}
+399     \textcolor{keywordtype}{USE }\hyperlink{namespaceutil}{util}\textcolor{keywordtype}{, only}: \hyperlink{namespaceutil_a1df36d0696c9183ceb6bb770f1d88111}{str}
+400     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist}{coolist}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(IN)} :: t
+401     \textcolor{keywordtype}{CHARACTER}, \textcolor{keywordtype}{INTENT(IN)}, \textcolor{keywordtype}{OPTIONAL} :: s
+402     \textcolor{keywordtype}{CHARACTER} :: r
+403     \textcolor{keywordtype}{INTEGER} :: i,n,j,k
+404     \textcolor{keywordflow}{IF} (\textcolor{keyword}{PRESENT}(s)) \textcolor{keywordflow}{THEN}
+405        r=s
+406     \textcolor{keywordflow}{ELSE}
+407        r=\textcolor{stringliteral}{"t"}
+408 \textcolor{keywordflow}{    END IF}
+409     \textcolor{keywordflow}{DO} i=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
+410        \textcolor{keywordflow}{DO} n=1,t(i)%nelems
+411           j=t(i)%elems(n)%j
+412           k=t(i)%elems(n)%k
+413           \textcolor{keywordflow}{IF}( abs(t(i)%elems(n)%v) .GE. real\_eps) \textcolor{keywordflow}{THEN}
+414              \textcolor{keyword}{write}(*,\textcolor{stringliteral}{"(A,ES12.5)"}) r//\textcolor{stringliteral}{"["}//trim(\hyperlink{namespaceutil_a1df36d0696c9183ceb6bb770f1d88111}{str}(i))//\textcolor{stringliteral}{"]["}//trim(\hyperlink{namespaceutil_a1df36d0696c9183ceb6bb770f1d88111}{str}(j)) &
+415                   &//\textcolor{stringliteral}{"]["}//trim(\hyperlink{namespaceutil_a1df36d0696c9183ceb6bb770f1d88111}{str}(k))//\textcolor{stringliteral}{"] = "},t(i)%elems(n)%v
+416 \textcolor{keywordflow}{          END IF}
+417 \textcolor{keywordflow}{       END DO}
+418 \textcolor{keywordflow}{    END DO}
 \end{DoxyCode}
 \index{tensor@{tensor}!print\+\_\+tensor4@{print\+\_\+tensor4}}
 \index{print\+\_\+tensor4@{print\+\_\+tensor4}!tensor@{tensor}}
@@ -1244,24 +1405,24 @@ Routine to print a rank-\/4 tensor coolist.
 \end{DoxyParams}
 
 
-Definition at line 640 of file tensor.\+f90.
+Definition at line 922 of file tensor.\+f90.
 
 
 \begin{DoxyCode}
-640     \textcolor{keywordtype}{USE }\hyperlink{namespaceutil}{util}\textcolor{keywordtype}{, only}: \hyperlink{namespaceutil_a1df36d0696c9183ceb6bb770f1d88111}{str}
-641     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist4}{coolist4}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(IN)} :: t
-642     \textcolor{keywordtype}{INTEGER} :: i,n,j,k,l
-643     \textcolor{keywordflow}{DO} i=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
-644        \textcolor{keywordflow}{DO} n=1,t(i)%nelems
-645           j=t(i)%elems(n)%j
-646           k=t(i)%elems(n)%k
-647           l=t(i)%elems(n)%l
-648           \textcolor{keywordflow}{IF}( abs(t(i)%elems(n)%v) .GE. real\_eps) \textcolor{keywordflow}{THEN}
-649              \textcolor{keyword}{write}(*,\textcolor{stringliteral}{"(A,ES12.5)"}) \textcolor{stringliteral}{"tensor["}//trim(\hyperlink{namespaceutil_a1df36d0696c9183ceb6bb770f1d88111}{str}(i))//\textcolor{stringliteral}{"]["}//trim(\hyperlink{namespaceutil_a1df36d0696c9183ceb6bb770f1d88111}{str}(j)) &
-650                   &//\textcolor{stringliteral}{"]["}//trim(\hyperlink{namespaceutil_a1df36d0696c9183ceb6bb770f1d88111}{str}(k))//\textcolor{stringliteral}{"]["}//trim(\hyperlink{namespaceutil_a1df36d0696c9183ceb6bb770f1d88111}{str}(l))//\textcolor{stringliteral}{"] = "},t(i)%elems(n)%v
-651 \textcolor{keywordflow}{          END IF}
-652 \textcolor{keywordflow}{       END DO}
-653 \textcolor{keywordflow}{    END DO}
+922     \textcolor{keywordtype}{USE }\hyperlink{namespaceutil}{util}\textcolor{keywordtype}{, only}: \hyperlink{namespaceutil_a1df36d0696c9183ceb6bb770f1d88111}{str}
+923     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist4}{coolist4}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(IN)} :: t
+924     \textcolor{keywordtype}{INTEGER} :: i,n,j,k,l
+925     \textcolor{keywordflow}{DO} i=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
+926        \textcolor{keywordflow}{DO} n=1,t(i)%nelems
+927           j=t(i)%elems(n)%j
+928           k=t(i)%elems(n)%k
+929           l=t(i)%elems(n)%l
+930           \textcolor{keywordflow}{IF}( abs(t(i)%elems(n)%v) .GE. real\_eps) \textcolor{keywordflow}{THEN}
+931              \textcolor{keyword}{write}(*,\textcolor{stringliteral}{"(A,ES12.5)"}) \textcolor{stringliteral}{"tensor["}//trim(\hyperlink{namespaceutil_a1df36d0696c9183ceb6bb770f1d88111}{str}(i))//\textcolor{stringliteral}{"]["}//trim(\hyperlink{namespaceutil_a1df36d0696c9183ceb6bb770f1d88111}{str}(j)) &
+932                   &//\textcolor{stringliteral}{"]["}//trim(\hyperlink{namespaceutil_a1df36d0696c9183ceb6bb770f1d88111}{str}(k))//\textcolor{stringliteral}{"]["}//trim(\hyperlink{namespaceutil_a1df36d0696c9183ceb6bb770f1d88111}{str}(l))//\textcolor{stringliteral}{"] = "},t(i)%elems(n)%v
+933 \textcolor{keywordflow}{          END IF}
+934 \textcolor{keywordflow}{       END DO}
+935 \textcolor{keywordflow}{    END DO}
 \end{DoxyCode}
 \index{tensor@{tensor}!scal\+\_\+mul\+\_\+coo@{scal\+\_\+mul\+\_\+coo}}
 \index{scal\+\_\+mul\+\_\+coo@{scal\+\_\+mul\+\_\+coo}!tensor@{tensor}}
@@ -1284,19 +1445,19 @@ Routine to multiply a rank-\/3 tensor by a scalar.
 \end{DoxyParams}
 
 
-Definition at line 1133 of file tensor.\+f90.
+Definition at line 1274 of file tensor.\+f90.
 
 
 \begin{DoxyCode}
-1133    \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{INTENT(IN)} :: s 
-1134    \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist}{coolist}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(INOUT)} :: t
-1135    \textcolor{keywordtype}{INTEGER} :: i,li,n
-1136    \textcolor{keywordflow}{DO} i=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
-1137       n=t(i)%nelems
-1138       \textcolor{keywordflow}{DO} li=1,n
-1139         t(i)%elems(li)%v=s*t(i)%elems(li)%v
-1140 \textcolor{keywordflow}{      ENDDO}
-1141 \textcolor{keywordflow}{   ENDDO}
+1274    \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{INTENT(IN)} :: s 
+1275    \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist}{coolist}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(INOUT)} :: t
+1276    \textcolor{keywordtype}{INTEGER} :: i,li,n
+1277    \textcolor{keywordflow}{DO} i=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
+1278       n=t(i)%nelems
+1279       \textcolor{keywordflow}{DO} li=1,n
+1280         t(i)%elems(li)%v=s*t(i)%elems(li)%v
+1281 \textcolor{keywordflow}{      ENDDO}
+1282 \textcolor{keywordflow}{   ENDDO}
 \end{DoxyCode}
 \index{tensor@{tensor}!simplify@{simplify}}
 \index{simplify@{simplify}!tensor@{tensor}}
@@ -1316,51 +1477,116 @@ Routine to simplify a coolist (sparse tensor). For each index $i$, it upper tria
 \end{DoxyParams}
 
 
-Definition at line 874 of file tensor.\+f90.
+Definition at line 238 of file tensor.\+f90.
 
 
 \begin{DoxyCode}
-874    \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist}{coolist}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(INOUT)}:: \hyperlink{namespacetensor}{tensor}
-875    \textcolor{keywordtype}{INTEGER} :: i,j,k
-876    \textcolor{keywordtype}{INTEGER} :: li,lii,liii,n
-877    \textcolor{keywordflow}{DO} i= 1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
-878       n=\hyperlink{namespacetensor}{tensor}(i)%nelems
-879       \textcolor{keywordflow}{DO} li=n,2,-1
-880          j=\hyperlink{namespacetensor}{tensor}(i)%elems(li)%j
-881          k=\hyperlink{namespacetensor}{tensor}(i)%elems(li)%k
-882          \textcolor{keywordflow}{DO} lii=li-1,1,-1
-883             \textcolor{keywordflow}{IF} ((j==\hyperlink{namespacetensor}{tensor}(i)%elems(lii)%j).AND.(k==\hyperlink{namespacetensor}{tensor}(i)%elems(lii)%k)) \textcolor{keywordflow}{THEN}
-884                \textcolor{comment}{! Found another entry with the same i,j,k: merge both into}
-885                \textcolor{comment}{! the one listed first (of those two). }
-886                \hyperlink{namespacetensor}{tensor}(i)%elems(lii)%v=\hyperlink{namespacetensor}{tensor}(i)%elems(lii)%v+\hyperlink{namespacetensor}{tensor}(i)%elems(li)%v
-887                \textcolor{comment}{! Shift the rest of the items one place down.}
-888                \textcolor{keywordflow}{DO} liii=li+1,n
-889                   \hyperlink{namespacetensor}{tensor}(i)%elems(liii-1)%j=\hyperlink{namespacetensor}{tensor}(i)%elems(liii)%j
-890                   \hyperlink{namespacetensor}{tensor}(i)%elems(liii-1)%k=\hyperlink{namespacetensor}{tensor}(i)%elems(liii)%k
-891                   \hyperlink{namespacetensor}{tensor}(i)%elems(liii-1)%v=\hyperlink{namespacetensor}{tensor}(i)%elems(liii)%v
-892 \textcolor{keywordflow}{               END DO}
-893                \hyperlink{namespacetensor}{tensor}(i)%nelems=\hyperlink{namespacetensor}{tensor}(i)%nelems-1
-894                \textcolor{comment}{! Here we should stop because the li no longer points to the}
-895                \textcolor{comment}{! original i,j,k element}
-896                \textcolor{keywordflow}{EXIT}
-897 \textcolor{keywordflow}{            ENDIF}
-898 \textcolor{keywordflow}{         ENDDO}
-899 \textcolor{keywordflow}{      ENDDO}
-900       n=\hyperlink{namespacetensor}{tensor}(i)%nelems
-901       \textcolor{keywordflow}{DO} li=1,n
-902          \textcolor{comment}{! Clear new "almost" zero entries and shift rest of the items one place down.}
-903          \textcolor{comment}{! Make sure not to skip any entries while shifting!}
-904          \textcolor{keywordflow}{DO} \textcolor{keywordflow}{WHILE} (abs(\hyperlink{namespacetensor}{tensor}(i)%elems(li)%v) < real\_eps)
-905             \textcolor{keywordflow}{DO} liii=li+1,n
-906                \hyperlink{namespacetensor}{tensor}(i)%elems(liii-1)%j=\hyperlink{namespacetensor}{tensor}(i)%elems(liii)%j
-907                \hyperlink{namespacetensor}{tensor}(i)%elems(liii-1)%k=\hyperlink{namespacetensor}{tensor}(i)%elems(liii)%k
-908                \hyperlink{namespacetensor}{tensor}(i)%elems(liii-1)%v=\hyperlink{namespacetensor}{tensor}(i)%elems(liii)%v
-909 \textcolor{keywordflow}{            ENDDO}
-910             \hyperlink{namespacetensor}{tensor}(i)%nelems=\hyperlink{namespacetensor}{tensor}(i)%nelems-1
-911 \textcolor{keywordflow}{         ENDDO}
-912 \textcolor{keywordflow}{      ENDDO}
-913 
-914 \textcolor{keywordflow}{   ENDDO}
+238    \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist}{coolist}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(INOUT)}:: \hyperlink{namespacetensor}{tensor}
+239    \textcolor{keywordtype}{INTEGER} :: i,j,k
+240    \textcolor{keywordtype}{INTEGER} :: li,lii,liii,n
+241    \textcolor{keywordflow}{DO} i= 1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
+242       n=\hyperlink{namespacetensor}{tensor}(i)%nelems
+243       \textcolor{keywordflow}{DO} li=n,2,-1
+244          j=\hyperlink{namespacetensor}{tensor}(i)%elems(li)%j
+245          k=\hyperlink{namespacetensor}{tensor}(i)%elems(li)%k
+246          \textcolor{keywordflow}{DO} lii=li-1,1,-1
+247             \textcolor{keywordflow}{IF} (((j==\hyperlink{namespacetensor}{tensor}(i)%elems(lii)%j).AND.(k==\hyperlink{namespacetensor}{tensor}(i)&
+248                  &%elems(lii)%k)).OR.((j==\hyperlink{namespacetensor}{tensor}(i)%elems(lii)%k).AND.(k==
+      \hyperlink{namespacetensor}{tensor}(i)%elems(lii)%j))) \textcolor{keywordflow}{THEN}
+249                \textcolor{comment}{! Found another entry with the same i,j,k: merge both into}
+250                \textcolor{comment}{! the one listed first (of those two). }
+251                \hyperlink{namespacetensor}{tensor}(i)%elems(lii)%v=\hyperlink{namespacetensor}{tensor}(i)%elems(lii)%v+\hyperlink{namespacetensor}{tensor}(i)%elems(li)%v
+252                \textcolor{keywordflow}{IF} (j>k) \textcolor{keywordflow}{THEN}
+253                   \hyperlink{namespacetensor}{tensor}(i)%elems(lii)%j=\hyperlink{namespacetensor}{tensor}(i)%elems(li)%k
+254                   \hyperlink{namespacetensor}{tensor}(i)%elems(lii)%k=\hyperlink{namespacetensor}{tensor}(i)%elems(li)%j
+255 \textcolor{keywordflow}{               ENDIF}
+256                
+257                \textcolor{comment}{! Shift the rest of the items one place down.}
+258                \textcolor{keywordflow}{DO} liii=li+1,n
+259                   \hyperlink{namespacetensor}{tensor}(i)%elems(liii-1)%j=\hyperlink{namespacetensor}{tensor}(i)%elems(liii)%j
+260                   \hyperlink{namespacetensor}{tensor}(i)%elems(liii-1)%k=\hyperlink{namespacetensor}{tensor}(i)%elems(liii)%k
+261                   \hyperlink{namespacetensor}{tensor}(i)%elems(liii-1)%v=\hyperlink{namespacetensor}{tensor}(i)%elems(liii)%v
+262 \textcolor{keywordflow}{               END DO}
+263                \hyperlink{namespacetensor}{tensor}(i)%nelems=\hyperlink{namespacetensor}{tensor}(i)%nelems-1
+264                \textcolor{comment}{! Here we should stop because the li no longer points to the}
+265                \textcolor{comment}{! original i,j,k element}
+266                \textcolor{keywordflow}{EXIT}
+267 \textcolor{keywordflow}{            ENDIF}
+268 \textcolor{keywordflow}{         ENDDO}
+269 \textcolor{keywordflow}{      ENDDO}
+270       n=\hyperlink{namespacetensor}{tensor}(i)%nelems
+271       \textcolor{keywordflow}{DO} li=1,n
+272          \textcolor{comment}{! Clear new "almost" zero entries and shift rest of the items one place down.}
+273          \textcolor{comment}{! Make sure not to skip any entries while shifting!}
+274          \textcolor{keywordflow}{DO} \textcolor{keywordflow}{WHILE} (abs(\hyperlink{namespacetensor}{tensor}(i)%elems(li)%v) < real\_eps)
+275             \textcolor{keywordflow}{DO} liii=li+1,n
+276                \hyperlink{namespacetensor}{tensor}(i)%elems(liii-1)%j=\hyperlink{namespacetensor}{tensor}(i)%elems(liii)%j
+277                \hyperlink{namespacetensor}{tensor}(i)%elems(liii-1)%k=\hyperlink{namespacetensor}{tensor}(i)%elems(liii)%k
+278                \hyperlink{namespacetensor}{tensor}(i)%elems(liii-1)%v=\hyperlink{namespacetensor}{tensor}(i)%elems(liii)%v
+279 \textcolor{keywordflow}{            ENDDO}
+280             \hyperlink{namespacetensor}{tensor}(i)%nelems=\hyperlink{namespacetensor}{tensor}(i)%nelems-1
+281             \textcolor{keywordflow}{if} (li > \hyperlink{namespacetensor}{tensor}(i)%nelems) \textcolor{keywordflow}{THEN}
+282                \textcolor{keywordflow}{EXIT}
+283 \textcolor{keywordflow}{            ENDIF}
+284 \textcolor{keywordflow}{         ENDDO}
+285 \textcolor{keywordflow}{      ENDDO}
+286 
+287       n=\hyperlink{namespacetensor}{tensor}(i)%nelems
+288       \textcolor{keywordflow}{DO} li=1,n
+289          \textcolor{comment}{! Upper triangularize}
+290          j=\hyperlink{namespacetensor}{tensor}(i)%elems(li)%j
+291          k=\hyperlink{namespacetensor}{tensor}(i)%elems(li)%k
+292          \textcolor{keywordflow}{IF} (j>k) \textcolor{keywordflow}{THEN}
+293             \hyperlink{namespacetensor}{tensor}(i)%elems(li)%j=k
+294             \hyperlink{namespacetensor}{tensor}(i)%elems(li)%k=j
+295 \textcolor{keywordflow}{         ENDIF}
+296 \textcolor{keywordflow}{      ENDDO}
+297 
+298 
+299 \textcolor{keywordflow}{   ENDDO}
+\end{DoxyCode}
+\index{tensor@{tensor}!sparse\+\_\+mul2@{sparse\+\_\+mul2}}
+\index{sparse\+\_\+mul2@{sparse\+\_\+mul2}!tensor@{tensor}}
+\subsubsection[{\texorpdfstring{sparse\+\_\+mul2(coolist\+\_\+ij, arr\+\_\+j, res)}{sparse_mul2(coolist_ij, arr_j, res)}}]{\setlength{\rightskip}{0pt plus 5cm}subroutine, public tensor\+::sparse\+\_\+mul2 (
+\begin{DoxyParamCaption}
+\item[{type({\bf coolist}), dimension(ndim), intent(in)}]{coolist\+\_\+ij, }
+\item[{real(kind=8), dimension(0\+:ndim), intent(in)}]{arr\+\_\+j, }
+\item[{real(kind=8), dimension(0\+:ndim), intent(out)}]{res}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacetensor_a70230d57c615d9548905bc023f5fc01d}{}\label{namespacetensor_a70230d57c615d9548905bc023f5fc01d}
+
+
+Sparse multiplication of a 2d sparse tensor with a vector\+: ${\displaystyle \sum_{j=0}^{ndim}} \mathcal{T}_{i,j,k} \, a_j $. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em coolist\+\_\+ij} & a coordinate list (sparse tensor) of which index 2 will be contracted. \\
+\hline
+{\em arr\+\_\+j} & the vector to be contracted with index 2 of coolist\+\_\+ijk \\
+\hline
+{\em res} & vector (buffer) to store the result of the contraction \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRemark}{Remarks}
+Note that it is N\+OT safe to pass {\ttfamily arr\+\_\+j} as a result buffer, as this operation does multiple passes. 
+\end{DoxyRemark}
+
+
+Definition at line 221 of file tensor.\+f90.
+
+
+\begin{DoxyCode}
+221     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist}{coolist}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(IN)}:: coolist\_ij
+222     \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(0:ndim)}, \textcolor{keywordtype}{INTENT(IN)}  :: arr\_j
+223     \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(0:ndim)}, \textcolor{keywordtype}{INTENT(OUT)} :: res
+224     \textcolor{keywordtype}{INTEGER} :: i,j,n
+225     res=0.d0
+226     \textcolor{keywordflow}{DO} i=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
+227        \textcolor{keywordflow}{DO} n=1,coolist\_ij(i)%nelems
+228          j=coolist\_ij(i)%elems(n)%j
+229          res(i) = res(i) + coolist\_ij(i)%elems(n)%v * arr\_j(j)
+230 \textcolor{keywordflow}{      END DO}
+231 \textcolor{keywordflow}{   END DO}
 \end{DoxyCode}
 \index{tensor@{tensor}!sparse\+\_\+mul2\+\_\+j@{sparse\+\_\+mul2\+\_\+j}}
 \index{sparse\+\_\+mul2\+\_\+j@{sparse\+\_\+mul2\+\_\+j}!tensor@{tensor}}
@@ -1389,21 +1615,21 @@ Note that it is N\+OT safe to pass {\ttfamily arr\+\_\+j} as a result buffer, as
 \end{DoxyRemark}
 
 
-Definition at line 835 of file tensor.\+f90.
+Definition at line 1024 of file tensor.\+f90.
 
 
 \begin{DoxyCode}
-835     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist}{coolist}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(IN)}:: coolist\_ijk
-836     \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(0:ndim)}, \textcolor{keywordtype}{INTENT(IN)}  :: arr\_j
-837     \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(0:ndim)}, \textcolor{keywordtype}{INTENT(OUT)} :: res
-838     \textcolor{keywordtype}{INTEGER} :: i,j,n
-839     res=0.d0
-840     \textcolor{keywordflow}{DO} i=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
-841        \textcolor{keywordflow}{DO} n=1,coolist\_ijk(i)%nelems
-842          j=coolist\_ijk(i)%elems(n)%j
-843          res(i) = res(i) + coolist\_ijk(i)%elems(n)%v * arr\_j(j)
-844 \textcolor{keywordflow}{      END DO}
-845 \textcolor{keywordflow}{   END DO}
+1024     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist}{coolist}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(IN)}:: coolist\_ijk
+1025     \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(0:ndim)}, \textcolor{keywordtype}{INTENT(IN)}  :: arr\_j
+1026     \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(0:ndim)}, \textcolor{keywordtype}{INTENT(OUT)} :: res
+1027     \textcolor{keywordtype}{INTEGER} :: i,j,n
+1028     res=0.d0
+1029     \textcolor{keywordflow}{DO} i=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
+1030        \textcolor{keywordflow}{DO} n=1,coolist\_ijk(i)%nelems
+1031          j=coolist\_ijk(i)%elems(n)%j
+1032          res(i) = res(i) + coolist\_ijk(i)%elems(n)%v * arr\_j(j)
+1033 \textcolor{keywordflow}{      END DO}
+1034 \textcolor{keywordflow}{   END DO}
 \end{DoxyCode}
 \index{tensor@{tensor}!sparse\+\_\+mul2\+\_\+k@{sparse\+\_\+mul2\+\_\+k}}
 \index{sparse\+\_\+mul2\+\_\+k@{sparse\+\_\+mul2\+\_\+k}!tensor@{tensor}}
@@ -1432,21 +1658,21 @@ Note that it is N\+OT safe to pass {\ttfamily arr\+\_\+k} as a result buffer, as
 \end{DoxyRemark}
 
 
-Definition at line 856 of file tensor.\+f90.
+Definition at line 1045 of file tensor.\+f90.
 
 
 \begin{DoxyCode}
-856     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist}{coolist}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(IN)}:: coolist\_ijk
-857     \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(0:ndim)}, \textcolor{keywordtype}{INTENT(IN)}  :: arr\_k
-858     \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(0:ndim)}, \textcolor{keywordtype}{INTENT(OUT)} :: res
-859     \textcolor{keywordtype}{INTEGER} :: i,k,n
-860     res=0.d0
-861     \textcolor{keywordflow}{DO} i=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
-862        \textcolor{keywordflow}{DO} n=1,coolist\_ijk(i)%nelems
-863          k=coolist\_ijk(i)%elems(n)%k
-864          res(i) = res(i) + coolist\_ijk(i)%elems(n)%v * arr\_k(k)
-865 \textcolor{keywordflow}{      END DO}
-866 \textcolor{keywordflow}{   END DO}
+1045     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist}{coolist}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(IN)}:: coolist\_ijk
+1046     \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(0:ndim)}, \textcolor{keywordtype}{INTENT(IN)}  :: arr\_k
+1047     \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(0:ndim)}, \textcolor{keywordtype}{INTENT(OUT)} :: res
+1048     \textcolor{keywordtype}{INTEGER} :: i,k,n
+1049     res=0.d0
+1050     \textcolor{keywordflow}{DO} i=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
+1051        \textcolor{keywordflow}{DO} n=1,coolist\_ijk(i)%nelems
+1052          k=coolist\_ijk(i)%elems(n)%k
+1053          res(i) = res(i) + coolist\_ijk(i)%elems(n)%v * arr\_k(k)
+1054 \textcolor{keywordflow}{      END DO}
+1055 \textcolor{keywordflow}{   END DO}
 \end{DoxyCode}
 \index{tensor@{tensor}!sparse\+\_\+mul3@{sparse\+\_\+mul3}}
 \index{sparse\+\_\+mul3@{sparse\+\_\+mul3}!tensor@{tensor}}
@@ -1460,11 +1686,11 @@ Definition at line 856 of file tensor.\+f90.
 )}\hypertarget{namespacetensor_a11054027a386918658f8948231af53b1}{}\label{namespacetensor_a11054027a386918658f8948231af53b1}
 
 
-Sparse multiplication of a rank-\/3 tensor coolist with two vectors\+: ${\displaystyle \sum_{j,k=0}^{ndim}} \mathcal{T}_{i,j,k} \, a_j \,b_k$. 
+Sparse multiplication of a tensor with two vectors\+: ${\displaystyle \sum_{j,k=0}^{ndim}} \mathcal{T}_{i,j,k} \, a_j \,b_k$. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em coolist\+\_\+ijk} & a coolist (sparse tensor) of which index 2 and 3 will be contracted. \\
+{\em coolist\+\_\+ijk} & a coordinate list (sparse tensor) of which index 2 and 3 will be contracted. \\
 \hline
 {\em arr\+\_\+j} & the vector to be contracted with index 2 of coolist\+\_\+ijk \\
 \hline
@@ -1478,22 +1704,22 @@ Note that it is N\+OT safe to pass {\ttfamily arr\+\_\+j}/{\ttfamily arr\+\_\+k}
 \end{DoxyRemark}
 
 
-Definition at line 666 of file tensor.\+f90.
+Definition at line 129 of file tensor.\+f90.
 
 
 \begin{DoxyCode}
-666     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist}{coolist}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(IN)}:: coolist\_ijk
-667     \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(0:ndim)}, \textcolor{keywordtype}{INTENT(IN)}  :: arr\_j, arr\_k
-668     \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(0:ndim)}, \textcolor{keywordtype}{INTENT(OUT)} :: res
-669     \textcolor{keywordtype}{INTEGER} :: i,j,k,n
-670     res=0.d0
-671     \textcolor{keywordflow}{DO} i=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
-672        \textcolor{keywordflow}{DO} n=1,coolist\_ijk(i)%nelems
-673          j=coolist\_ijk(i)%elems(n)%j
-674          k=coolist\_ijk(i)%elems(n)%k
-675          res(i) = res(i) + coolist\_ijk(i)%elems(n)%v * arr\_j(j)*arr\_k(k)
-676 \textcolor{keywordflow}{      END DO}
-677 \textcolor{keywordflow}{   END DO}
+129     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist}{coolist}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(IN)}:: coolist\_ijk
+130     \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(0:ndim)}, \textcolor{keywordtype}{INTENT(IN)}  :: arr\_j, arr\_k
+131     \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(0:ndim)}, \textcolor{keywordtype}{INTENT(OUT)} :: res
+132     \textcolor{keywordtype}{INTEGER} :: i,j,k,n
+133     res=0.d0
+134     \textcolor{keywordflow}{DO} i=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
+135        \textcolor{keywordflow}{DO} n=1,coolist\_ijk(i)%nelems
+136          j=coolist\_ijk(i)%elems(n)%j
+137          k=coolist\_ijk(i)%elems(n)%k
+138          res(i) = res(i) + coolist\_ijk(i)%elems(n)%v * arr\_j(j)*arr\_k(k)
+139 \textcolor{keywordflow}{      END DO}
+140 \textcolor{keywordflow}{   END DO}
 \end{DoxyCode}
 \index{tensor@{tensor}!sparse\+\_\+mul3\+\_\+mat@{sparse\+\_\+mul3\+\_\+mat}}
 \index{sparse\+\_\+mul3\+\_\+mat@{sparse\+\_\+mul3\+\_\+mat}!tensor@{tensor}}
@@ -1522,24 +1748,24 @@ Note that it is N\+OT safe to pass {\ttfamily arr\+\_\+k} as a result buffer, as
 \end{DoxyRemark}
 
 
-Definition at line 689 of file tensor.\+f90.
+Definition at line 948 of file tensor.\+f90.
 
 
 \begin{DoxyCode}
-689     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist}{coolist}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(IN)}:: coolist\_ijk
-690     \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(0:ndim)}, \textcolor{keywordtype}{INTENT(IN)}  :: arr\_k
-691     \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(ndim,ndim)}, \textcolor{keywordtype}{INTENT(OUT)} :: res
-692     \textcolor{keywordtype}{INTEGER} :: i,j,k,n
-693     res=0.d0
-694     \textcolor{keywordflow}{DO} i=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
-695        \textcolor{keywordflow}{DO} n=1,coolist\_ijk(i)%nelems
-696          j=coolist\_ijk(i)%elems(n)%j
-697          \textcolor{keywordflow}{IF} (j /= 0) \textcolor{keywordflow}{THEN}
-698             k=coolist\_ijk(i)%elems(n)%k
-699             res(i,j) = res(i,j) + coolist\_ijk(i)%elems(n)%v * arr\_k(k)
-700 \textcolor{keywordflow}{         ENDIF}
-701 \textcolor{keywordflow}{      END DO}
-702 \textcolor{keywordflow}{   END DO}
+948     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist}{coolist}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(IN)}:: coolist\_ijk
+949     \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(0:ndim)}, \textcolor{keywordtype}{INTENT(IN)}  :: arr\_k
+950     \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(ndim,ndim)}, \textcolor{keywordtype}{INTENT(OUT)} :: res
+951     \textcolor{keywordtype}{INTEGER} :: i,j,k,n
+952     res=0.d0
+953     \textcolor{keywordflow}{DO} i=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
+954        \textcolor{keywordflow}{DO} n=1,coolist\_ijk(i)%nelems
+955          j=coolist\_ijk(i)%elems(n)%j
+956          \textcolor{keywordflow}{IF} (j /= 0) \textcolor{keywordflow}{THEN}
+957             k=coolist\_ijk(i)%elems(n)%k
+958             res(i,j) = res(i,j) + coolist\_ijk(i)%elems(n)%v * arr\_k(k)
+959 \textcolor{keywordflow}{         ENDIF}
+960 \textcolor{keywordflow}{      END DO}
+961 \textcolor{keywordflow}{   END DO}
 \end{DoxyCode}
 \index{tensor@{tensor}!sparse\+\_\+mul3\+\_\+with\+\_\+mat@{sparse\+\_\+mul3\+\_\+with\+\_\+mat}}
 \index{sparse\+\_\+mul3\+\_\+with\+\_\+mat@{sparse\+\_\+mul3\+\_\+with\+\_\+mat}!tensor@{tensor}}
@@ -1568,25 +1794,25 @@ Note that it is N\+OT safe to pass {\ttfamily mat\+\_\+jk} as a result buffer, a
 \end{DoxyRemark}
 
 
-Definition at line 1079 of file tensor.\+f90.
+Definition at line 1220 of file tensor.\+f90.
 
 
 \begin{DoxyCode}
-1079    \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist}{coolist}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(IN)}:: coolist\_ijk
-1080    \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(ndim,ndim)}, \textcolor{keywordtype}{INTENT(IN)}  :: mat\_jk
-1081    \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(0:ndim)}, \textcolor{keywordtype}{INTENT(OUT)} :: res
-1082    \textcolor{keywordtype}{INTEGER} i,j,k,n
-1083 
-1084    res=0.d0
-1085    \textcolor{keywordflow}{DO} i=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
-1086       \textcolor{keywordflow}{DO} n=1,coolist\_ijk(i)%nelems
-1087          j=coolist\_ijk(i)%elems(n)%j
-1088          k=coolist\_ijk(i)%elems(n)%k
-1089 
-1090          res(i) = res(i) + coolist\_ijk(i)%elems(n)%v * mat\_jk(j,k)
-1091 \textcolor{keywordflow}{      ENDDO}
-1092 \textcolor{keywordflow}{   END DO}
-1093 
+1220    \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist}{coolist}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(IN)}:: coolist\_ijk
+1221    \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(ndim,ndim)}, \textcolor{keywordtype}{INTENT(IN)}  :: mat\_jk
+1222    \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(0:ndim)}, \textcolor{keywordtype}{INTENT(OUT)} :: res
+1223    \textcolor{keywordtype}{INTEGER} i,j,k,n
+1224 
+1225    res=0.d0
+1226    \textcolor{keywordflow}{DO} i=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
+1227       \textcolor{keywordflow}{DO} n=1,coolist\_ijk(i)%nelems
+1228          j=coolist\_ijk(i)%elems(n)%j
+1229          k=coolist\_ijk(i)%elems(n)%k
+1230 
+1231          res(i) = res(i) + coolist\_ijk(i)%elems(n)%v * mat\_jk(j,k)
+1232 \textcolor{keywordflow}{      ENDDO}
+1233 \textcolor{keywordflow}{   END DO}
+1234 
 \end{DoxyCode}
 \index{tensor@{tensor}!sparse\+\_\+mul4@{sparse\+\_\+mul4}}
 \index{sparse\+\_\+mul4@{sparse\+\_\+mul4}!tensor@{tensor}}
@@ -1621,23 +1847,23 @@ Note that it is N\+OT safe to pass {\ttfamily arr\+\_\+j}/{\ttfamily arr\+\_\+k}
 \end{DoxyRemark}
 
 
-Definition at line 715 of file tensor.\+f90.
+Definition at line 974 of file tensor.\+f90.
 
 
 \begin{DoxyCode}
-715     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist4}{coolist4}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(IN)}:: coolist\_ijkl
-716     \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(0:ndim)}, \textcolor{keywordtype}{INTENT(IN)}  :: arr\_j, arr\_k, arr\_l
-717     \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(0:ndim)}, \textcolor{keywordtype}{INTENT(OUT)} :: res
-718     \textcolor{keywordtype}{INTEGER} :: i,j,k,n,l
-719     res=0.d0
-720     \textcolor{keywordflow}{DO} i=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
-721        \textcolor{keywordflow}{DO} n=1,coolist\_ijkl(i)%nelems
-722          j=coolist\_ijkl(i)%elems(n)%j
-723          k=coolist\_ijkl(i)%elems(n)%k
-724          l=coolist\_ijkl(i)%elems(n)%l
-725          res(i) = res(i) + coolist\_ijkl(i)%elems(n)%v * arr\_j(j)*arr\_k(k)*arr\_l(l)
-726 \textcolor{keywordflow}{      END DO}
-727 \textcolor{keywordflow}{   END DO}
+974     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist4}{coolist4}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(IN)}:: coolist\_ijkl
+975     \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(0:ndim)}, \textcolor{keywordtype}{INTENT(IN)}  :: arr\_j, arr\_k, arr\_l
+976     \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(0:ndim)}, \textcolor{keywordtype}{INTENT(OUT)} :: res
+977     \textcolor{keywordtype}{INTEGER} :: i,j,k,n,l
+978     res=0.d0
+979     \textcolor{keywordflow}{DO} i=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
+980        \textcolor{keywordflow}{DO} n=1,coolist\_ijkl(i)%nelems
+981          j=coolist\_ijkl(i)%elems(n)%j
+982          k=coolist\_ijkl(i)%elems(n)%k
+983          l=coolist\_ijkl(i)%elems(n)%l
+984          res(i) = res(i) + coolist\_ijkl(i)%elems(n)%v * arr\_j(j)*arr\_k(k)*arr\_l(l)
+985 \textcolor{keywordflow}{      END DO}
+986 \textcolor{keywordflow}{   END DO}
 \end{DoxyCode}
 \index{tensor@{tensor}!sparse\+\_\+mul4\+\_\+mat@{sparse\+\_\+mul4\+\_\+mat}}
 \index{sparse\+\_\+mul4\+\_\+mat@{sparse\+\_\+mul4\+\_\+mat}!tensor@{tensor}}
@@ -1669,25 +1895,25 @@ Note that it is N\+OT safe to pass {\ttfamily arr\+\_\+k}/{\ttfamily arr\+\_\+l}
 \end{DoxyRemark}
 
 
-Definition at line 739 of file tensor.\+f90.
+Definition at line 998 of file tensor.\+f90.
 
 
 \begin{DoxyCode}
-739     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist4}{coolist4}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(IN)}:: coolist\_ijkl
-740     \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(0:ndim)}, \textcolor{keywordtype}{INTENT(IN)}  :: arr\_k, arr\_l
-741     \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(ndim,ndim)}, \textcolor{keywordtype}{INTENT(OUT)} :: res
-742     \textcolor{keywordtype}{INTEGER} :: i,j,k,n,l
-743     res=0.d0
-744     \textcolor{keywordflow}{DO} i=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
-745        \textcolor{keywordflow}{DO} n=1,coolist\_ijkl(i)%nelems
-746          j=coolist\_ijkl(i)%elems(n)%j
-747          \textcolor{keywordflow}{IF} (j /= 0) \textcolor{keywordflow}{THEN}
-748             k=coolist\_ijkl(i)%elems(n)%k
-749             l=coolist\_ijkl(i)%elems(n)%l
-750             res(i,j) = res(i,j) + coolist\_ijkl(i)%elems(n)%v * arr\_k(k) * arr\_l(l)
-751 \textcolor{keywordflow}{         ENDIF}
-752 \textcolor{keywordflow}{      END DO}
-753 \textcolor{keywordflow}{   END DO}
+998     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist4}{coolist4}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(IN)}:: coolist\_ijkl
+999     \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(0:ndim)}, \textcolor{keywordtype}{INTENT(IN)}  :: arr\_k, arr\_l
+1000     \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(ndim,ndim)}, \textcolor{keywordtype}{INTENT(OUT)} :: res
+1001     \textcolor{keywordtype}{INTEGER} :: i,j,k,n,l
+1002     res=0.d0
+1003     \textcolor{keywordflow}{DO} i=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
+1004        \textcolor{keywordflow}{DO} n=1,coolist\_ijkl(i)%nelems
+1005          j=coolist\_ijkl(i)%elems(n)%j
+1006          \textcolor{keywordflow}{IF} (j /= 0) \textcolor{keywordflow}{THEN}
+1007             k=coolist\_ijkl(i)%elems(n)%k
+1008             l=coolist\_ijkl(i)%elems(n)%l
+1009             res(i,j) = res(i,j) + coolist\_ijkl(i)%elems(n)%v * arr\_k(k) * arr\_l(l)
+1010 \textcolor{keywordflow}{         ENDIF}
+1011 \textcolor{keywordflow}{      END DO}
+1012 \textcolor{keywordflow}{   END DO}
 \end{DoxyCode}
 \index{tensor@{tensor}!sparse\+\_\+mul4\+\_\+with\+\_\+mat\+\_\+jl@{sparse\+\_\+mul4\+\_\+with\+\_\+mat\+\_\+jl}}
 \index{sparse\+\_\+mul4\+\_\+with\+\_\+mat\+\_\+jl@{sparse\+\_\+mul4\+\_\+with\+\_\+mat\+\_\+jl}!tensor@{tensor}}
@@ -1716,26 +1942,26 @@ Note that it is N\+OT safe to pass {\ttfamily mat\+\_\+jl} as a result buffer, a
 \end{DoxyRemark}
 
 
-Definition at line 1028 of file tensor.\+f90.
+Definition at line 1169 of file tensor.\+f90.
 
 
 \begin{DoxyCode}
-1028    \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist4}{coolist4}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(IN)}:: coolist\_ijkl
-1029    \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(ndim,ndim)}, \textcolor{keywordtype}{INTENT(IN)}  :: mat\_jl
-1030    \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(ndim,ndim)}, \textcolor{keywordtype}{INTENT(OUT)} :: res
-1031    \textcolor{keywordtype}{INTEGER} i,j,k,l,n
-1032 
-1033    res=0.d0
-1034    \textcolor{keywordflow}{DO} i=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
-1035       \textcolor{keywordflow}{DO} n=1,coolist\_ijkl(i)%nelems
-1036          j=coolist\_ijkl(i)%elems(n)%j
-1037          k=coolist\_ijkl(i)%elems(n)%k
-1038          l=coolist\_ijkl(i)%elems(n)%l
-1039 
-1040          res(i,k) = res(i,k) + coolist\_ijkl(i)%elems(n)%v * mat\_jl(j,l)
-1041 \textcolor{keywordflow}{      ENDDO}
-1042 \textcolor{keywordflow}{   END DO}
-1043 
+1169    \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist4}{coolist4}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(IN)}:: coolist\_ijkl
+1170    \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(ndim,ndim)}, \textcolor{keywordtype}{INTENT(IN)}  :: mat\_jl
+1171    \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(ndim,ndim)}, \textcolor{keywordtype}{INTENT(OUT)} :: res
+1172    \textcolor{keywordtype}{INTEGER} i,j,k,l,n
+1173 
+1174    res=0.d0
+1175    \textcolor{keywordflow}{DO} i=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
+1176       \textcolor{keywordflow}{DO} n=1,coolist\_ijkl(i)%nelems
+1177          j=coolist\_ijkl(i)%elems(n)%j
+1178          k=coolist\_ijkl(i)%elems(n)%k
+1179          l=coolist\_ijkl(i)%elems(n)%l
+1180 
+1181          res(i,k) = res(i,k) + coolist\_ijkl(i)%elems(n)%v * mat\_jl(j,l)
+1182 \textcolor{keywordflow}{      ENDDO}
+1183 \textcolor{keywordflow}{   END DO}
+1184 
 \end{DoxyCode}
 \index{tensor@{tensor}!sparse\+\_\+mul4\+\_\+with\+\_\+mat\+\_\+kl@{sparse\+\_\+mul4\+\_\+with\+\_\+mat\+\_\+kl}}
 \index{sparse\+\_\+mul4\+\_\+with\+\_\+mat\+\_\+kl@{sparse\+\_\+mul4\+\_\+with\+\_\+mat\+\_\+kl}!tensor@{tensor}}
@@ -1764,26 +1990,26 @@ Note that it is N\+OT safe to pass {\ttfamily mat\+\_\+kl} as a result buffer, a
 \end{DoxyRemark}
 
 
-Definition at line 1053 of file tensor.\+f90.
+Definition at line 1194 of file tensor.\+f90.
 
 
 \begin{DoxyCode}
-1053    \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist4}{coolist4}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(IN)}:: coolist\_ijkl
-1054    \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(ndim,ndim)}, \textcolor{keywordtype}{INTENT(IN)}  :: mat\_kl
-1055    \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(ndim,ndim)}, \textcolor{keywordtype}{INTENT(OUT)} :: res
-1056    \textcolor{keywordtype}{INTEGER} i,j,k,l,n
-1057 
-1058    res=0.d0
-1059    \textcolor{keywordflow}{DO} i=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
-1060       \textcolor{keywordflow}{DO} n=1,coolist\_ijkl(i)%nelems
-1061          j=coolist\_ijkl(i)%elems(n)%j
-1062          k=coolist\_ijkl(i)%elems(n)%k
-1063          l=coolist\_ijkl(i)%elems(n)%l
-1064 
-1065          res(i,j) = res(i,j) + coolist\_ijkl(i)%elems(n)%v * mat\_kl(k,l)
-1066 \textcolor{keywordflow}{      ENDDO}
-1067 \textcolor{keywordflow}{   END DO}
-1068 
+1194    \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist4}{coolist4}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(IN)}:: coolist\_ijkl
+1195    \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(ndim,ndim)}, \textcolor{keywordtype}{INTENT(IN)}  :: mat\_kl
+1196    \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(ndim,ndim)}, \textcolor{keywordtype}{INTENT(OUT)} :: res
+1197    \textcolor{keywordtype}{INTEGER} i,j,k,l,n
+1198 
+1199    res=0.d0
+1200    \textcolor{keywordflow}{DO} i=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
+1201       \textcolor{keywordflow}{DO} n=1,coolist\_ijkl(i)%nelems
+1202          j=coolist\_ijkl(i)%elems(n)%j
+1203          k=coolist\_ijkl(i)%elems(n)%k
+1204          l=coolist\_ijkl(i)%elems(n)%l
+1205 
+1206          res(i,j) = res(i,j) + coolist\_ijkl(i)%elems(n)%v * mat\_kl(k,l)
+1207 \textcolor{keywordflow}{      ENDDO}
+1208 \textcolor{keywordflow}{   END DO}
+1209 
 \end{DoxyCode}
 \index{tensor@{tensor}!tensor4\+\_\+empty@{tensor4\+\_\+empty}}
 \index{tensor4\+\_\+empty@{tensor4\+\_\+empty}!tensor@{tensor}}
@@ -1803,21 +2029,21 @@ Test if a rank-\/4 tensor coolist is empty.
 \end{DoxyParams}
 
 
-Definition at line 1163 of file tensor.\+f90.
+Definition at line 1304 of file tensor.\+f90.
 
 
 \begin{DoxyCode}
-1163     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist4}{coolist4}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(IN)} :: t
-1164     \textcolor{keywordtype}{LOGICAL} :: tensor4\_empty
-1165     \textcolor{keywordtype}{INTEGER} :: i
-1166     tensor4\_empty=.true.
-1167     \textcolor{keywordflow}{DO} i=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
-1168        \textcolor{keywordflow}{IF} (t(i)%nelems /= 0) \textcolor{keywordflow}{THEN}
-1169           tensor4\_empty=.false.
-1170           \textcolor{keywordflow}{RETURN}
-1171 \textcolor{keywordflow}{       ENDIF}
-1172 \textcolor{keywordflow}{    END DO}
-1173     \textcolor{keywordflow}{RETURN}
+1304     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist4}{coolist4}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(IN)} :: t
+1305     \textcolor{keywordtype}{LOGICAL} :: tensor4\_empty
+1306     \textcolor{keywordtype}{INTEGER} :: i
+1307     tensor4\_empty=.true.
+1308     \textcolor{keywordflow}{DO} i=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
+1309        \textcolor{keywordflow}{IF} (t(i)%nelems /= 0) \textcolor{keywordflow}{THEN}
+1310           tensor4\_empty=.false.
+1311           \textcolor{keywordflow}{RETURN}
+1312 \textcolor{keywordflow}{       ENDIF}
+1313 \textcolor{keywordflow}{    END DO}
+1314     \textcolor{keywordflow}{RETURN}
 \end{DoxyCode}
 \index{tensor@{tensor}!tensor4\+\_\+to\+\_\+coo4@{tensor4\+\_\+to\+\_\+coo4}}
 \index{tensor4\+\_\+to\+\_\+coo4@{tensor4\+\_\+to\+\_\+coo4}!tensor@{tensor}}
@@ -1843,44 +2069,44 @@ The destination coolist have to be an empty one, i.\+e. with unallocated list of
 \end{DoxyRemark}
 
 
-Definition at line 583 of file tensor.\+f90.
+Definition at line 883 of file tensor.\+f90.
 
 
 \begin{DoxyCode}
-583     \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(ndim,0:ndim,0:ndim,0:ndim)}, \textcolor{keywordtype}{INTENT(IN)} :: src
-584     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist4}{coolist4}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(OUT)} :: dst
-585     \textcolor{keywordtype}{INTEGER} :: i,j,k,l,n,allocstat
-586     
-587     \textcolor{keywordflow}{DO} i=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
-588        n=0
-589        \textcolor{keywordflow}{DO} j=0,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
-590           \textcolor{keywordflow}{DO} k=0,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
-591              \textcolor{keywordflow}{DO} l=0,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
-592                 \textcolor{keywordflow}{IF} (abs(src(i,j,k,l))>real\_eps) n=n+1
-593 \textcolor{keywordflow}{             ENDDO}
-594 \textcolor{keywordflow}{          ENDDO}
-595 \textcolor{keywordflow}{       ENDDO}
-596        \textcolor{keywordflow}{IF} (n/=0) \textcolor{keywordflow}{THEN}
-597           \textcolor{keywordflow}{IF} (dst(i)%nelems/=0) stop \textcolor{stringliteral}{"*** tensor\_to\_coo : Destination coolist not empty ! ***"}
-598           \textcolor{keyword}{ALLOCATE}(dst(i)%elems(n), \hyperlink{namespacestat}{stat}=allocstat)
-599           \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
-600           n=0
-601           \textcolor{keywordflow}{DO} j=0,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
-602              \textcolor{keywordflow}{DO} k=0,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
-603                 \textcolor{keywordflow}{DO} l=0,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
-604                    \textcolor{keywordflow}{IF} (abs(src(i,j,k,l))>real\_eps) \textcolor{keywordflow}{THEN}
-605                       n=n+1
-606                       dst(i)%elems(n)%j=j
-607                       dst(i)%elems(n)%k=k
-608                       dst(i)%elems(n)%l=l
-609                       dst(i)%elems(n)%v=src(i,j,k,l)
-610 \textcolor{keywordflow}{                   ENDIF}
-611 \textcolor{keywordflow}{                ENDDO}
-612 \textcolor{keywordflow}{             ENDDO}
-613 \textcolor{keywordflow}{          ENDDO}
-614 \textcolor{keywordflow}{       ENDIF}
-615        dst(i)%nelems=n
-616 \textcolor{keywordflow}{    ENDDO}
+883     \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(ndim,0:ndim,0:ndim,0:ndim)}, \textcolor{keywordtype}{INTENT(IN)} :: src
+884     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist4}{coolist4}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(OUT)} :: dst
+885     \textcolor{keywordtype}{INTEGER} :: i,j,k,l,n,allocstat
+886     
+887     \textcolor{keywordflow}{DO} i=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
+888        n=0
+889        \textcolor{keywordflow}{DO} j=0,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
+890           \textcolor{keywordflow}{DO} k=0,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
+891              \textcolor{keywordflow}{DO} l=0,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
+892                 \textcolor{keywordflow}{IF} (abs(src(i,j,k,l))>real\_eps) n=n+1
+893 \textcolor{keywordflow}{             ENDDO}
+894 \textcolor{keywordflow}{          ENDDO}
+895 \textcolor{keywordflow}{       ENDDO}
+896        \textcolor{keywordflow}{IF} (n/=0) \textcolor{keywordflow}{THEN}
+897           \textcolor{keywordflow}{IF} (dst(i)%nelems/=0) stop \textcolor{stringliteral}{"*** tensor\_to\_coo : Destination coolist not empty ! ***"}
+898           \textcolor{keyword}{ALLOCATE}(dst(i)%elems(n), \hyperlink{namespacestat}{stat}=allocstat)
+899           \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
+900           n=0
+901           \textcolor{keywordflow}{DO} j=0,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
+902              \textcolor{keywordflow}{DO} k=0,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
+903                 \textcolor{keywordflow}{DO} l=0,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
+904                    \textcolor{keywordflow}{IF} (abs(src(i,j,k,l))>real\_eps) \textcolor{keywordflow}{THEN}
+905                       n=n+1
+906                       dst(i)%elems(n)%j=j
+907                       dst(i)%elems(n)%k=k
+908                       dst(i)%elems(n)%l=l
+909                       dst(i)%elems(n)%v=src(i,j,k,l)
+910 \textcolor{keywordflow}{                   ENDIF}
+911 \textcolor{keywordflow}{                ENDDO}
+912 \textcolor{keywordflow}{             ENDDO}
+913 \textcolor{keywordflow}{          ENDDO}
+914 \textcolor{keywordflow}{       ENDIF}
+915        dst(i)%nelems=n
+916 \textcolor{keywordflow}{    ENDDO}
 \end{DoxyCode}
 \index{tensor@{tensor}!tensor\+\_\+empty@{tensor\+\_\+empty}}
 \index{tensor\+\_\+empty@{tensor\+\_\+empty}!tensor@{tensor}}
@@ -1900,21 +2126,21 @@ Test if a rank-\/3 tensor coolist is empty.
 \end{DoxyParams}
 
 
-Definition at line 1147 of file tensor.\+f90.
+Definition at line 1288 of file tensor.\+f90.
 
 
 \begin{DoxyCode}
-1147     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist}{coolist}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(IN)} :: t
-1148     \textcolor{keywordtype}{LOGICAL} :: tensor\_empty
-1149     \textcolor{keywordtype}{INTEGER} :: i
-1150     tensor\_empty=.true.
-1151     \textcolor{keywordflow}{DO} i=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
-1152        \textcolor{keywordflow}{IF} (t(i)%nelems /= 0) \textcolor{keywordflow}{THEN}
-1153           tensor\_empty=.false.
-1154           \textcolor{keywordflow}{RETURN}
-1155 \textcolor{keywordflow}{       ENDIF}
-1156 \textcolor{keywordflow}{    END DO}
-1157     \textcolor{keywordflow}{RETURN}
+1288     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist}{coolist}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(IN)} :: t
+1289     \textcolor{keywordtype}{LOGICAL} :: tensor\_empty
+1290     \textcolor{keywordtype}{INTEGER} :: i
+1291     tensor\_empty=.true.
+1292     \textcolor{keywordflow}{DO} i=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
+1293        \textcolor{keywordflow}{IF} (t(i)%nelems /= 0) \textcolor{keywordflow}{THEN}
+1294           tensor\_empty=.false.
+1295           \textcolor{keywordflow}{RETURN}
+1296 \textcolor{keywordflow}{       ENDIF}
+1297 \textcolor{keywordflow}{    END DO}
+1298     \textcolor{keywordflow}{RETURN}
 \end{DoxyCode}
 \index{tensor@{tensor}!tensor\+\_\+to\+\_\+coo@{tensor\+\_\+to\+\_\+coo}}
 \index{tensor\+\_\+to\+\_\+coo@{tensor\+\_\+to\+\_\+coo}!tensor@{tensor}}
@@ -1940,39 +2166,39 @@ The destination coolist have to be an empty one, i.\+e. with unallocated list of
 \end{DoxyRemark}
 
 
-Definition at line 547 of file tensor.\+f90.
+Definition at line 847 of file tensor.\+f90.
 
 
 \begin{DoxyCode}
-547     \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(ndim,0:ndim,0:ndim)}, \textcolor{keywordtype}{INTENT(IN)} :: src
-548     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist}{coolist}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(OUT)} :: dst
-549     \textcolor{keywordtype}{INTEGER} :: i,j,k,n,allocstat
-550     
-551     \textcolor{keywordflow}{DO} i=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
-552        n=0
-553        \textcolor{keywordflow}{DO} j=0,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
-554           \textcolor{keywordflow}{DO} k=0,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
-555              \textcolor{keywordflow}{IF} (abs(src(i,j,k))>real\_eps) n=n+1
-556 \textcolor{keywordflow}{          ENDDO}
-557 \textcolor{keywordflow}{       ENDDO}
-558        \textcolor{keywordflow}{IF} (n/=0) \textcolor{keywordflow}{THEN}
-559           \textcolor{keywordflow}{IF} (dst(i)%nelems/=0) stop \textcolor{stringliteral}{"*** tensor\_to\_coo : Destination coolist not empty ! ***"}
-560           \textcolor{keyword}{ALLOCATE}(dst(i)%elems(n), \hyperlink{namespacestat}{stat}=allocstat)
-561           \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
-562           n=0
-563           \textcolor{keywordflow}{DO} j=0,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
-564              \textcolor{keywordflow}{DO} k=0,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
-565                 \textcolor{keywordflow}{IF} (abs(src(i,j,k))>real\_eps) \textcolor{keywordflow}{THEN}
-566                    n=n+1
-567                    dst(i)%elems(n)%j=j
-568                    dst(i)%elems(n)%k=k
-569                    dst(i)%elems(n)%v=src(i,j,k)
-570 \textcolor{keywordflow}{                ENDIF}
-571 \textcolor{keywordflow}{             ENDDO}
-572 \textcolor{keywordflow}{          ENDDO}
-573 \textcolor{keywordflow}{       ENDIF}
-574        dst(i)%nelems=n
-575 \textcolor{keywordflow}{    ENDDO}
+847     \textcolor{keywordtype}{REAL(KIND=8)}, \textcolor{keywordtype}{DIMENSION(ndim,0:ndim,0:ndim)}, \textcolor{keywordtype}{INTENT(IN)} :: src
+848     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist}{coolist}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(OUT)} :: dst
+849     \textcolor{keywordtype}{INTEGER} :: i,j,k,n,allocstat
+850     
+851     \textcolor{keywordflow}{DO} i=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
+852        n=0
+853        \textcolor{keywordflow}{DO} j=0,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
+854           \textcolor{keywordflow}{DO} k=0,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
+855              \textcolor{keywordflow}{IF} (abs(src(i,j,k))>real\_eps) n=n+1
+856 \textcolor{keywordflow}{          ENDDO}
+857 \textcolor{keywordflow}{       ENDDO}
+858        \textcolor{keywordflow}{IF} (n/=0) \textcolor{keywordflow}{THEN}
+859           \textcolor{keywordflow}{IF} (dst(i)%nelems/=0) stop \textcolor{stringliteral}{"*** tensor\_to\_coo : Destination coolist not empty ! ***"}
+860           \textcolor{keyword}{ALLOCATE}(dst(i)%elems(n), \hyperlink{namespacestat}{stat}=allocstat)
+861           \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
+862           n=0
+863           \textcolor{keywordflow}{DO} j=0,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
+864              \textcolor{keywordflow}{DO} k=0,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
+865                 \textcolor{keywordflow}{IF} (abs(src(i,j,k))>real\_eps) \textcolor{keywordflow}{THEN}
+866                    n=n+1
+867                    dst(i)%elems(n)%j=j
+868                    dst(i)%elems(n)%k=k
+869                    dst(i)%elems(n)%v=src(i,j,k)
+870 \textcolor{keywordflow}{                ENDIF}
+871 \textcolor{keywordflow}{             ENDDO}
+872 \textcolor{keywordflow}{          ENDDO}
+873 \textcolor{keywordflow}{       ENDIF}
+874        dst(i)%nelems=n
+875 \textcolor{keywordflow}{    ENDDO}
 \end{DoxyCode}
 \index{tensor@{tensor}!write\+\_\+tensor4\+\_\+to\+\_\+file@{write\+\_\+tensor4\+\_\+to\+\_\+file}}
 \index{write\+\_\+tensor4\+\_\+to\+\_\+file@{write\+\_\+tensor4\+\_\+to\+\_\+file}!tensor@{tensor}}
@@ -1995,24 +2221,63 @@ Load a rank-\/4 tensor coolist from a file definition.
 \end{DoxyParams}
 
 
-Definition at line 1208 of file tensor.\+f90.
+Definition at line 1349 of file tensor.\+f90.
 
 
 \begin{DoxyCode}
-1208     \textcolor{keywordtype}{CHARACTER (LEN=*)}, \textcolor{keywordtype}{INTENT(IN)} :: s
-1209     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist4}{coolist4}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(IN)} :: t
-1210     \textcolor{keywordtype}{INTEGER} :: i,j,k,l,n
-1211     \textcolor{keyword}{OPEN}(30,file=s)
-1212     \textcolor{keywordflow}{DO} i=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
-1213        \textcolor{keyword}{WRITE}(30,*) i,t(i)%nelems
-1214        \textcolor{keywordflow}{DO} n=1,t(i)%nelems
-1215           j=t(i)%elems(n)%j
-1216           k=t(i)%elems(n)%k
-1217           l=t(i)%elems(n)%l
-1218           \textcolor{keyword}{WRITE}(30,*) i,j,k,l,t(i)%elems(n)%v
-1219 \textcolor{keywordflow}{       END DO}
-1220 \textcolor{keywordflow}{    END DO}
-1221     \textcolor{keyword}{CLOSE}(30)
+1349     \textcolor{keywordtype}{CHARACTER (LEN=*)}, \textcolor{keywordtype}{INTENT(IN)} :: s
+1350     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist4}{coolist4}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(IN)} :: t
+1351     \textcolor{keywordtype}{INTEGER} :: i,j,k,l,n
+1352     \textcolor{keyword}{OPEN}(30,file=s)
+1353     \textcolor{keywordflow}{DO} i=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
+1354        \textcolor{keyword}{WRITE}(30,*) i,t(i)%nelems
+1355        \textcolor{keywordflow}{DO} n=1,t(i)%nelems
+1356           j=t(i)%elems(n)%j
+1357           k=t(i)%elems(n)%k
+1358           l=t(i)%elems(n)%l
+1359           \textcolor{keyword}{WRITE}(30,*) i,j,k,l,t(i)%elems(n)%v
+1360 \textcolor{keywordflow}{       END DO}
+1361 \textcolor{keywordflow}{    END DO}
+1362     \textcolor{keyword}{CLOSE}(30)
+\end{DoxyCode}
+\index{tensor@{tensor}!write\+\_\+tensor\+\_\+to\+\_\+file@{write\+\_\+tensor\+\_\+to\+\_\+file}}
+\index{write\+\_\+tensor\+\_\+to\+\_\+file@{write\+\_\+tensor\+\_\+to\+\_\+file}!tensor@{tensor}}
+\subsubsection[{\texorpdfstring{write\+\_\+tensor\+\_\+to\+\_\+file(s, t)}{write_tensor_to_file(s, t)}}]{\setlength{\rightskip}{0pt plus 5cm}subroutine, public tensor\+::write\+\_\+tensor\+\_\+to\+\_\+file (
+\begin{DoxyParamCaption}
+\item[{character (len=$\ast$), intent(in)}]{s, }
+\item[{type({\bf coolist}), dimension(ndim), intent(in)}]{t}
+\end{DoxyParamCaption}
+)}\hypertarget{namespacetensor_ab9cef88cb38333ed2c063cdf08f28060}{}\label{namespacetensor_ab9cef88cb38333ed2c063cdf08f28060}
+
+
+Load a rank-\/4 tensor coolist from a file definition. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & Destination filename \\
+\hline
+{\em t} & The coolist to write \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 425 of file tensor.\+f90.
+
+
+\begin{DoxyCode}
+425     \textcolor{keywordtype}{CHARACTER (LEN=*)}, \textcolor{keywordtype}{INTENT(IN)} :: s
+426     \textcolor{keywordtype}{TYPE}(\hyperlink{structtensor_1_1coolist}{coolist}), \textcolor{keywordtype}{DIMENSION(ndim)}, \textcolor{keywordtype}{INTENT(IN)} :: t
+427     \textcolor{keywordtype}{INTEGER} :: i,j,k,n
+428     \textcolor{keyword}{OPEN}(30,file=s)
+429     \textcolor{keywordflow}{DO} i=1,\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
+430        \textcolor{keyword}{WRITE}(30,*) i,t(i)%nelems
+431        \textcolor{keywordflow}{DO} n=1,t(i)%nelems
+432           j=t(i)%elems(n)%j
+433           k=t(i)%elems(n)%k
+434           \textcolor{keyword}{WRITE}(30,*) i,j,k,t(i)%elems(n)%v
+435 \textcolor{keywordflow}{       END DO}
+436 \textcolor{keywordflow}{    END DO}
+437     \textcolor{keyword}{CLOSE}(30)
 \end{DoxyCode}
 
 

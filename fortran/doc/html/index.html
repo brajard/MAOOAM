@@ -87,7 +87,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><h2>About</h2>
-<p>(c) 2013-2017 Lesley De Cruz and Jonathan Demaeyer</p>
+<p>(c) 2013-2018 Lesley De Cruz and Jonathan Demaeyer</p>
 <p>See <a href="../../LICENSE.txt">LICENSE.txt</a> for license information.</p>
 <p>This software is provided as supplementary material with:</p>
 <ul>
@@ -103,8 +103,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <p>A pdf version of this manual is available <a href="../latex/Reference_manual.pdf">here</a>. </p><hr/>
 <h2>Installation</h2>
 <p>The program can be installed with Makefile. We provide configuration files for two compilers : gfortran and ifort.</p>
-<p>By default, gfortran is selected. To select one or the other, simply modify the Makefile accordingly. If gfortran is selected, the code should be compiled with gfortran 4.7+ (allows for allocatable arrays in namelists). If ifort is selected, the code has been tested with the version 14.0.2 and we do not guarantee compatibility with older compiler version.</p>
-<p>To install, unpack the archive in a folder, and run: make</p>
+<p>By default, gfortran is selected. To select one or the other, simply modify the Makefile accordingly or pass the COMPILER flag to <code>make</code>. If gfortran is selected, the code should be compiled with gfortran 4.7+ (allows for allocatable arrays in namelists). If ifort is selected, the code has been tested with the version 14.0.2 and we do not guarantee compatibility with older compiler version.</p>
+<p>To install, unpack the archive in a folder or clone with git:</p>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;git clone https://github.com/Climdyn/MAOOAM.git</div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;cd MAOOAM</div></div><!-- fragment --><p>and run:</p>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;make</div></div><!-- fragment --><p> By default, the inner products of the basis functions, used to compute the coefficients of the ODEs, are not stored in memory. If you want to enable the storage in memory of these inner products, run make with the following flag:</p>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;make RES=store</div></div><!-- fragment --><p>Depending on the chosen resolution, storing the inner products may result in a huge memory usage and is not recommended unless you need them for a specific purpose.</p>
 <p>Remark: The command "make clean" removes the compiled files. </p><hr/>
 <h2>Description of the files</h2>
 <p>The model tendencies are represented through a tensor called aotensor which includes all the coefficients. This tensor is computed once at the program initialization.</p>
@@ -117,8 +120,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li><a class="el" href="rk2__integrator_8f90.html">rk2_integrator.f90</a> : A module which contains the Heun integrator for the model equations.</li>
 <li><a class="el" href="rk4__integrator_8f90.html">rk4_integrator.f90</a> : A module which contains the RK4 integrator for the model equations.</li>
 <li>Makefile : The Makefile.</li>
-<li>gfortran.mk : Gfortran compiler options file.</li>
-<li>ifort.mk : Ifort compiler options file.</li>
 <li><a class="el" href="params_8f90.html">params.f90</a> : The model parameters module.</li>
 <li><a class="el" href="tl__ad__tensor_8f90.html">tl_ad_tensor.f90</a> : Tangent Linear (TL) and Adjoint (AD) model tensors definition module</li>
 <li><a class="el" href="rk2__tl__ad__integrator_8f90.html">rk2_tl_ad_integrator.f90</a> : Heun Tangent Linear (TL) and Adjoint (AD) model integrators module</li>
@@ -170,16 +171,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>The VDDG model, described in Vannitsem et al. (2015) is given as an example in the archive.</li>
 <li>Note that the variables of the model are numbered according to the chosen order of the blocks.</li>
 </ul>
+<p>The Makefile allows to change the integrator being used for the time evolution. The user should modify it according to its need. By default a RK2 scheme is selected.</p>
 <p>Finally, the IC.nml file specifying the initial condition should be defined. To obtain an example of this configuration file corresponding to the model you have previously defined, simply delete the current IC.nml file (if it exists) and run the program : </p><pre class="fragment">./maooam
 </pre><p>It will generate a new one and start with the 0 initial condition. If you want another initial condition, stop the program, fill the newly generated file and restart : </p><pre class="fragment">./maooam
 </pre><p>It will generate two files :</p><ul>
 <li>evol_field.dat : the recorded time evolution of the variables.</li>
 <li>mean_field.dat : the mean field (the climatology)</li>
 </ul>
-<p>The tangent linear and adjoint models of MAOOAM are provided in the <a class="el" href="namespacetl__ad__tensor.html" title="Tangent Linear (TL) and Adjoint (AD) model versions of MAOOAM. Tensors definition module...">tl_ad_tensor</a>, rk2_tl_ad_integrator and rk4_tl_ad_integrator modules. It is documented <a href="./md_tl_ad_doc.html">here</a>. </p><hr/>
+<p>The tangent linear and adjoint models of MAOOAM are provided in the <a class="el" href="namespacetl__ad__tensor.html" title="Tangent Linear (TL) and Adjoint (AD) model versions of MAOOAM. Tensors definition module...">tl_ad_tensor</a>, rk2_tl_ad_integrator and rk4_tl_ad_integrator modules. It is documented <a class="el" href="md_doc_tl_ad_doc.html">here</a>. </p><hr/>
 <h2>Stochastic code usage</h2>
 <p>The user first has to fill the MAOOAM model namelist files according to their needs (see the previous section). Additional namelist files for the fine tuning of the parameterization must then be filled, and some "definition" files (with the extension .def) must be provided. An example is provided with the code.</p>
-<p>Full details over the parameterization options and definition files are available <a href="md_sto_doc.html">here</a>.</p>
+<p>Full details over the parameterization options and definition files are available <a class="el" href="md_doc_sto_doc.html">here</a>.</p>
 <p>The program "maooam_stoch" will generate the evolution of the full stochastic dynamics with the command: </p><pre class="fragment">./maooam_stoch
 </pre><p>or any other dynamics if specified as an argument (see the header of <a href="./maooam_stoch.f90">maooam_stoch.f90</a>). It will generate two files :</p><ul>
 <li>evol_field.dat : the recorded time evolution of the variables.</li>
@@ -221,7 +223,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <p>where \(\boldsymbol{dW}\) is a vector of standard Gaussian White noise and where several choice for \(f(\boldsymbol{z})\) are available. For instance, the default choice is to use the full dynamics: </p><p class="formulaDsp">
 \[ f(\boldsymbol{z}) = \sum_{j,k=0}^{ndim} \, \mathcal{T}_{i,j,k} \, z_k \; z_j . \]
 </p>
-<p> The implementation uses the tensorial framework described above and add some noise to it. This stochastic version is further detailed <a href="md_sto_doc.html">here</a>.</p>
+<p> The implementation uses the tensorial framework described above and add some noise to it. This stochastic version is further detailed <a class="el" href="md_doc_sto_doc.html">here</a>.</p>
 <p>The MTV parameterization for MAOOAM is given by</p>
 <p class="formulaDsp">
 \[ \frac{d\boldsymbol{x}}{dt} = F_x(\boldsymbol{x}) + \frac{1}{\delta} R(\boldsymbol{x}) + G(\boldsymbol{x}) + \sqrt{2} \,\, \boldsymbol{\sigma}(\boldsymbol{x}) \cdot \boldsymbol{dW} \]
@@ -232,7 +234,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 \[\frac{d\boldsymbol{x}}{dt} = F_x(\boldsymbol{x}) + \varepsilon \, M_1(\boldsymbol{x}) + \varepsilon^2 \, M_2(\boldsymbol{x},t) + \varepsilon^2 \, M_3 (\boldsymbol{x},t)\]
 </p>
 <p>where \(\varepsilon\) is the resolved-unresolved components coupling strenght and where the different terms \(M_i\) account for different effect.</p>
-<p>The implementation for these two approaches uses the tensorial framework described above, with the addition of new tensors to account for the terms \(R,G,\sigma,M_1,M_2,M_3\). They are detailed more completely <a href="md_sto_doc.html">here</a>.</p>
+<p>The implementation for these two approaches uses the tensorial framework described above, with the addition of new tensors to account for the terms \(R,G,\sigma,M_1,M_2,M_3\). They are detailed more completely <a class="el" href="md_doc_sto_doc.html">here</a>.</p>
 <hr/>
 <h2>Final Remarks</h2>
 <p>The authors would like to thank Kris for help with the lua2fortran project. It has greatly reduced the amount of (error-prone) work.</p>
@@ -240,7 +242,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Dec 19 2017 15:41:20 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Jul 8 2018 16:01:45 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.11
 </small></address>

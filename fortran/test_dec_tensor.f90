@@ -4,13 +4,14 @@
 !> Small program to print the decomposed tensors.
 !     
 !> @copyright                                                               
-!> 2017 Jonathan Demaeyer.
+!> 2018 Jonathan Demaeyer.
 !> See LICENSE.txt for license information.                                  
 !
 !---------------------------------------------------------------------------!
 
 PROGRAM test_dec_tensor
 
+  USE params, only: ndim
   USE dec_tensor
   USE tl_ad_tensor, only:tltensor
   USE aotensor_def, only:init_aotensor,aotensor
@@ -23,7 +24,7 @@ PROGRAM test_dec_tensor
   CALL init_aotensor     ! Initialize the aotensor 
   CALL init_dec_tensor    ! Compute the tensor
 
-  print*, 'ao_tensor' 
+  print*, 'ao_tensor'
   CALL print_tensor(aotensor)
 
   print*, 'ss_tensor' 

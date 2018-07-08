@@ -18,6 +18,7 @@
   R = 1.D-8          !  frictional coefficient at the bottom of the ocean	
   H = 5.D2           !  depth of the water layer of the ocean
   D = 1.D-8          !  the coupling parameter (should be divided by f0 in order to be adimensional)
+  NUO = 0.D0        !  dissipation in the ocean
 &END
 
 !  Parameters for the atmosphere
@@ -25,6 +26,7 @@
   K = 0.02D0         !  atmosphere bottom friction coefficient
   KP = 0.04D0        !  atmosphere internal friction coefficient
   SIG0 = 0.1D0       !  static stability of the atmosphere
+  NUA = 0.D0         !  dissipation in the atmosphere
 &END
 
 !  Temperature-related parameters for the ocean

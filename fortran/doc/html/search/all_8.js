@@ -51,5 +51,6 @@ var searchData=
   ['invmat',['invmat',['../namespaceutil.html#a52a5fbd944196d1cf077be77aefa34a2',1,'util']]],
   ['ireduce',['ireduce',['../namespaceutil.html#a92433c6b81993d62682f54ff5c8834a0',1,'util']]],
   ['iset',['iset',['../namespacestoch__mod.html#a266187af9a49e162926a5ef2d67e141a',1,'stoch_mod']]],
+  ['isin',['isin',['../namespaceutil.html#a1e2cd46baa2070e28949e28c8a3e037e',1,'util']]],
   ['iter',['iter',['../namespacestat.html#aca30ccb65a1fc6af92be1018ec40f6c6',1,'stat']]]
 ];

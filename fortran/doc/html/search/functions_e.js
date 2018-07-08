@@ -7,6 +7,7 @@ var searchData=
   ['scal_5fmul_5fcoo',['scal_mul_coo',['../namespacetensor.html#af105ec6083969c52f5e7422d75a5cda5',1,'tensor']]],
   ['selectev',['selectev',['../namespacesqrt__mod.html#a8789d2f86087703a058918101999894f',1,'sqrt_mod']]],
   ['simplify',['simplify',['../namespacetensor.html#a364522b80ab0f4785c331eb74fa1ba04',1,'tensor']]],
+  ['sparse_5fmul2',['sparse_mul2',['../namespacetensor.html#a70230d57c615d9548905bc023f5fc01d',1,'tensor']]],
   ['sparse_5fmul2_5fj',['sparse_mul2_j',['../namespacetensor.html#ad9b09d91fb1bd425122c4f1ee2f0eb12',1,'tensor']]],
   ['sparse_5fmul2_5fk',['sparse_mul2_k',['../namespacetensor.html#a90e31e5e782d63d7f05ee3c9aed370e0',1,'tensor']]],
   ['sparse_5fmul3',['sparse_mul3',['../namespacetensor.html#a11054027a386918658f8948231af53b1',1,'tensor']]],

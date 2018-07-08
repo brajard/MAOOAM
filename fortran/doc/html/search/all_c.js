@@ -1,7 +1,7 @@
 var searchData=
 [
   ['modular_20arbitrary_2dorder_20ocean_2datmosphere_20model_3a_20maooam_20_2d_2d_20stochastic_20fortran_20implementation',['Modular arbitrary-order ocean-atmosphere model: MAOOAM -- Stochastic Fortran implementation',['../index.html',1,'']]],
-  ['m',['m',['../structinprod__analytic_1_1atm__wavenum.html#a72be0a86c5f5801b88ebf78506523bd2',1,'inprod_analytic::atm_wavenum::m()'],['../structinprod__analytic_1_1ocean__tensors.html#a6f8f8b2b4ef239db0a9f751d7e8452e8',1,'inprod_analytic::ocean_tensors::m()'],['../namespacestat.html#a2416f75ad24ac05a0ba615f9c8d467db',1,'stat::m()']]],
+  ['m',['m',['../structinprod__analytic_1_1atm__wavenum.html#a72be0a86c5f5801b88ebf78506523bd2',1,'inprod_analytic::atm_wavenum::m()'],['../structinprod__analytic_1_1ocean__tensors.html#a9f72e3b14a98a50209f86b01626f6c53',1,'inprod_analytic::ocean_tensors::m()'],['../namespacestat.html#a2416f75ad24ac05a0ba615f9c8d467db',1,'stat::m()']]],
   ['m11',['m11',['../namespacewl__tensor.html#ac43c10a8ee5e3dd488001634e715b0ae',1,'wl_tensor']]],
   ['m12',['m12',['../namespacewl__tensor.html#a2c742f8ab1b1994e6a82a04c602d7ca9',1,'wl_tensor']]],
   ['m12def',['m12def',['../namespacewl__tensor.html#a57e045045436974aaa5559870608eb8c',1,'wl_tensor']]],
@@ -28,6 +28,7 @@ var searchData=
   ['mat_5ftrace',['mat_trace',['../namespaceutil.html#a9771c95546d8658e72aa24f76612e4d8',1,'util']]],
   ['matc_5fto_5fcoo',['matc_to_coo',['../namespacetensor.html#ad868662d382dc1579db6847f2411c382',1,'tensor']]],
   ['maxint',['maxint',['../namespacestoch__params.html#a50976593e79387f25e08fef6ce56b30b',1,'stoch_params']]],
+  ['modular_20arbitrary_2dorder_20ocean_2datmosphere_20model_3a_20definition_20files_20formats',['Modular arbitrary-order ocean-atmosphere model: Definition files formats',['../md_doc_def_doc.html',1,'']]],
   ['modular_20arbitrary_2dorder_20ocean_2datmosphere_20model_3a_20the_20mtv_20and_20wl_20parameterizations',['Modular arbitrary-order ocean-atmosphere model: The MTV and WL parameterizations',['../md_doc_sto_doc.html',1,'']]],
   ['modular_20arbitrary_2dorder_20ocean_2datmosphere_20model_3a_20the_20tangent_20linear_20and_20adjoint_20model',['Modular arbitrary-order ocean-atmosphere model: The Tangent Linear and Adjoint model',['../md_doc_tl_ad_doc.html',1,'']]],
   ['mdef',['mdef',['../namespacewl__tensor.html#a3aeca3d529c65d2537167b5384a92fe0',1,'wl_tensor']]],

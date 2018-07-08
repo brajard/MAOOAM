@@ -4,7 +4,7 @@
 !> Module that compute the memory term \f$M_3\f$ of the WL parameterization.
 !
 !> @copyright                                                               
-!> 2017 Jonathan Demaeyer.
+!> 2018 Jonathan Demaeyer.
 !> See LICENSE.txt for license information.                                  
 !
 !---------------------------------------------------------------------------!

@@ -4,7 +4,7 @@
 !>  Module with the stochastic rk2 integration routines.
 !
 !> @copyright                                                               
-!> 2017 Jonathan Demaeyer.
+!> 2018 Jonathan Demaeyer.
 !> See LICENSE.txt for license information.                                  
 !
 !---------------------------------------------------------------------------!
@@ -22,7 +22,7 @@
 MODULE rk2_stoch_integrator
   USE params, only: ndim,natm
   USE stoch_params, only: q_ar,q_au,q_or,q_ou,mode
-  USE tensor, only:sparse_mul3,coolist,copy_tensor
+  USE tensor, only:sparse_mul3,coolist,copy_coo
   USE aotensor_def, only: aotensor
   USE dec_tensor, only: ss_tensor,ff_tensor,Byyy
   USE stoch_mod
@@ -74,13 +74,13 @@ CONTAINS
 
     SELECT CASE (test)
     CASE('full')
-       CALL copy_tensor(aotensor,int_tensor)
+       CALL copy_coo(aotensor,int_tensor)
     CASE('ures')
-       CALL copy_tensor(ff_tensor,int_tensor)
+       CALL copy_coo(ff_tensor,int_tensor)
     CASE('qfst')
-       CALL copy_tensor(Byyy,int_tensor)
+       CALL copy_coo(Byyy,int_tensor)
     CASE('reso')
-       CALL copy_tensor(ss_tensor,int_tensor)
+       CALL copy_coo(ss_tensor,int_tensor)
     CASE DEFAULT
        STOP '*** MODE variable not properly defined ***'
     END SELECT

@@ -4,7 +4,7 @@
 !> Utility module with various routine to compute matrix square root.
 !
 !> @copyright                                                               
-!> 2017 Jonathan Demaeyer.
+!> 2018 Jonathan Demaeyer.
 !> See LICENSE.txt for license information.                                  
 !
 !---------------------------------------------------------------------------!

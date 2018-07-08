@@ -212,7 +212,7 @@ Variables</h2></td></tr>
 <p>Routine to initialise the TL-AD integration bufers. </p>
 
 <p>Definition at line <a class="el" href="rk2__tl__ad__integrator_8f90_source.html#l00041">41</a> of file <a class="el" href="rk2__tl__ad__integrator_8f90_source.html">rk2_tl_ad_integrator.f90</a>.</p>
-<div class="fragment"><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">INTEGER</span> :: allocstat</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">ALLOCATE</span>(buf_y1(0:<a class="code" href="namespaceparams.html#a2323fe1773f086e20c14f266351c482b">ndim</a>),buf_f0(0:<a class="code" href="namespaceparams.html#a2323fe1773f086e20c14f266351c482b">ndim</a>),buf_f1(0:<a class="code" href="namespaceparams.html#a2323fe1773f086e20c14f266351c482b">ndim</a>),<a class="code" href="namespacestat.html">stat</a>=allocstat)</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordflow">IF</span> (allocstat /= 0) stop <span class="stringliteral">&quot;*** Not enough memory ! ***&quot;</span></div><div class="ttc" id="namespaceparams_html_a2323fe1773f086e20c14f266351c482b"><div class="ttname"><a href="namespaceparams.html#a2323fe1773f086e20c14f266351c482b">params::ndim</a></div><div class="ttdeci">integer ndim</div><div class="ttdoc">Number of variables (dimension of the model) </div><div class="ttdef"><b>Definition:</b> <a href="params_8f90_source.html#l00079">params.f90:79</a></div></div>
+<div class="fragment"><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">INTEGER</span> :: allocstat</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">ALLOCATE</span>(buf_y1(0:<a class="code" href="namespaceparams.html#a2323fe1773f086e20c14f266351c482b">ndim</a>),buf_f0(0:<a class="code" href="namespaceparams.html#a2323fe1773f086e20c14f266351c482b">ndim</a>),buf_f1(0:<a class="code" href="namespaceparams.html#a2323fe1773f086e20c14f266351c482b">ndim</a>),<a class="code" href="namespacestat.html">stat</a>=allocstat)</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordflow">IF</span> (allocstat /= 0) stop <span class="stringliteral">&quot;*** Not enough memory ! ***&quot;</span></div><div class="ttc" id="namespaceparams_html_a2323fe1773f086e20c14f266351c482b"><div class="ttname"><a href="namespaceparams.html#a2323fe1773f086e20c14f266351c482b">params::ndim</a></div><div class="ttdeci">integer ndim</div><div class="ttdoc">Number of variables (dimension of the model) </div><div class="ttdef"><b>Definition:</b> <a href="params_8f90_source.html#l00085">params.f90:85</a></div></div>
 <div class="ttc" id="namespacestat_html"><div class="ttname"><a href="namespacestat.html">stat</a></div><div class="ttdoc">Statistics accumulators. </div><div class="ttdef"><b>Definition:</b> <a href="stat_8f90_source.html#l00014">stat.f90:14</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -401,7 +401,7 @@ Variables</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Dec 19 2017 15:41:20 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Jul 8 2018 16:01:45 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.11
 </small></address>

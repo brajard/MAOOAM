@@ -6,7 +6,7 @@
 !>
 !
 !> @copyright                                                               
-!> 2017 Jonathan Demaeyer.
+!> 2018 Jonathan Demaeyer.
 !> See LICENSE.txt for license information.                                  
 !
 !---------------------------------------------------------------------------!
@@ -39,7 +39,7 @@ PROGRAM maooam_stoch
   CHARACTER*4 :: force                 !< Selector for the dynamics
   INTEGER :: is,lg                     !< Dummy integers
 
-  PRINT*, 'Model MAOOAM v1.2 stochastic'
+  PRINT*, 'Model MAOOAM v1.3 stochastic'
   PRINT*, 'Loading information...'
 
   CALL get_command_argument(1,force,lg,is)

@@ -1,0 +1,80 @@
+This page describes the format of the definition files needed by the stochastic model.
+
+\subsection*{M\+TV parameterization}
+
+The following definition files are needed by the M\+TV parameterization. Examples of those files are joined to the code. The files include\+:
+\begin{DoxyItemize}
+\item \textquotesingle{}mean.\+def\textquotesingle{} \+: Mean $\langle \boldsymbol y \rangle$ of the unresolved variables.
+\begin{DoxyItemize}
+\item {\bfseries Format}\+: one line per $\langle y_i \rangle$ value
+\end{DoxyItemize}
+\item \textquotesingle{}correxpo.\+def\textquotesingle{}\+: Coefficients $a_k$ of the fit of the elements of the correlations matrix $\langle \boldsymbol y \otimes \boldsymbol y^s \rangle$ with the function \[ a_4+a_0 \, \exp\left(-\frac{s}{a_1}\right) \, \cos(a_2 \, s + a_3) \] where $t$ is the lag-\/time and $\tau$ is the decorrelation time.
+\begin{DoxyItemize}
+\item {\bfseries Format}\+: First line is two numbers\+: the number of unresolved variables and the value of \hyperlink{namespacestoch__params_a50976593e79387f25e08fef6ce56b30b}{stoch\+\_\+params\+::maxint} to be used (range of validity of the fit). ~\newline
+ Then each line specify the fit of an element $i,j$ of the matrix $\langle \boldsymbol y \otimes \boldsymbol y^s \rangle$ as follow\+: \[ i,j,a_0,a_1,a_2,a_3\]
+\item Used if \hyperlink{namespacestoch__params_ac61a48744a1bb015b5148c421837fbe7}{stoch\+\_\+params\+::load\+\_\+mode} is set to \textquotesingle{}expo\textquotesingle{}.
+\end{DoxyItemize}
+\item \textquotesingle{}corrspline.\+def\textquotesingle{}\+: Coefficients $b_k$ of the spline used to model the elements of the correlation matrix $\langle \boldsymbol y \otimes \boldsymbol y^s \rangle$.
+\begin{DoxyItemize}
+\item {\bfseries Format}\+: First line is two numbers\+: the number of unresolved variables and the number of points used. ~\newline
+ Second line is the times $\tau_k$ of the points in timeunits. ~\newline
+ Then $i\times j$ sequences of 3 lines occurs as follow\+:
+\begin{DoxyEnumerate}
+\item $i,j$
+\item Values of $\langle \boldsymbol y \otimes \boldsymbol y^s \rangle_{i,j}$ at $\tau_k$
+\item Coefficients $b_k$ of the spline giving the second derivative of the interpolating function at $\tau$
+\end{DoxyEnumerate}
+\item Used if \hyperlink{namespacestoch__params_ac61a48744a1bb015b5148c421837fbe7}{stoch\+\_\+params\+::load\+\_\+mode} is set to \textquotesingle{}spli\textquotesingle{}.
+\end{DoxyItemize}
+\item \textquotesingle{}corrint.\+def\textquotesingle{}\+: File holding the matrix $\boldsymbol\Sigma = \int_0^\infty \, ds \langle \, \boldsymbol y \otimes \boldsymbol y^s \rangle $.
+\begin{DoxyItemize}
+\item {\bfseries Format}\+: Matrix in a Fortran-\/contiguous format
+\item Used if \hyperlink{namespacestoch__params_ab901db3992a4df88db5a67fdd7be6ac6}{stoch\+\_\+params\+::int\+\_\+corr\+\_\+mode} is set to \textquotesingle{}file\textquotesingle{}.
+\end{DoxyItemize}
+\item \textquotesingle{}corr2int.\+def\textquotesingle{}\+: File holding the matrix $\boldsymbol\Sigma_2 = \int_0^\infty ds \, \left(\langle \boldsymbol y \otimes \boldsymbol y^s \rangle \otimes \langle \boldsymbol y \otimes \boldsymbol y^s \rangle\right) $.
+\begin{DoxyItemize}
+\item {\bfseries Format}\+: Matrix in a sparse format, \hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{params\+::ndim} sequences with
+\begin{DoxyEnumerate}
+\item a first line with the first index $i$ of the matrix and then the number of entries the sub-\/matrix $\Sigma_{2,i,.,.,.}$ has
+\item a list of the entries of the matrix in the format\+: \[ i,j,k,l,v\] where $v$ is the value of the entry 
+
+
+\end{DoxyEnumerate}
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+\subsection*{WL parameterization}
+
+The following definition files are needed by the parameterization, depending on the value of the parameters described above. Examples of those files are joined to the code. The files include\+:
+\begin{DoxyItemize}
+\item \textquotesingle{}mean.\+def\textquotesingle{} \+: Mean $\langle \boldsymbol y \rangle$ of the unresolved variables.
+\begin{DoxyItemize}
+\item {\bfseries Format}\+: one line per $\langle y_i \rangle$ value
+\end{DoxyItemize}
+\item \textquotesingle{}correxpo.\+def\textquotesingle{}\+: Coefficients $a_k$ of the fit of the elements of the correlations matrix $\langle \boldsymbol y \otimes \boldsymbol y^s \rangle$ with the function \[ a_4+a_0 \, \exp\left(-\frac{s}{a_1}\right) \, \cos(a_2 \, s + a_3) \] where $t$ is the lag-\/time and $\tau$ is the decorrelation time.
+\begin{DoxyItemize}
+\item {\bfseries Format}\+: First line is two numbers\+: the number of unresolved variables and the value of \hyperlink{namespacestoch__params_a50976593e79387f25e08fef6ce56b30b}{stoch\+\_\+params\+::maxint} to be used (range of validity of the fit). ~\newline
+ Then each line specify the fit of an element $i,j$ of the matrix $\langle \boldsymbol y \otimes \boldsymbol y^s \rangle$ as follow\+: \[ i,j,a_0,a_1,a_2,a_3\]
+\item Used if \hyperlink{namespacestoch__params_ac61a48744a1bb015b5148c421837fbe7}{stoch\+\_\+params\+::load\+\_\+mode} is set to \textquotesingle{}expo\textquotesingle{}.
+\end{DoxyItemize}
+\item \textquotesingle{}corrspline.\+def\textquotesingle{}\+: Coefficients $b_k$ of the spline used to model the elements of the correlation matrix $\langle \boldsymbol y \otimes \boldsymbol y^s \rangle$.
+\begin{DoxyItemize}
+\item {\bfseries Format}\+: First line is two numbers\+: the number of unresolved variables and the number of points used. ~\newline
+ Second line is the times $\tau_k$ of the points in timeunits. ~\newline
+ Then $i\times j$ sequences of 3 lines occurs as follow\+:
+\begin{DoxyEnumerate}
+\item $i,j$
+\item Values of $\langle \boldsymbol y \otimes \boldsymbol y^s \rangle_{i,j}$ at $\tau_k$
+\item Coefficients $b_k$ of the spline giving the second derivative of the interpolating function at $\tau$
+\end{DoxyEnumerate}
+\item Used if \hyperlink{namespacestoch__params_ac61a48744a1bb015b5148c421837fbe7}{stoch\+\_\+params\+::load\+\_\+mode} is set to \textquotesingle{}spli\textquotesingle{}.
+\end{DoxyItemize}
+\item \textquotesingle{}M\+A\+R\+\_\+\+R\+\_\+params.\+def\textquotesingle{}\+: File specifying the $\boldsymbol R = \boldsymbol Q^2$ matrix for the M\+AR.
+\begin{DoxyItemize}
+\item {\bfseries Format}\+: Matrix in a Fortran-\/contiguous format
+\end{DoxyItemize}
+\item \textquotesingle{}M\+A\+R\+\_\+\+W\+\_\+params.\+def\textquotesingle{}\+: File specifying the $\boldsymbol W_i$ matrices for the M\+AR.
+\begin{DoxyItemize}
+\item {\bfseries Format}\+: Matrix in a Fortran-\/contiguous format 
+\end{DoxyItemize}
+\end{DoxyItemize}

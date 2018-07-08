@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['s',['s',['../structinprod__analytic_1_1atm__tensors.html#ad95a5329b72aae59807e7cdf043ab52c',1,'inprod_analytic::atm_tensors']]],
+  ['s',['s',['../structinprod__analytic_1_1atm__tensors.html#a27edca850b0482aea4aac985ec64124d',1,'inprod_analytic::atm_tensors']]],
   ['s1',['s1',['../namespaceinprod__analytic.html#a90a2b9840d6c77f13aaadd7e0537800c',1,'inprod_analytic']]],
   ['s2',['s2',['../namespaceinprod__analytic.html#a319a35a215ad426474c9a2beb4d85bbb',1,'inprod_analytic']]],
   ['s3',['s3',['../namespaceinprod__analytic.html#a671ca8c3aae1db0a453a13e94462baa0',1,'inprod_analytic']]],
@@ -26,6 +26,7 @@ var searchData=
   ['sl_5frind',['sl_rind',['../namespacesf__def.html#aab6ba7881cef9b469ab9d9323f3fcbea',1,'sf_def']]],
   ['so',['so',['../LICENSE_8txt.html#ab05c0f0392781fce452b91e1ede41d90',1,'LICENSE.txt']]],
   ['software',['Software',['../LICENSE_8txt.html#a22a1529885b3e9d66b0c72fe604fc3dc',1,'LICENSE.txt']]],
+  ['sparse_5fmul2',['sparse_mul2',['../namespacetensor.html#a70230d57c615d9548905bc023f5fc01d',1,'tensor']]],
   ['sparse_5fmul2_5fj',['sparse_mul2_j',['../namespacetensor.html#ad9b09d91fb1bd425122c4f1ee2f0eb12',1,'tensor']]],
   ['sparse_5fmul2_5fk',['sparse_mul2_k',['../namespacetensor.html#a90e31e5e782d63d7f05ee3c9aed370e0',1,'tensor']]],
   ['sparse_5fmul3',['sparse_mul3',['../namespacetensor.html#a11054027a386918658f8948231af53b1',1,'tensor']]],

@@ -4,7 +4,7 @@
 !> The resolved-unresolved components decomposition of the tensor
 !
 !> @copyright                                                               
-!> 2017 Jonathan Demaeyer.
+!> 2018 Jonathan Demaeyer.
 !> See LICENSE.txt for license information.                                  
 !
 !---------------------------------------------------------------------------!
@@ -195,7 +195,7 @@ CONTAINS
     USE params, only:ndim
     USE aotensor_def, only:aotensor
     USE sf_def, only: load_SF
-    USE tensor, only:copy_tensor,add_to_tensor,scal_mul_coo
+    USE tensor, only:copy_coo,add_to_tensor,scal_mul_coo
     USE tl_ad_tensor, only: init_tltensor,tltensor
     USE stoch_params, only: init_stoch_params,mode,tdelta,eps_pert
     INTEGER :: AllocStat 
@@ -226,15 +226,15 @@ CONTAINS
     IF (AllocStat /= 0) STOP "*** Not enough memory ! ***"
 
     IF (mode.ne.'qfst') THEN
-        CALL copy_tensor(aotensor,dumb) !Copy the tensors
+        CALL copy_coo(aotensor,dumb) !Copy the tensors
         CALL init_sub_tensor(dumb,0,0)
         CALL suppress_or(dumb,1,0,0) ! Clear entries with resolved variables
-        CALL copy_tensor(dumb,ff_tensor)
+        CALL copy_coo(dumb,ff_tensor)
     ELSE
-        CALL copy_tensor(aotensor,dumb) !Copy the tensors
+        CALL copy_coo(aotensor,dumb) !Copy the tensors
         CALL init_sub_tensor(dumb,0,0)
         CALL suppress_or(dumb,0,0,0) ! Clear entries with resolved variables and linear and constant terms
-        CALL copy_tensor(dumb,ff_tensor)
+        CALL copy_coo(dumb,ff_tensor)
     ENDIF
 
     AllocStat=0
@@ -246,15 +246,15 @@ CONTAINS
     IF (AllocStat /= 0) STOP "*** Not enough memory ! ***"
 
     IF (mode.ne.'qfst') THEN
-        CALL copy_tensor(aotensor,dumb) !Copy the tensors
+        CALL copy_coo(aotensor,dumb) !Copy the tensors
         CALL init_sub_tensor(dumb,0,0)
         CALL suppress_and(dumb,1,1,1) ! Clear entries with only unresolved variables and constant
-        CALL copy_tensor(dumb,fs_tensor)
+        CALL copy_coo(dumb,fs_tensor)
     ELSE
-        CALL copy_tensor(aotensor,dumb) !Copy the tensors
+        CALL copy_coo(aotensor,dumb) !Copy the tensors
         CALL init_sub_tensor(dumb,0,0)
         CALL suppress_and(dumb,0,1,1) ! Clear entries with only quadratic unresolved variables 
-        CALL copy_tensor(dumb,fs_tensor)
+        CALL copy_coo(dumb,fs_tensor)
     ENDIF
 
     AllocStat=0
@@ -266,10 +266,10 @@ CONTAINS
     IF (AllocStat /= 0) STOP "*** Not enough memory ! ***"
 
 
-    CALL copy_tensor(aotensor,dumb) !Copy the tensors
+    CALL copy_coo(aotensor,dumb) !Copy the tensors
     CALL init_sub_tensor(dumb,1,1)
     CALL suppress_and(dumb,0,0,0) ! Clear entries with only unresolved variables and constant
-    CALL copy_tensor(dumb,sf_tensor)
+    CALL copy_coo(dumb,sf_tensor)
 
     AllocStat=0
     DEALLOCATE(dumb, STAT=AllocStat)
@@ -280,10 +280,10 @@ CONTAINS
     IF (AllocStat /= 0) STOP "*** Not enough memory ! ***"
 
 
-    CALL copy_tensor(aotensor,dumb) !Copy the tensors
+    CALL copy_coo(aotensor,dumb) !Copy the tensors
     CALL init_sub_tensor(dumb,1,1)
     CALL suppress_or(dumb,0,1,1) ! Clear entries with only unresolved variables and constant
-    CALL copy_tensor(dumb,ss_tensor)
+    CALL copy_coo(dumb,ss_tensor)
 
     AllocStat=0
     DEALLOCATE(dumb, STAT=AllocStat)
@@ -294,10 +294,10 @@ CONTAINS
     ALLOCATE(dumb(ndim), STAT=AllocStat)
     IF (AllocStat /= 0) STOP "*** Not enough memory ! ***"
 
-    CALL copy_tensor(tltensor,dumb) !Copy the tensors
+    CALL copy_coo(tltensor,dumb) !Copy the tensors
     CALL init_sub_tensor(dumb,1,1)
     CALL suppress_or(dumb,0,1,1) ! Clear entries with only unresolved variables and constant
-    CALL copy_tensor(dumb,ss_tl_tensor)
+    CALL copy_coo(dumb,ss_tl_tensor)
 
     AllocStat=0
     DEALLOCATE(dumb, STAT=AllocStat)
@@ -309,7 +309,7 @@ CONTAINS
     ALLOCATE(dumb(ndim), STAT=AllocStat)
     IF (AllocStat /= 0) STOP "*** Not enough memory ! ***"
 
-    CALL copy_tensor(ss_tensor,dumb)
+    CALL copy_coo(ss_tensor,dumb)
     CALL scal_mul_coo(1.D0/tdelta**2,ff_tensor)
     CALL scal_mul_coo(eps_pert/tdelta,fs_tensor)
     CALL add_to_tensor(ff_tensor,dumb)
@@ -324,7 +324,7 @@ CONTAINS
     ALLOCATE(aotensor(ndim), STAT=AllocStat)
     IF (AllocStat /= 0) STOP "*** Not enough memory ! ***"
 
-    CALL copy_tensor(dumb,aotensor)
+    CALL copy_coo(dumb,aotensor)
 
     AllocStat=0
     DEALLOCATE(dumb, STAT=AllocStat)
@@ -337,11 +337,11 @@ CONTAINS
     ALLOCATE(dumb(ndim), STAT=AllocStat)
     IF (AllocStat /= 0) STOP "*** Not enough memory ! ***"
 
-    CALL copy_tensor(aotensor,dumb) !Copy the tensors
+    CALL copy_coo(aotensor,dumb) !Copy the tensors
     CALL init_sub_tensor(dumb,0,0)
     CALL suppress_or(dumb,0,1,1) ! Clear entries with unresolved variables
     CALL suppress_or(dumb,1,0,0) ! Suppress linear and nonlinear resolved terms
-    CALL copy_tensor(dumb,Hy)
+    CALL copy_coo(dumb,Hy)
 
     AllocStat=0
     DEALLOCATE(dumb, STAT=AllocStat)
@@ -351,13 +351,13 @@ CONTAINS
     ALLOCATE(dumb(ndim), STAT=AllocStat)
     IF (AllocStat /= 0) STOP "*** Not enough memory ! ***"
 
-    CALL copy_tensor(aotensor,dumb) !Copy the tensors
+    CALL copy_coo(aotensor,dumb) !Copy the tensors
     CALL init_sub_tensor(dumb,0,0)
     CALL suppress_or(dumb,0,1,1) ! Clear entries with unresolved variables
     CALL suppress_and(dumb,1,1,1) ! Clear constant entries
     CALL suppress_and(dumb,1,0,0) ! Clear entries with nonlinear resolved terms
     CALL reorder(dumb,1,0) ! Resolved variables must be the third (k) index
-    CALL copy_tensor(dumb,Lyx)
+    CALL copy_coo(dumb,Lyx)
 
     AllocStat=0
     DEALLOCATE(dumb, STAT=AllocStat)
@@ -367,13 +367,13 @@ CONTAINS
     ALLOCATE(dumb(ndim), STAT=AllocStat)
     IF (AllocStat /= 0) STOP "*** Not enough memory ! ***"
 
-    CALL copy_tensor(aotensor,dumb) !Copy the tensors
+    CALL copy_coo(aotensor,dumb) !Copy the tensors
     CALL init_sub_tensor(dumb,0,0)
     CALL suppress_or(dumb,1,0,0) ! Clear entries with resolved variables
     CALL suppress_and(dumb,0,1,1) ! Clear entries with nonlinear unresolved terms
     CALL suppress_and(dumb,0,0,0) ! Clear constant entries
     CALL reorder(dumb,0,1) ! Unresolved variables must be the third (k) index
-    CALL copy_tensor(dumb,Lyy)
+    CALL copy_coo(dumb,Lyy)
 
     AllocStat=0
     DEALLOCATE(dumb, STAT=AllocStat)
@@ -383,12 +383,12 @@ CONTAINS
     ALLOCATE(dumb(ndim), STAT=AllocStat)
     IF (AllocStat /= 0) STOP "*** Not enough memory ! ***"
 
-    CALL copy_tensor(aotensor,dumb) !Copy the tensors
+    CALL copy_coo(aotensor,dumb) !Copy the tensors
     CALL init_sub_tensor(dumb,0,0)
     CALL suppress_and(dumb,1,1,1) ! Clear constant or linear terms and nonlinear unresolved only entries
     CALL suppress_and(dumb,0,0,0) ! Clear entries with only resolved variables and constant
     CALL reorder(dumb,0,1) ! Unresolved variables must be the third (k) index
-    CALL copy_tensor(dumb,Byxy)
+    CALL copy_coo(dumb,Byxy)
 
     AllocStat=0
     DEALLOCATE(dumb, STAT=AllocStat)
@@ -398,10 +398,10 @@ CONTAINS
     ALLOCATE(dumb(ndim), STAT=AllocStat)
     IF (AllocStat /= 0) STOP "*** Not enough memory ! ***"
 
-    CALL copy_tensor(aotensor,dumb) !Copy the tensors
+    CALL copy_coo(aotensor,dumb) !Copy the tensors
     CALL init_sub_tensor(dumb,0,0)
     CALL suppress_or(dumb,0,0,0) ! Clear entries with resolved variables and linear and constant terms
-    CALL copy_tensor(dumb,Byyy)
+    CALL copy_coo(dumb,Byyy)
 
     AllocStat=0
     DEALLOCATE(dumb, STAT=AllocStat)
@@ -411,10 +411,10 @@ CONTAINS
     ALLOCATE(dumb(ndim), STAT=AllocStat)
     IF (AllocStat /= 0) STOP "*** Not enough memory ! ***"
 
-    CALL copy_tensor(aotensor,dumb) !Copy the tensors
+    CALL copy_coo(aotensor,dumb) !Copy the tensors
     CALL init_sub_tensor(dumb,0,0)
     CALL suppress_or(dumb,1,1,1) ! Clear entries with unresolved variables and linear and constant terms
-    CALL copy_tensor(dumb,Byxx)
+    CALL copy_coo(dumb,Byxx)
 
     AllocStat=0
     DEALLOCATE(dumb, STAT=AllocStat)
@@ -426,11 +426,11 @@ CONTAINS
     ALLOCATE(dumb(ndim), STAT=AllocStat)
     IF (AllocStat /= 0) STOP "*** Not enough memory ! ***"
 
-    CALL copy_tensor(aotensor,dumb) !Copy the tensors
+    CALL copy_coo(aotensor,dumb) !Copy the tensors
     CALL init_sub_tensor(dumb,1,1)
     CALL suppress_or(dumb,1,0,0) ! Clear entries with resolved variables
     CALL suppress_or(dumb,0,1,1) ! Suppress linear and nonlinear unresolved terms
-    CALL copy_tensor(dumb,Hx)
+    CALL copy_coo(dumb,Hx)
 
     AllocStat=0
     DEALLOCATE(dumb, STAT=AllocStat)
@@ -440,13 +440,13 @@ CONTAINS
     ALLOCATE(dumb(ndim), STAT=AllocStat)
     IF (AllocStat /= 0) STOP "*** Not enough memory ! ***"
 
-    CALL copy_tensor(aotensor,dumb) !Copy the tensors
+    CALL copy_coo(aotensor,dumb) !Copy the tensors
     CALL init_sub_tensor(dumb,1,1)
     CALL suppress_or(dumb,1,0,0) ! Clear entries with resolved variables
     CALL suppress_and(dumb,0,0,0) ! Clear constant entries
     CALL suppress_and(dumb,0,1,1) ! Clear entries with nonlinear unresolved terms
     CALL reorder(dumb,0,1) ! Resolved variables must be the third (k) index
-    CALL copy_tensor(dumb,Lxy)
+    CALL copy_coo(dumb,Lxy)
 
     AllocStat=0
     DEALLOCATE(dumb, STAT=AllocStat)
@@ -456,13 +456,13 @@ CONTAINS
     ALLOCATE(dumb(ndim), STAT=AllocStat)
     IF (AllocStat /= 0) STOP "*** Not enough memory ! ***"
 
-    CALL copy_tensor(aotensor,dumb) !Copy the tensors
+    CALL copy_coo(aotensor,dumb) !Copy the tensors
     CALL init_sub_tensor(dumb,1,1)
     CALL suppress_or(dumb,0,1,1) ! Clear entries with unresolved variables
     CALL suppress_and(dumb,1,0,0) ! Clear entries with nonlinear resolved terms
     CALL suppress_and(dumb,1,1,1) ! Clear constant entries
     CALL reorder(dumb,1,0) ! Resolved variables must be the third (k) index
-    CALL copy_tensor(dumb,Lxx)
+    CALL copy_coo(dumb,Lxx)
 
     AllocStat=0
     DEALLOCATE(dumb, STAT=AllocStat)
@@ -472,12 +472,12 @@ CONTAINS
     ALLOCATE(dumb(ndim), STAT=AllocStat)
     IF (AllocStat /= 0) STOP "*** Not enough memory ! ***"
 
-    CALL copy_tensor(aotensor,dumb) !Copy the tensors
+    CALL copy_coo(aotensor,dumb) !Copy the tensors
     CALL init_sub_tensor(dumb,1,1)
     CALL suppress_and(dumb,1,1,1) ! Clear constant or linear terms and nonlinear unresolved only entries
     CALL suppress_and(dumb,0,0,0) ! Clear entries with only resolved variables and constant
     CALL reorder(dumb,0,1) ! Unresolved variables must be the third (k) index
-    CALL copy_tensor(dumb,Bxxy)
+    CALL copy_coo(dumb,Bxxy)
 
     AllocStat=0
     DEALLOCATE(dumb, STAT=AllocStat)
@@ -487,10 +487,10 @@ CONTAINS
     ALLOCATE(dumb(ndim), STAT=AllocStat)
     IF (AllocStat /= 0) STOP "*** Not enough memory ! ***"
 
-    CALL copy_tensor(aotensor,dumb) !Copy the tensors
+    CALL copy_coo(aotensor,dumb) !Copy the tensors
     CALL init_sub_tensor(dumb,1,1)
     CALL suppress_or(dumb,1,1,1) ! Clear entries with unresolved variables and linear and constant terms
-    CALL copy_tensor(dumb,Bxxx)
+    CALL copy_coo(dumb,Bxxx)
 
     AllocStat=0
     DEALLOCATE(dumb, STAT=AllocStat)
@@ -500,54 +500,15 @@ CONTAINS
     ALLOCATE(dumb(ndim), STAT=AllocStat)
     IF (AllocStat /= 0) STOP "*** Not enough memory ! ***"
 
-    CALL copy_tensor(aotensor,dumb) !Copy the tensors
+    CALL copy_coo(aotensor,dumb) !Copy the tensors
     CALL init_sub_tensor(dumb,1,1)
     CALL suppress_or(dumb,0,0,0) ! Clear entries with resolved variables and linear and constant terms
-    CALL copy_tensor(dumb,Bxyy)
+    CALL copy_coo(dumb,Bxyy)
 
     AllocStat=0
     DEALLOCATE(dumb, STAT=AllocStat)
     IF (AllocStat /= 0)  STOP "*** Problem to deallocate ! ***"
 
-
-    ! ! Droping the unneeded part of the tensors to define them
-    ! ! Resolved tensors :
-    ! ! ss tensor
-    ! CALL suppress_or(ss_tensor,0,1,1) ! Clear entries with unresolved variables
-    ! ! sf tensor
-    ! CALL suppress_and(sf_tensor,0,0,0) ! Clear entries with only resolved variables and constant
-    ! ! Hx tensor
-    ! CALL suppress_or(Hx,0,1,1) ! Clear entries with unresolved variables
-    ! CALL suppress_or(Hx,1,0,0) ! Suppress linear and nonlinear resolved terms
-    ! ! Lxx tensor
-    ! CALL suppress_or(Lxx,0,1,1) ! Clear entries with unresolved variables
-    ! CALL suppress_and(Lxx,1,0,0) ! Clear entries with nonlinear resolved terms
-    ! CALL suppress_and(Lxx,1,1,1) ! Clear constant entries
-    ! CALL reorder(Lxx,1,0) ! Resolved variables must be the third (k) index
-    ! ! Lxy tensor
-    ! CALL suppress_or(Lxy,1,0,0) ! Clear entries with resolved variables
-    ! CALL suppress_and(Lxy,0,0,0) ! Clear constant entries
-    ! CALL suppress_and(Lxy,0,1,1) ! Clear entries with nonlinear unresolved terms
-    ! CALL reorder(Lxy,0,1) ! Unresolved variables must be the third (k) index
-    ! ! Bxxy tensor
-    ! CALL suppress_and(Bxxy,1,1,1) ! Clear constant or linear terms and nonlinear unresolved only entries
-    ! CALL suppress_and(Bxxy,0,0,0) ! Clear entries with only resolved variables and constant
-    ! CALL reorder(Bxxy,0,1) ! Unresolved variables must be the third (k) index
-    ! ! Bxxx tensor
-    ! CALL suppress_or(Bxxx,1,1,1) ! Clear entries with unresolved variables and linear and constant terms
-    ! ! Bxyy
-    ! CALL suppress_or(Bxyy,0,0,0) ! Clear entries with resolved variables and linear and constant terms
-
-    ! ! Unresolved tensors :
-
-    ! ! Hy tensor
-    ! ! Lyy tensor
-    ! ! Lyx tensor
-    ! ! Byxy tensor
-    ! ! Byyy tensor
-    ! CALL suppress_or(Byyy,0,0,0) ! Clear entries with resolved variables and linear and constant terms
-    ! ! Byxx
-    ! CALL suppress_or(Byxx,1,1,1) ! Clear entries with unresolved variables and linear and constant terms
 
 
   END SUBROUTINE init_dec_tensor

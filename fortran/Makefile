@@ -11,8 +11,10 @@ else
   INTEGRATOR = rk2_integrator
   TL_AD_INTEGRATOR = rk2_tl_ad_integrator
 endif
-
-
+ifdef RES
+  ST=_$(RES)
+  $(warning Code will $(RES) the inner products in arrays! It may induce a huge memory usage!)
+endif
 # Define relevant compiler options for debug case and normal case for each compiler
 # Normal Case:
 IFORT_COMPILER_FLAGS = -assume byterecl -O2
@@ -66,19 +68,19 @@ endif
 .SUFFIXES:
 .SUFFIXES: .f90 .o .mod .out .test
 
-PROGRAMS = maooam test_tl_ad maooam_stoch 
+PROGRAMS = maooam test_tl_ad maooam_stoch  
 
 PROGRAMS_MTV = maooam_MTV
 
 PROGRAMS_WL = maooam_WL
 
-MODULES = util.mod params.mod stoch_params.mod stoch_mod.mod inprod_analytic.mod aotensor_def.mod ic_def.mod $(INTEGRATOR).mod stat.mod tensor.mod tl_ad_tensor.mod sf_def.mod dec_tensor.mod WL_tensor.mod int_comp.mod corrmod.mod int_corr.mod MTV_int_tensor.mod MTV_sigma_tensor.mod corr_tensor.mod rk2_MTV_integrator.mod rk2_stoch_integrator.mod rk2_ss_integrator.mod sqrt_mod.mod MAR.mod rk2_WL_integrator.mod memory.mod $(TL_AD_INTEGRATOR).mod $(IFPORT)
+MODULES = util.mod params.mod stoch_params.mod stoch_mod.mod inprod_analytic$(ST).mod aotensor_def.mod ic_def.mod $(INTEGRATOR).mod stat.mod tensor.mod tl_ad_tensor.mod sf_def.mod dec_tensor.mod WL_tensor.mod int_comp.mod corrmod.mod int_corr.mod MTV_int_tensor.mod MTV_sigma_tensor.mod corr_tensor.mod rk2_MTV_integrator.mod rk2_stoch_integrator.mod rk2_ss_integrator.mod sqrt_mod.mod MAR.mod rk2_WL_integrator.mod memory.mod $(TL_AD_INTEGRATOR).mod $(IFPORT)
 MODULE_OBJECTS = $(MODULES:.mod=.o)
 
 TEST_PROGRAMS = test_inprod_analytic test_aotensor
 TESTS = $(TEST_PROGRAMS:=.test)
 
-TEST_MTV_PROGRAMS = test_dec_tensor test_corr test_MTV_sigma_tensor test_MTV_int_tensor
+TEST_MTV_PROGRAMS = test_dec_tensor test_corr test_MTV_sigma_tensor test_MTV_int_tensor test_MTV_cubic_dampings
 TESTS_MTV = $(TEST_MTV_PROGRAMS:=.test)
 
 TEST_WL_PROGRAMS = test_dec_tensor test_corr test_MAR test_WL_tensor test_corr_tensor test_memory
@@ -118,6 +120,9 @@ test_dec_tensor.test: test_dec_tensor
 test_MTV_int_tensor.test: test_MTV_int_tensor
 	./$< > tests/$<.out
 
+test_MTV_cubic_dampings.test: test_MTV_cubic_dampings
+	./$< > tests/$<.out
+
 test_corr.test: test_corr
 	./$< > tests/$<.out
 
@@ -138,18 +143,18 @@ test_corr_tensor.test: test_corr_tensor
 test_memory.test: test_memory
 	./$< > tests/$<.out
 
-%.mod: %.f90  
-	$(COMPILER) $(LD_FLAGS) $(COMPILER_FLAGS) -c $<
+%.mod: %.f90
+	$(COMPILER) $(COMPILER_FLAGS) -c $< $(LD_FLAGS) 
 
 %.o: %.f90 $(MODULES)
-	$(COMPILER) $(LD_FLAGS) $(COMPILER_FLAGS) -c $<
+	$(COMPILER) $(COMPILER_FLAGS) -c $< $(LD_FLAGS) 
 
 %: %.o $(MODULE_OBJECTS)
-	$(COMPILER) $(LD_FLAGS) $(COMPILER_FLAGS) $^ -o $@ 
+	$(COMPILER) $(COMPILER_FLAGS) $^ -o $@ $(LD_FLAGS) 
 
 tensor.mod: util.mod
-inprod_analytic.mod: params.mod
-aotensor_def.mod: tensor.mod inprod_analytic.mod
+inprod_analytic$(ST).mod: params.mod util.mod
+aotensor_def.mod: tensor.mod inprod_analytic$(ST).mod
 $(INTEGRATOR).mod: aotensor_def.mod
 ic_def.mod: util.mod aotensor_def.mod
 stat.mod: params.mod
@@ -176,4 +181,4 @@ stoch_mod.mod: sf_def.mod
 clean:
 	$(RM) *.o *.mod $(PROGRAMS) $(PROGRAMS_MTV) $(PROGRAMS_CORR) $(PROGRAMS_WL) $(TEST_PROGRAMS) $(TEST_MTV_PROGRAMS) $(TEST_WL_PROGRAMS) tests/*.out tests/*.dat
 
-.PHONY: clean all test test_mtv mtv test_wl wl %.tes
+.PHONY: clean all test test_mtv mtv test_wl wl %.test

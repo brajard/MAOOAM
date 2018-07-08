@@ -175,15 +175,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </ul>
 <h3>Definition files</h3>
 <p>The following definition files are needed by the parameterization, depending on the value of the parameters described above. Examples of those files are joined to the code. The files include:</p><ul>
-<li>'correxpo.def': Coefficients \(a_i\) of the fit of the correlations with the function <p class="formulaDsp">
-\[ a_4+a_0 \, \exp\left(-\frac{t}{a_1}\right) \, \cos(a_2 \, t + a_3) \]
+<li>'mean.def' : Mean \(\langle \boldsymbol y \rangle\) of the unresolved variables.</li>
+<li>'correxpo.def': Coefficients \(a_k\) of the fit of the elements of the correlations matrix \(\langle \boldsymbol y \otimes \boldsymbol y^s \rangle\) with the function <p class="formulaDsp">
+\[ a_4+a_0 \, \exp\left(-\frac{s}{a_1}\right) \, \cos(a_2 \, s + a_3) \]
 </p>
  where \(t\) is the lag-time and \(\tau\) is the decorrelation time. Used if <a class="el" href="namespacestoch__params.html#ac61a48744a1bb015b5148c421837fbe7" title="Loading mode for the correlations. ">stoch_params::load_mode</a> is set to 'expo'.</li>
-<li>'corrspline.def': Coefficients \(b_i\) of the spline used to model the correlation functions. Used if <a class="el" href="namespacestoch__params.html#ac61a48744a1bb015b5148c421837fbe7" title="Loading mode for the correlations. ">stoch_params::load_mode</a> is set to 'spli'.</li>
+<li>'corrspline.def': Coefficients \(b_k\) of the spline used to model the elements of the correlation matrix \(\langle \boldsymbol y \otimes \boldsymbol y^s \rangle\). Used if <a class="el" href="namespacestoch__params.html#ac61a48744a1bb015b5148c421837fbe7" title="Loading mode for the correlations. ">stoch_params::load_mode</a> is set to 'spli'.</li>
 <li>'corrint.def': File holding the matrix \(\boldsymbol\Sigma\). Used if <a class="el" href="namespacestoch__params.html#ab901db3992a4df88db5a67fdd7be6ac6" title="Correlation integration mode. ">stoch_params::int_corr_mode</a> is set to 'file'.</li>
-<li>'corr2int.def': File holding the matrix \(\boldsymbol\Sigma_2\). <hr/>
-</li>
+<li>'corr2int.def': File holding the matrix \(\boldsymbol\Sigma_2\).</li>
 </ul>
+<p>The various terms are then constructed according to these definition files. More details on the format of the definition files can be found <a class="el" href="md_doc_def_doc.html">here</a>. </p><hr/>
 <h2>The WL parameterization</h2>
 <p>This parameterization is based on the Ruelle response theory. Its acronym comes from the names of the authors that proposed this approach: Wouters and Lucarini (Wouters and Lucarini, 2012). It is given by</p>
 <p class="formulaDsp">
@@ -217,15 +218,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <p>Note that the <a class="el" href="namespacestoch__params.html#a2c3f6439fd2d66413d065b533f2a6263" title="Stochastic mode parameter. ">stoch_params::mode</a> must absolutely be set to 'ures', by definition.</p>
 <h3>Definition files</h3>
 <p>The following definition files are needed by the parameterization, depending on the value of the parameters described above. Examples of those files are joined to the code. The files include:</p><ul>
-<li>'correxpo.def': Coefficients \(a_i\) of the fit of the correlations with the function <p class="formulaDsp">
-\[ a_4+a_0 \, \exp\left(-\frac{t}{a_1}\right) \, \cos(a_2 \, t + a_3) \]
+<li>'correxpo.def': Coefficients \(a_k\) of the fit of the elements of the correlations matrix \(\langle \boldsymbol y \otimes \boldsymbol y^s \rangle\) with the function <p class="formulaDsp">
+\[ a_4+a_0 \, \exp\left(-\frac{s}{a_1}\right) \, \cos(a_2 \, s + a_3) \]
 </p>
  where \(t\) is the lag-time and \(\tau\) is the decorrelation time. Used if <a class="el" href="namespacestoch__params.html#ac61a48744a1bb015b5148c421837fbe7" title="Loading mode for the correlations. ">stoch_params::load_mode</a> is set to 'expo'.</li>
-<li>'corrspline.def': Coefficients \(b_i\) of the spline used to model the correlation functions. Used if <a class="el" href="namespacestoch__params.html#ac61a48744a1bb015b5148c421837fbe7" title="Loading mode for the correlations. ">stoch_params::load_mode</a> is set to 'spli'.</li>
+<li>'corrspline.def': Coefficients \(b_k\) of the spline used to model the elements of the correlation matrix \(\langle \boldsymbol y \otimes \boldsymbol y^s \rangle\). Used if <a class="el" href="namespacestoch__params.html#ac61a48744a1bb015b5148c421837fbe7" title="Loading mode for the correlations. ">stoch_params::load_mode</a> is set to 'spli'.</li>
 <li>'MAR_R_params.def': File specifying the \(\boldsymbol R = \boldsymbol Q^2\) matrix for the MAR.</li>
 <li>'MAR_W_params.def': File specifying the \(\boldsymbol W_i\) matrices for the MAR.</li>
 </ul>
-<p>The various terms are then constructed according to these definition files. </p><hr/>
+<p>The various terms are then constructed according to these definition files. More details on the format of the definition files can be found <a class="el" href="md_doc_def_doc.html">here</a>. </p><hr/>
 <h2>References</h2>
 <ul>
 <li>Vannitsem, S., Demaeyer, J., De Cruz, L., and Ghil, M.: Low-frequency variability and heat transport in a loworder nonlinear coupled ocean-atmosphere model, Physica D: Nonlinear Phenomena, 309, 71-85, 2015.</li>
@@ -233,13 +234,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>Majda, A. J., Timofeyev, I., &amp; Vanden Eijnden, E.: A mathematical framework for stochastic climate models, Communications on Pure and Applied Mathematics, 54(8), 891-974, 2001.</li>
 <li>Franzke, C., Majda, A. J., &amp; Vanden-Eijnden, E.: Low-order stochastic mode reduction for a realistic barotropic model climate, Journal of the atmospheric sciences, 62(6), 1722-1745, 2005.</li>
 <li>Wouters, J., &amp; Lucarini, V.: Disentangling multi-level systems: averaging, correlations and memory. Journal of Statistical Mechanics: Theory and Experiment, 2012(03), P03003, 2012.</li>
-<li>Demaeyer, J., &amp; Vannitsem, S.: Stochastic parametrization of subgrid‐scale processes in coupled ocean–atmosphere systems: benefits and limitations of response theory, Quarterly Journal of the Royal Meteorological Society, 143(703), 881-896, 2017.</li>
+<li>Demaeyer, J., &amp; Vannitsem, S.: Stochastic parametrization of subgrid-scale processes in coupled ocean–atmosphere systems: benefits and limitations of response theory, Quarterly Journal of the Royal Meteorological Society, 143(703), 881-896, 2017.</li>
 </ul>
 <p>Please see the main article for the full list of references. </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Dec 19 2017 15:41:19 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Jul 8 2018 16:01:44 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.11
 </small></address>

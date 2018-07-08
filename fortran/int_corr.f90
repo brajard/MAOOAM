@@ -4,7 +4,7 @@
 !> Module to compute or load the integrals of the correlation matrices 
 !
 !> @copyright                                                               
-!> 2017 Jonathan Demaeyer.
+!> 2018 Jonathan Demaeyer.
 !> See LICENSE.txt for license information.                                  
 !
 !---------------------------------------------------------------------------!
@@ -92,7 +92,6 @@ CONTAINS
           DO j= 1,n_unres
              oi=i
              oj=j
-             !   print*, oi,oj
              CALL integrate(func_ij,ss)
              corrint(ind(i),ind(j))=ss
           END DO

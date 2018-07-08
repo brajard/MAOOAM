@@ -4,7 +4,7 @@
 !>  Utility module
 !
 !> @copyright                                                               
-!> 2015 Lesley De Cruz & Jonathan Demaeyer.
+!> 2018 Lesley De Cruz & Jonathan Demaeyer.
 !> See LICENSE.txt for license information.                                  
 !
 !---------------------------------------------------------------------------!
@@ -14,7 +14,8 @@ MODULE util
 
   PRIVATE
 
-  PUBLIC :: str,rstr,init_random_seed,init_one,mat_trace, mat_contract, choldc
+  PUBLIC :: str,rstr,init_random_seed,init_one,isin,piksrt
+  PUBLIC :: mat_trace, mat_contract, choldc
   PUBLIC :: printmat,cprintmat,invmat,ireduce,reduce,floordiv,triu,diag,cdiag
   PUBLIC :: vector_outer
 
@@ -39,6 +40,24 @@ CONTAINS
     WRITE (rstr, TRIM(ADJUSTL(fm))) x
     rstr = ADJUSTL(rstr)
   END FUNCTION rstr
+
+  !> Determine if a character is in a string and where
+  !> @remark: return positions in a vector if found and 0 vector if not found
+  FUNCTION isin(c,s)
+    CHARACTER, INTENT(IN) :: c
+    CHARACTER, DIMENSION(:), INTENT(IN) :: s
+    INTEGER, DIMENSION(size(s)) :: isin
+    INTEGER :: i,j
+
+    isin=0
+    j=0
+    DO i=size(s),1,-1
+       IF (c==s(i)) THEN
+          j=j+1
+          isin(j)=i
+       END IF
+    END DO
+  END FUNCTION isin
 
   !> Random generator initialization routine  
   SUBROUTINE init_random_seed()
@@ -94,6 +113,26 @@ CONTAINS
     END FUNCTION lcg
   END SUBROUTINE init_random_seed
 
+  !> Simple card player sorting function
+  SUBROUTINE piksrt(k,arr,par)
+    INTEGER, INTENT(IN) :: k
+    INTEGER, DIMENSION(k), INTENT(INOUT) :: arr
+    INTEGER, INTENT(OUT) :: par
+    INTEGER :: i,j,a,b
+
+    par=1
+
+    DO j=2,k
+       a=arr(j)
+       DO i=j-1,1,-1
+          if(arr(i).le.a) EXIT
+          arr(i+1)=arr(i)
+          par=-par
+       END DO
+       arr(i+1)=a
+    ENDDO
+    RETURN
+  END SUBROUTINE piksrt
 
   !> Initialize a square matrix A as a unit matrix
   SUBROUTINE init_one(A)

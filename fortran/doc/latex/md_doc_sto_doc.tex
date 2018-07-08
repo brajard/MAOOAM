@@ -74,13 +74,16 @@ Some additional parameters complete the options possible for the M\+TV parameter
 
 The following definition files are needed by the parameterization, depending on the value of the parameters described above. Examples of those files are joined to the code. The files include\+:
 \begin{DoxyItemize}
-\item \textquotesingle{}correxpo.\+def\textquotesingle{}\+: Coefficients $a_i$ of the fit of the correlations with the function \[ a_4+a_0 \, \exp\left(-\frac{t}{a_1}\right) \, \cos(a_2 \, t + a_3) \] where $t$ is the lag-\/time and $\tau$ is the decorrelation time. Used if \hyperlink{namespacestoch__params_ac61a48744a1bb015b5148c421837fbe7}{stoch\+\_\+params\+::load\+\_\+mode} is set to \textquotesingle{}expo\textquotesingle{}.
-\item \textquotesingle{}corrspline.\+def\textquotesingle{}\+: Coefficients $b_i$ of the spline used to model the correlation functions. Used if \hyperlink{namespacestoch__params_ac61a48744a1bb015b5148c421837fbe7}{stoch\+\_\+params\+::load\+\_\+mode} is set to \textquotesingle{}spli\textquotesingle{}.
+\item \textquotesingle{}mean.\+def\textquotesingle{} \+: Mean $\langle \boldsymbol y \rangle$ of the unresolved variables.
+\item \textquotesingle{}correxpo.\+def\textquotesingle{}\+: Coefficients $a_k$ of the fit of the elements of the correlations matrix $\langle \boldsymbol y \otimes \boldsymbol y^s \rangle$ with the function \[ a_4+a_0 \, \exp\left(-\frac{s}{a_1}\right) \, \cos(a_2 \, s + a_3) \] where $t$ is the lag-\/time and $\tau$ is the decorrelation time. Used if \hyperlink{namespacestoch__params_ac61a48744a1bb015b5148c421837fbe7}{stoch\+\_\+params\+::load\+\_\+mode} is set to \textquotesingle{}expo\textquotesingle{}.
+\item \textquotesingle{}corrspline.\+def\textquotesingle{}\+: Coefficients $b_k$ of the spline used to model the elements of the correlation matrix $\langle \boldsymbol y \otimes \boldsymbol y^s \rangle$. Used if \hyperlink{namespacestoch__params_ac61a48744a1bb015b5148c421837fbe7}{stoch\+\_\+params\+::load\+\_\+mode} is set to \textquotesingle{}spli\textquotesingle{}.
 \item \textquotesingle{}corrint.\+def\textquotesingle{}\+: File holding the matrix $\boldsymbol\Sigma$. Used if \hyperlink{namespacestoch__params_ab901db3992a4df88db5a67fdd7be6ac6}{stoch\+\_\+params\+::int\+\_\+corr\+\_\+mode} is set to \textquotesingle{}file\textquotesingle{}.
-\item \textquotesingle{}corr2int.\+def\textquotesingle{}\+: File holding the matrix $\boldsymbol\Sigma_2$. 
-
-
+\item \textquotesingle{}corr2int.\+def\textquotesingle{}\+: File holding the matrix $\boldsymbol\Sigma_2$.
 \end{DoxyItemize}
+
+The various terms are then constructed according to these definition files. More details on the format of the definition files can be found \hyperlink{md_doc_def_doc}{here}. 
+
+
 
 \subsection*{The WL parameterization}
 
@@ -123,13 +126,13 @@ Note that the \hyperlink{namespacestoch__params_a2c3f6439fd2d66413d065b533f2a626
 
 The following definition files are needed by the parameterization, depending on the value of the parameters described above. Examples of those files are joined to the code. The files include\+:
 \begin{DoxyItemize}
-\item \textquotesingle{}correxpo.\+def\textquotesingle{}\+: Coefficients $a_i$ of the fit of the correlations with the function \[ a_4+a_0 \, \exp\left(-\frac{t}{a_1}\right) \, \cos(a_2 \, t + a_3) \] where $t$ is the lag-\/time and $\tau$ is the decorrelation time. Used if \hyperlink{namespacestoch__params_ac61a48744a1bb015b5148c421837fbe7}{stoch\+\_\+params\+::load\+\_\+mode} is set to \textquotesingle{}expo\textquotesingle{}.
-\item \textquotesingle{}corrspline.\+def\textquotesingle{}\+: Coefficients $b_i$ of the spline used to model the correlation functions. Used if \hyperlink{namespacestoch__params_ac61a48744a1bb015b5148c421837fbe7}{stoch\+\_\+params\+::load\+\_\+mode} is set to \textquotesingle{}spli\textquotesingle{}.
+\item \textquotesingle{}correxpo.\+def\textquotesingle{}\+: Coefficients $a_k$ of the fit of the elements of the correlations matrix $\langle \boldsymbol y \otimes \boldsymbol y^s \rangle$ with the function \[ a_4+a_0 \, \exp\left(-\frac{s}{a_1}\right) \, \cos(a_2 \, s + a_3) \] where $t$ is the lag-\/time and $\tau$ is the decorrelation time. Used if \hyperlink{namespacestoch__params_ac61a48744a1bb015b5148c421837fbe7}{stoch\+\_\+params\+::load\+\_\+mode} is set to \textquotesingle{}expo\textquotesingle{}.
+\item \textquotesingle{}corrspline.\+def\textquotesingle{}\+: Coefficients $b_k$ of the spline used to model the elements of the correlation matrix $\langle \boldsymbol y \otimes \boldsymbol y^s \rangle$. Used if \hyperlink{namespacestoch__params_ac61a48744a1bb015b5148c421837fbe7}{stoch\+\_\+params\+::load\+\_\+mode} is set to \textquotesingle{}spli\textquotesingle{}.
 \item \textquotesingle{}M\+A\+R\+\_\+\+R\+\_\+params.\+def\textquotesingle{}\+: File specifying the $\boldsymbol R = \boldsymbol Q^2$ matrix for the M\+AR.
 \item \textquotesingle{}M\+A\+R\+\_\+\+W\+\_\+params.\+def\textquotesingle{}\+: File specifying the $\boldsymbol W_i$ matrices for the M\+AR.
 \end{DoxyItemize}
 
-The various terms are then constructed according to these definition files. 
+The various terms are then constructed according to these definition files. More details on the format of the definition files can be found \hyperlink{md_doc_def_doc}{here}. 
 
 
 
@@ -142,7 +145,7 @@ The various terms are then constructed according to these definition files.
 \item Majda, A. J., Timofeyev, I., \& Vanden Eijnden, E.\+: A mathematical framework for stochastic climate models, Communications on Pure and Applied Mathematics, 54(8), 891-\/974, 2001.
 \item Franzke, C., Majda, A. J., \& Vanden-\/\+Eijnden, E.\+: Low-\/order stochastic mode reduction for a realistic barotropic model climate, Journal of the atmospheric sciences, 62(6), 1722-\/1745, 2005.
 \item Wouters, J., \& Lucarini, V.\+: Disentangling multi-\/level systems\+: averaging, correlations and memory. Journal of Statistical Mechanics\+: Theory and Experiment, 2012(03), P03003, 2012.
-\item Demaeyer, J., \& Vannitsem, S.\+: Stochastic parametrization of subgrid‐scale processes in coupled ocean–atmosphere systems\+: benefits and limitations of response theory, Quarterly Journal of the Royal Meteorological Society, 143(703), 881-\/896, 2017.
+\item Demaeyer, J., \& Vannitsem, S.\+: Stochastic parametrization of subgrid-\/scale processes in coupled ocean–atmosphere systems\+: benefits and limitations of response theory, Quarterly Journal of the Royal Meteorological Society, 143(703), 881-\/896, 2017.
 \end{DoxyItemize}
 
 Please see the main article for the full list of references. 

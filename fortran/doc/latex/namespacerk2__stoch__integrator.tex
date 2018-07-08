@@ -41,7 +41,7 @@ type(\hyperlink{structtensor_1_1coolist}{coolist}), dimension(\+:), allocatable 
 Module with the stochastic rk2 integration routines. 
 
 \begin{DoxyCopyright}{Copyright}
-2017 Jonathan Demaeyer. See \hyperlink{LICENSE_8txt}{L\+I\+C\+E\+N\+S\+E.\+txt} for license information. 
+2018 Jonathan Demaeyer. See \hyperlink{LICENSE_8txt}{L\+I\+C\+E\+N\+S\+E.\+txt} for license information. 
 \end{DoxyCopyright}
 \begin{DoxyRemark}{Remarks}
 This module actually contains the Heun algorithm routines. There are four modes for this integrator\+:
@@ -107,13 +107,13 @@ Definition at line 48 of file rk2\+\_\+stoch\+\_\+integrator.\+f90.
 74 
 75     \textcolor{keywordflow}{SELECT CASE} (test)
 76     \textcolor{keywordflow}{CASE}(\textcolor{stringliteral}{'full'})
-77        \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a4a88ee8077278486c5128ad97617969e}{copy\_tensor}(\hyperlink{namespaceaotensor__def_a0dc43bc9294a18f2fe57b67489f1702f}{aotensor},int\_tensor)
+77        \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a14f95c256cdf137ca0767ddb3c87deea}{copy\_coo}(\hyperlink{namespaceaotensor__def_a0dc43bc9294a18f2fe57b67489f1702f}{aotensor},int\_tensor)
 78     \textcolor{keywordflow}{CASE}(\textcolor{stringliteral}{'ures'})
-79        \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a4a88ee8077278486c5128ad97617969e}{copy\_tensor}(ff\_tensor,int\_tensor)
+79        \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a14f95c256cdf137ca0767ddb3c87deea}{copy\_coo}(ff\_tensor,int\_tensor)
 80     \textcolor{keywordflow}{CASE}(\textcolor{stringliteral}{'qfst'})
-81        \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a4a88ee8077278486c5128ad97617969e}{copy\_tensor}(byyy,int\_tensor)
+81        \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a14f95c256cdf137ca0767ddb3c87deea}{copy\_coo}(byyy,int\_tensor)
 82     \textcolor{keywordflow}{CASE}(\textcolor{stringliteral}{'reso'})
-83        \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a4a88ee8077278486c5128ad97617969e}{copy\_tensor}(ss\_tensor,int\_tensor)
+83        \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a14f95c256cdf137ca0767ddb3c87deea}{copy\_coo}(ss\_tensor,int\_tensor)
 84 \textcolor{keywordflow}{    CASE DEFAULT}
 85        stop \textcolor{stringliteral}{'*** MODE variable not properly defined ***'}
 86 \textcolor{keywordflow}{    END SELECT}

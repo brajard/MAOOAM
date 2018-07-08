@@ -39,7 +39,7 @@ type(\hyperlink{structtensor_1_1coolist4}{coolist4}), dimension(\+:), allocatabl
 Module to compute or load the integrals of the correlation matrices. 
 
 \begin{DoxyCopyright}{Copyright}
-2017 Jonathan Demaeyer. See \hyperlink{LICENSE_8txt}{L\+I\+C\+E\+N\+S\+E.\+txt} for license information. 
+2018 Jonathan Demaeyer. See \hyperlink{LICENSE_8txt}{L\+I\+C\+E\+N\+S\+E.\+txt} for license information. 
 \end{DoxyCopyright}
 \begin{DoxyRemark}{Remarks}
 
@@ -84,75 +84,74 @@ Definition at line 75 of file int\+\_\+corr.\+f90.
 92           \textcolor{keywordflow}{DO} j= 1,n\_unres
 93              oi=i
 94              oj=j
-95              \textcolor{comment}{!   print*, oi,oj}
-96              \textcolor{keyword}{CALL }integrate(func\_ij,ss)
-97              corrint(ind(i),ind(j))=ss
-98 \textcolor{keywordflow}{          END DO}
-99 \textcolor{keywordflow}{       END DO}
-100 
-101        \textcolor{keyword}{OPEN}(30,file=\textcolor{stringliteral}{'corrint.def'})
-102        \textcolor{keyword}{WRITE}(30,*) corrint
-103        \textcolor{keyword}{CLOSE}(30)
-104 \textcolor{keywordflow}{    END SELECT}
+95              \textcolor{keyword}{CALL }integrate(func\_ij,ss)
+96              corrint(ind(i),ind(j))=ss
+97 \textcolor{keywordflow}{          END DO}
+98 \textcolor{keywordflow}{       END DO}
+99 
+100        \textcolor{keyword}{OPEN}(30,file=\textcolor{stringliteral}{'corrint.def'})
+101        \textcolor{keyword}{WRITE}(30,*) corrint
+102        \textcolor{keyword}{CLOSE}(30)
+103 \textcolor{keywordflow}{    END SELECT}
+104 
 105 
-106 
-107     \textcolor{keyword}{INQUIRE}(file=\textcolor{stringliteral}{'corr2int.def'},exist=ex)
-108     \textcolor{keywordflow}{SELECT CASE} (int\_corr\_mode)
-109     \textcolor{keywordflow}{CASE} (\textcolor{stringliteral}{'file'})
-110        \textcolor{keywordflow}{IF} (ex) \textcolor{keywordflow}{THEN}
-111           \textcolor{keyword}{CALL }load\_tensor4\_from\_file(\textcolor{stringliteral}{"corr2int.def"},corr2int)
-112        \textcolor{keywordflow}{ELSE}
-113           stop \textcolor{stringliteral}{"*** File corr2int.def not found ! ***"}
-114 \textcolor{keywordflow}{       END IF}
-115     \textcolor{keywordflow}{CASE} (\textcolor{stringliteral}{'prog'})
-116        \textcolor{keywordflow}{DO} i = 1,n\_unres
-117           n=0
-118           \textcolor{keywordflow}{DO} j= 1,n\_unres
-119              \textcolor{keywordflow}{DO} k= 1,n\_unres
-120                 \textcolor{keywordflow}{DO} l = 1,n\_unres
-121                    oi=i
-122                    oj=j
-123                    ok=k
-124                    ol=l
-125 
-126                    \textcolor{keyword}{CALL }integrate(func\_ijkl,ss)
-127                    \textcolor{keywordflow}{IF} (abs(ss)>real\_eps) n=n+1
-128 \textcolor{keywordflow}{                ENDDO}
-129 \textcolor{keywordflow}{             ENDDO}
-130 \textcolor{keywordflow}{          ENDDO}
-131           \textcolor{keywordflow}{IF} (n/=0) \textcolor{keywordflow}{THEN}
-132              \textcolor{keyword}{ALLOCATE}(corr2int(ind(i))%elems(n), \hyperlink{namespacestat}{stat}=allocstat)
-133              \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
-134 
-135              n=0
-136              \textcolor{keywordflow}{DO} j= 1,n\_unres
-137                 \textcolor{keywordflow}{DO} k= 1,n\_unres
-138                    \textcolor{keywordflow}{DO} l = 1,n\_unres
-139                       oi=i
-140                       oj=j
-141                       ok=k
-142                       ol=l
-143 
-144                       \textcolor{keyword}{CALL }integrate(func\_ijkl,ss)
-145                       \textcolor{keywordflow}{IF} (abs(ss)>real\_eps) \textcolor{keywordflow}{THEN}
-146                          n=n+1
-147                          corr2int(ind(i))%elems(n)%j=ind(j)
-148                          corr2int(ind(i))%elems(n)%k=ind(k)
-149                          corr2int(ind(i))%elems(n)%l=ind(l)
-150                          corr2int(ind(i))%elems(n)%v=ss
-151 \textcolor{keywordflow}{                      END IF}
-152 \textcolor{keywordflow}{                   ENDDO}
-153 \textcolor{keywordflow}{                ENDDO}
-154 \textcolor{keywordflow}{             ENDDO}
-155              corr2int(ind(i))%nelems=n
-156 \textcolor{keywordflow}{          END IF}
-157 \textcolor{keywordflow}{       ENDDO}
-158 
-159        \textcolor{keyword}{CALL }write\_tensor4\_to\_file(\textcolor{stringliteral}{"corr2int.def"},corr2int)
-160 \textcolor{keywordflow}{    CASE DEFAULT}
-161        stop \textcolor{stringliteral}{'*** INT\_CORR\_MODE variable not properly defined in corrmod.nml ***'}
-162 \textcolor{keywordflow}{    END SELECT}
-163 
+106     \textcolor{keyword}{INQUIRE}(file=\textcolor{stringliteral}{'corr2int.def'},exist=ex)
+107     \textcolor{keywordflow}{SELECT CASE} (int\_corr\_mode)
+108     \textcolor{keywordflow}{CASE} (\textcolor{stringliteral}{'file'})
+109        \textcolor{keywordflow}{IF} (ex) \textcolor{keywordflow}{THEN}
+110           \textcolor{keyword}{CALL }load\_tensor4\_from\_file(\textcolor{stringliteral}{"corr2int.def"},corr2int)
+111        \textcolor{keywordflow}{ELSE}
+112           stop \textcolor{stringliteral}{"*** File corr2int.def not found ! ***"}
+113 \textcolor{keywordflow}{       END IF}
+114     \textcolor{keywordflow}{CASE} (\textcolor{stringliteral}{'prog'})
+115        \textcolor{keywordflow}{DO} i = 1,n\_unres
+116           n=0
+117           \textcolor{keywordflow}{DO} j= 1,n\_unres
+118              \textcolor{keywordflow}{DO} k= 1,n\_unres
+119                 \textcolor{keywordflow}{DO} l = 1,n\_unres
+120                    oi=i
+121                    oj=j
+122                    ok=k
+123                    ol=l
+124 
+125                    \textcolor{keyword}{CALL }integrate(func\_ijkl,ss)
+126                    \textcolor{keywordflow}{IF} (abs(ss)>real\_eps) n=n+1
+127 \textcolor{keywordflow}{                ENDDO}
+128 \textcolor{keywordflow}{             ENDDO}
+129 \textcolor{keywordflow}{          ENDDO}
+130           \textcolor{keywordflow}{IF} (n/=0) \textcolor{keywordflow}{THEN}
+131              \textcolor{keyword}{ALLOCATE}(corr2int(ind(i))%elems(n), \hyperlink{namespacestat}{stat}=allocstat)
+132              \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
+133 
+134              n=0
+135              \textcolor{keywordflow}{DO} j= 1,n\_unres
+136                 \textcolor{keywordflow}{DO} k= 1,n\_unres
+137                    \textcolor{keywordflow}{DO} l = 1,n\_unres
+138                       oi=i
+139                       oj=j
+140                       ok=k
+141                       ol=l
+142 
+143                       \textcolor{keyword}{CALL }integrate(func\_ijkl,ss)
+144                       \textcolor{keywordflow}{IF} (abs(ss)>real\_eps) \textcolor{keywordflow}{THEN}
+145                          n=n+1
+146                          corr2int(ind(i))%elems(n)%j=ind(j)
+147                          corr2int(ind(i))%elems(n)%k=ind(k)
+148                          corr2int(ind(i))%elems(n)%l=ind(l)
+149                          corr2int(ind(i))%elems(n)%v=ss
+150 \textcolor{keywordflow}{                      END IF}
+151 \textcolor{keywordflow}{                   ENDDO}
+152 \textcolor{keywordflow}{                ENDDO}
+153 \textcolor{keywordflow}{             ENDDO}
+154              corr2int(ind(i))%nelems=n
+155 \textcolor{keywordflow}{          END IF}
+156 \textcolor{keywordflow}{       ENDDO}
+157 
+158        \textcolor{keyword}{CALL }write\_tensor4\_to\_file(\textcolor{stringliteral}{"corr2int.def"},corr2int)
+159 \textcolor{keywordflow}{    CASE DEFAULT}
+160        stop \textcolor{stringliteral}{'*** INT\_CORR\_MODE variable not properly defined in corrmod.nml ***'}
+161 \textcolor{keywordflow}{    END SELECT}
+162 
 \end{DoxyCode}
 \index{int\+\_\+corr@{int\+\_\+corr}!func\+\_\+ij@{func\+\_\+ij}}
 \index{func\+\_\+ij@{func\+\_\+ij}!int\+\_\+corr@{int\+\_\+corr}}

@@ -63,7 +63,7 @@ type(\hyperlink{structtensor_1_1coolist}{coolist}), dimension(\+:), allocatable 
 The resolved-\/unresolved components decomposition of the tensor. 
 
 \begin{DoxyCopyright}{Copyright}
-2017 Jonathan Demaeyer. See \hyperlink{LICENSE_8txt}{L\+I\+C\+E\+N\+S\+E.\+txt} for license information. 
+2018 Jonathan Demaeyer. See \hyperlink{LICENSE_8txt}{L\+I\+C\+E\+N\+S\+E.\+txt} for license information. 
 \end{DoxyCopyright}
 \begin{DoxyRemark}{Remarks}
 
@@ -91,7 +91,7 @@ Definition at line 195 of file dec\+\_\+tensor.\+f90.
 195     \textcolor{keywordtype}{USE }\hyperlink{namespaceparams}{params}\textcolor{keywordtype}{, only}:\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}
 196     \textcolor{keywordtype}{USE }\hyperlink{namespaceaotensor__def}{aotensor\_def}\textcolor{keywordtype}{, only}:\hyperlink{namespaceaotensor__def_a0dc43bc9294a18f2fe57b67489f1702f}{aotensor}
 197     \textcolor{keywordtype}{USE }\hyperlink{namespacesf__def}{sf\_def}\textcolor{keywordtype}{, only}: \hyperlink{namespacesf__def_aefac3d4682ec35c401bb888b10dc4f47}{load\_sf}
-198     \textcolor{keywordtype}{USE }\hyperlink{namespacetensor}{tensor}\textcolor{keywordtype}{, only}:\hyperlink{namespacetensor_a4a88ee8077278486c5128ad97617969e}{copy\_tensor},\hyperlink{namespacetensor_aad7cd55f3a4cec4676cc7ca34b05f1a8}{add\_to\_tensor},
+198     \textcolor{keywordtype}{USE }\hyperlink{namespacetensor}{tensor}\textcolor{keywordtype}{, only}:\hyperlink{namespacetensor_a14f95c256cdf137ca0767ddb3c87deea}{copy\_coo},\hyperlink{namespacetensor_aad7cd55f3a4cec4676cc7ca34b05f1a8}{add\_to\_tensor},
       \hyperlink{namespacetensor_af105ec6083969c52f5e7422d75a5cda5}{scal\_mul\_coo}
 199     \textcolor{keywordtype}{USE }\hyperlink{namespacetl__ad__tensor}{tl\_ad\_tensor}\textcolor{keywordtype}{, only}: \hyperlink{namespacetl__ad__tensor_a8a94fe84e907fc8835f798eddcff38e8}{init\_tltensor},\hyperlink{namespacetl__ad__tensor_a6180cfcc4d4ad119ef93266ea955903c}{tltensor}
 200     \textcolor{keywordtype}{USE }\hyperlink{namespacestoch__params}{stoch\_params}\textcolor{keywordtype}{, only}: \hyperlink{namespacestoch__params_ae4aee571fa90316e794b67d1d404c0aa}{init\_stoch\_params},\hyperlink{namespacestoch__params_a2c3f6439fd2d66413d065b533f2a6263}{mode},
@@ -127,15 +127,15 @@ Definition at line 195 of file dec\+\_\+tensor.\+f90.
 226     \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
 227 
 228     \textcolor{keywordflow}{IF} (\hyperlink{namespacestoch__params_a2c3f6439fd2d66413d065b533f2a6263}{mode}.ne.\textcolor{stringliteral}{'qfst'}) \textcolor{keywordflow}{THEN}
-229         \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a4a88ee8077278486c5128ad97617969e}{copy\_tensor}(\hyperlink{namespaceaotensor__def_a0dc43bc9294a18f2fe57b67489f1702f}{aotensor},dumb) \textcolor{comment}{!Copy the tensors}
+229         \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a14f95c256cdf137ca0767ddb3c87deea}{copy\_coo}(\hyperlink{namespaceaotensor__def_a0dc43bc9294a18f2fe57b67489f1702f}{aotensor},dumb) \textcolor{comment}{!Copy the tensors}
 230         \textcolor{keyword}{CALL }init\_sub\_tensor(dumb,0,0)
 231         \textcolor{keyword}{CALL }suppress\_or(dumb,1,0,0) \textcolor{comment}{! Clear entries with resolved variables}
-232         \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a4a88ee8077278486c5128ad97617969e}{copy\_tensor}(dumb,ff\_tensor)
+232         \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a14f95c256cdf137ca0767ddb3c87deea}{copy\_coo}(dumb,ff\_tensor)
 233     \textcolor{keywordflow}{ELSE}
-234         \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a4a88ee8077278486c5128ad97617969e}{copy\_tensor}(\hyperlink{namespaceaotensor__def_a0dc43bc9294a18f2fe57b67489f1702f}{aotensor},dumb) \textcolor{comment}{!Copy the tensors}
+234         \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a14f95c256cdf137ca0767ddb3c87deea}{copy\_coo}(\hyperlink{namespaceaotensor__def_a0dc43bc9294a18f2fe57b67489f1702f}{aotensor},dumb) \textcolor{comment}{!Copy the tensors}
 235         \textcolor{keyword}{CALL }init\_sub\_tensor(dumb,0,0)
 236         \textcolor{keyword}{CALL }suppress\_or(dumb,0,0,0) \textcolor{comment}{! Clear entries with resolved variables and linear and constant terms}
-237         \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a4a88ee8077278486c5128ad97617969e}{copy\_tensor}(dumb,ff\_tensor)
+237         \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a14f95c256cdf137ca0767ddb3c87deea}{copy\_coo}(dumb,ff\_tensor)
 238 \textcolor{keywordflow}{    ENDIF}
 239 
 240     allocstat=0
@@ -147,15 +147,15 @@ Definition at line 195 of file dec\+\_\+tensor.\+f90.
 246     \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
 247 
 248     \textcolor{keywordflow}{IF} (\hyperlink{namespacestoch__params_a2c3f6439fd2d66413d065b533f2a6263}{mode}.ne.\textcolor{stringliteral}{'qfst'}) \textcolor{keywordflow}{THEN}
-249         \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a4a88ee8077278486c5128ad97617969e}{copy\_tensor}(\hyperlink{namespaceaotensor__def_a0dc43bc9294a18f2fe57b67489f1702f}{aotensor},dumb) \textcolor{comment}{!Copy the tensors}
+249         \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a14f95c256cdf137ca0767ddb3c87deea}{copy\_coo}(\hyperlink{namespaceaotensor__def_a0dc43bc9294a18f2fe57b67489f1702f}{aotensor},dumb) \textcolor{comment}{!Copy the tensors}
 250         \textcolor{keyword}{CALL }init\_sub\_tensor(dumb,0,0)
 251         \textcolor{keyword}{CALL }suppress\_and(dumb,1,1,1) \textcolor{comment}{! Clear entries with only unresolved variables and constant}
-252         \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a4a88ee8077278486c5128ad97617969e}{copy\_tensor}(dumb,fs\_tensor)
+252         \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a14f95c256cdf137ca0767ddb3c87deea}{copy\_coo}(dumb,fs\_tensor)
 253     \textcolor{keywordflow}{ELSE}
-254         \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a4a88ee8077278486c5128ad97617969e}{copy\_tensor}(\hyperlink{namespaceaotensor__def_a0dc43bc9294a18f2fe57b67489f1702f}{aotensor},dumb) \textcolor{comment}{!Copy the tensors}
+254         \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a14f95c256cdf137ca0767ddb3c87deea}{copy\_coo}(\hyperlink{namespaceaotensor__def_a0dc43bc9294a18f2fe57b67489f1702f}{aotensor},dumb) \textcolor{comment}{!Copy the tensors}
 255         \textcolor{keyword}{CALL }init\_sub\_tensor(dumb,0,0)
 256         \textcolor{keyword}{CALL }suppress\_and(dumb,0,1,1) \textcolor{comment}{! Clear entries with only quadratic unresolved variables }
-257         \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a4a88ee8077278486c5128ad97617969e}{copy\_tensor}(dumb,fs\_tensor)
+257         \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a14f95c256cdf137ca0767ddb3c87deea}{copy\_coo}(dumb,fs\_tensor)
 258 \textcolor{keywordflow}{    ENDIF}
 259 
 260     allocstat=0
@@ -167,10 +167,10 @@ Definition at line 195 of file dec\+\_\+tensor.\+f90.
 266     \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
 267 
 268 
-269     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a4a88ee8077278486c5128ad97617969e}{copy\_tensor}(\hyperlink{namespaceaotensor__def_a0dc43bc9294a18f2fe57b67489f1702f}{aotensor},dumb) \textcolor{comment}{!Copy the tensors}
+269     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a14f95c256cdf137ca0767ddb3c87deea}{copy\_coo}(\hyperlink{namespaceaotensor__def_a0dc43bc9294a18f2fe57b67489f1702f}{aotensor},dumb) \textcolor{comment}{!Copy the tensors}
 270     \textcolor{keyword}{CALL }init\_sub\_tensor(dumb,1,1)
 271     \textcolor{keyword}{CALL }suppress\_and(dumb,0,0,0) \textcolor{comment}{! Clear entries with only unresolved variables and constant}
-272     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a4a88ee8077278486c5128ad97617969e}{copy\_tensor}(dumb,sf\_tensor)
+272     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a14f95c256cdf137ca0767ddb3c87deea}{copy\_coo}(dumb,sf\_tensor)
 273 
 274     allocstat=0
 275     \textcolor{keyword}{DEALLOCATE}(dumb, \hyperlink{namespacestat}{stat}=allocstat)
@@ -181,10 +181,10 @@ Definition at line 195 of file dec\+\_\+tensor.\+f90.
 280     \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
 281 
 282 
-283     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a4a88ee8077278486c5128ad97617969e}{copy\_tensor}(\hyperlink{namespaceaotensor__def_a0dc43bc9294a18f2fe57b67489f1702f}{aotensor},dumb) \textcolor{comment}{!Copy the tensors}
+283     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a14f95c256cdf137ca0767ddb3c87deea}{copy\_coo}(\hyperlink{namespaceaotensor__def_a0dc43bc9294a18f2fe57b67489f1702f}{aotensor},dumb) \textcolor{comment}{!Copy the tensors}
 284     \textcolor{keyword}{CALL }init\_sub\_tensor(dumb,1,1)
 285     \textcolor{keyword}{CALL }suppress\_or(dumb,0,1,1) \textcolor{comment}{! Clear entries with only unresolved variables and constant}
-286     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a4a88ee8077278486c5128ad97617969e}{copy\_tensor}(dumb,ss\_tensor)
+286     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a14f95c256cdf137ca0767ddb3c87deea}{copy\_coo}(dumb,ss\_tensor)
 287 
 288     allocstat=0
 289     \textcolor{keyword}{DEALLOCATE}(dumb, \hyperlink{namespacestat}{stat}=allocstat)
@@ -195,10 +195,10 @@ Definition at line 195 of file dec\+\_\+tensor.\+f90.
 294     \textcolor{keyword}{ALLOCATE}(dumb(\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}), \hyperlink{namespacestat}{stat}=allocstat)
 295     \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
 296 
-297     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a4a88ee8077278486c5128ad97617969e}{copy\_tensor}(\hyperlink{namespacetl__ad__tensor_a6180cfcc4d4ad119ef93266ea955903c}{tltensor},dumb) \textcolor{comment}{!Copy the tensors}
+297     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a14f95c256cdf137ca0767ddb3c87deea}{copy\_coo}(\hyperlink{namespacetl__ad__tensor_a6180cfcc4d4ad119ef93266ea955903c}{tltensor},dumb) \textcolor{comment}{!Copy the tensors}
 298     \textcolor{keyword}{CALL }init\_sub\_tensor(dumb,1,1)
 299     \textcolor{keyword}{CALL }suppress\_or(dumb,0,1,1) \textcolor{comment}{! Clear entries with only unresolved variables and constant}
-300     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a4a88ee8077278486c5128ad97617969e}{copy\_tensor}(dumb,ss\_tl\_tensor)
+300     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a14f95c256cdf137ca0767ddb3c87deea}{copy\_coo}(dumb,ss\_tl\_tensor)
 301 
 302     allocstat=0
 303     \textcolor{keyword}{DEALLOCATE}(dumb, \hyperlink{namespacestat}{stat}=allocstat)
@@ -210,7 +210,7 @@ Definition at line 195 of file dec\+\_\+tensor.\+f90.
 309     \textcolor{keyword}{ALLOCATE}(dumb(\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}), \hyperlink{namespacestat}{stat}=allocstat)
 310     \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
 311 
-312     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a4a88ee8077278486c5128ad97617969e}{copy\_tensor}(ss\_tensor,dumb)
+312     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a14f95c256cdf137ca0767ddb3c87deea}{copy\_coo}(ss\_tensor,dumb)
 313     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_af105ec6083969c52f5e7422d75a5cda5}{scal\_mul\_coo}(1.d0/\hyperlink{namespacestoch__params_a3995bce17d12b533df6b86ab0072b7c3}{tdelta}**2,ff\_tensor)
 314     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_af105ec6083969c52f5e7422d75a5cda5}{scal\_mul\_coo}(\hyperlink{namespacestoch__params_aa0504e89179fe42b3f3206811f1592dc}{eps\_pert}/\hyperlink{namespacestoch__params_a3995bce17d12b533df6b86ab0072b7c3}{tdelta},fs\_tensor)
 315     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_aad7cd55f3a4cec4676cc7ca34b05f1a8}{add\_to\_tensor}(ff\_tensor,dumb)
@@ -225,7 +225,7 @@ Definition at line 195 of file dec\+\_\+tensor.\+f90.
 324     \textcolor{keyword}{ALLOCATE}(\hyperlink{namespaceaotensor__def_a0dc43bc9294a18f2fe57b67489f1702f}{aotensor}(\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}), \hyperlink{namespacestat}{stat}=allocstat)
 325     \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
 326 
-327     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a4a88ee8077278486c5128ad97617969e}{copy\_tensor}(dumb,\hyperlink{namespaceaotensor__def_a0dc43bc9294a18f2fe57b67489f1702f}{aotensor})
+327     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a14f95c256cdf137ca0767ddb3c87deea}{copy\_coo}(dumb,\hyperlink{namespaceaotensor__def_a0dc43bc9294a18f2fe57b67489f1702f}{aotensor})
 328 
 329     allocstat=0
 330     \textcolor{keyword}{DEALLOCATE}(dumb, \hyperlink{namespacestat}{stat}=allocstat)
@@ -238,11 +238,11 @@ Definition at line 195 of file dec\+\_\+tensor.\+f90.
 337     \textcolor{keyword}{ALLOCATE}(dumb(\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}), \hyperlink{namespacestat}{stat}=allocstat)
 338     \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
 339 
-340     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a4a88ee8077278486c5128ad97617969e}{copy\_tensor}(\hyperlink{namespaceaotensor__def_a0dc43bc9294a18f2fe57b67489f1702f}{aotensor},dumb) \textcolor{comment}{!Copy the tensors}
+340     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a14f95c256cdf137ca0767ddb3c87deea}{copy\_coo}(\hyperlink{namespaceaotensor__def_a0dc43bc9294a18f2fe57b67489f1702f}{aotensor},dumb) \textcolor{comment}{!Copy the tensors}
 341     \textcolor{keyword}{CALL }init\_sub\_tensor(dumb,0,0)
 342     \textcolor{keyword}{CALL }suppress\_or(dumb,0,1,1) \textcolor{comment}{! Clear entries with unresolved variables}
 343     \textcolor{keyword}{CALL }suppress\_or(dumb,1,0,0) \textcolor{comment}{! Suppress linear and nonlinear resolved terms}
-344     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a4a88ee8077278486c5128ad97617969e}{copy\_tensor}(dumb,hy)
+344     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a14f95c256cdf137ca0767ddb3c87deea}{copy\_coo}(dumb,hy)
 345 
 346     allocstat=0
 347     \textcolor{keyword}{DEALLOCATE}(dumb, \hyperlink{namespacestat}{stat}=allocstat)
@@ -252,13 +252,13 @@ Definition at line 195 of file dec\+\_\+tensor.\+f90.
 351     \textcolor{keyword}{ALLOCATE}(dumb(\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}), \hyperlink{namespacestat}{stat}=allocstat)
 352     \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
 353 
-354     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a4a88ee8077278486c5128ad97617969e}{copy\_tensor}(\hyperlink{namespaceaotensor__def_a0dc43bc9294a18f2fe57b67489f1702f}{aotensor},dumb) \textcolor{comment}{!Copy the tensors}
+354     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a14f95c256cdf137ca0767ddb3c87deea}{copy\_coo}(\hyperlink{namespaceaotensor__def_a0dc43bc9294a18f2fe57b67489f1702f}{aotensor},dumb) \textcolor{comment}{!Copy the tensors}
 355     \textcolor{keyword}{CALL }init\_sub\_tensor(dumb,0,0)
 356     \textcolor{keyword}{CALL }suppress\_or(dumb,0,1,1) \textcolor{comment}{! Clear entries with unresolved variables}
 357     \textcolor{keyword}{CALL }suppress\_and(dumb,1,1,1) \textcolor{comment}{! Clear constant entries}
 358     \textcolor{keyword}{CALL }suppress\_and(dumb,1,0,0) \textcolor{comment}{! Clear entries with nonlinear resolved terms}
 359     \textcolor{keyword}{CALL }reorder(dumb,1,0) \textcolor{comment}{! Resolved variables must be the third (k) index}
-360     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a4a88ee8077278486c5128ad97617969e}{copy\_tensor}(dumb,lyx)
+360     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a14f95c256cdf137ca0767ddb3c87deea}{copy\_coo}(dumb,lyx)
 361 
 362     allocstat=0
 363     \textcolor{keyword}{DEALLOCATE}(dumb, \hyperlink{namespacestat}{stat}=allocstat)
@@ -268,13 +268,13 @@ Definition at line 195 of file dec\+\_\+tensor.\+f90.
 367     \textcolor{keyword}{ALLOCATE}(dumb(\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}), \hyperlink{namespacestat}{stat}=allocstat)
 368     \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
 369 
-370     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a4a88ee8077278486c5128ad97617969e}{copy\_tensor}(\hyperlink{namespaceaotensor__def_a0dc43bc9294a18f2fe57b67489f1702f}{aotensor},dumb) \textcolor{comment}{!Copy the tensors}
+370     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a14f95c256cdf137ca0767ddb3c87deea}{copy\_coo}(\hyperlink{namespaceaotensor__def_a0dc43bc9294a18f2fe57b67489f1702f}{aotensor},dumb) \textcolor{comment}{!Copy the tensors}
 371     \textcolor{keyword}{CALL }init\_sub\_tensor(dumb,0,0)
 372     \textcolor{keyword}{CALL }suppress\_or(dumb,1,0,0) \textcolor{comment}{! Clear entries with resolved variables}
 373     \textcolor{keyword}{CALL }suppress\_and(dumb,0,1,1) \textcolor{comment}{! Clear entries with nonlinear unresolved terms}
 374     \textcolor{keyword}{CALL }suppress\_and(dumb,0,0,0) \textcolor{comment}{! Clear constant entries}
 375     \textcolor{keyword}{CALL }reorder(dumb,0,1) \textcolor{comment}{! Unresolved variables must be the third (k) index}
-376     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a4a88ee8077278486c5128ad97617969e}{copy\_tensor}(dumb,lyy)
+376     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a14f95c256cdf137ca0767ddb3c87deea}{copy\_coo}(dumb,lyy)
 377 
 378     allocstat=0
 379     \textcolor{keyword}{DEALLOCATE}(dumb, \hyperlink{namespacestat}{stat}=allocstat)
@@ -284,12 +284,12 @@ Definition at line 195 of file dec\+\_\+tensor.\+f90.
 383     \textcolor{keyword}{ALLOCATE}(dumb(\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}), \hyperlink{namespacestat}{stat}=allocstat)
 384     \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
 385 
-386     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a4a88ee8077278486c5128ad97617969e}{copy\_tensor}(\hyperlink{namespaceaotensor__def_a0dc43bc9294a18f2fe57b67489f1702f}{aotensor},dumb) \textcolor{comment}{!Copy the tensors}
+386     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a14f95c256cdf137ca0767ddb3c87deea}{copy\_coo}(\hyperlink{namespaceaotensor__def_a0dc43bc9294a18f2fe57b67489f1702f}{aotensor},dumb) \textcolor{comment}{!Copy the tensors}
 387     \textcolor{keyword}{CALL }init\_sub\_tensor(dumb,0,0)
 388     \textcolor{keyword}{CALL }suppress\_and(dumb,1,1,1) \textcolor{comment}{! Clear constant or linear terms and nonlinear unresolved only entries}
 389     \textcolor{keyword}{CALL }suppress\_and(dumb,0,0,0) \textcolor{comment}{! Clear entries with only resolved variables and constant}
 390     \textcolor{keyword}{CALL }reorder(dumb,0,1) \textcolor{comment}{! Unresolved variables must be the third (k) index}
-391     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a4a88ee8077278486c5128ad97617969e}{copy\_tensor}(dumb,byxy)
+391     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a14f95c256cdf137ca0767ddb3c87deea}{copy\_coo}(dumb,byxy)
 392 
 393     allocstat=0
 394     \textcolor{keyword}{DEALLOCATE}(dumb, \hyperlink{namespacestat}{stat}=allocstat)
@@ -299,10 +299,10 @@ Definition at line 195 of file dec\+\_\+tensor.\+f90.
 398     \textcolor{keyword}{ALLOCATE}(dumb(\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}), \hyperlink{namespacestat}{stat}=allocstat)
 399     \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
 400 
-401     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a4a88ee8077278486c5128ad97617969e}{copy\_tensor}(\hyperlink{namespaceaotensor__def_a0dc43bc9294a18f2fe57b67489f1702f}{aotensor},dumb) \textcolor{comment}{!Copy the tensors}
+401     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a14f95c256cdf137ca0767ddb3c87deea}{copy\_coo}(\hyperlink{namespaceaotensor__def_a0dc43bc9294a18f2fe57b67489f1702f}{aotensor},dumb) \textcolor{comment}{!Copy the tensors}
 402     \textcolor{keyword}{CALL }init\_sub\_tensor(dumb,0,0)
 403     \textcolor{keyword}{CALL }suppress\_or(dumb,0,0,0) \textcolor{comment}{! Clear entries with resolved variables and linear and constant terms}
-404     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a4a88ee8077278486c5128ad97617969e}{copy\_tensor}(dumb,byyy)
+404     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a14f95c256cdf137ca0767ddb3c87deea}{copy\_coo}(dumb,byyy)
 405 
 406     allocstat=0
 407     \textcolor{keyword}{DEALLOCATE}(dumb, \hyperlink{namespacestat}{stat}=allocstat)
@@ -312,10 +312,10 @@ Definition at line 195 of file dec\+\_\+tensor.\+f90.
 411     \textcolor{keyword}{ALLOCATE}(dumb(\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}), \hyperlink{namespacestat}{stat}=allocstat)
 412     \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
 413 
-414     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a4a88ee8077278486c5128ad97617969e}{copy\_tensor}(\hyperlink{namespaceaotensor__def_a0dc43bc9294a18f2fe57b67489f1702f}{aotensor},dumb) \textcolor{comment}{!Copy the tensors}
+414     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a14f95c256cdf137ca0767ddb3c87deea}{copy\_coo}(\hyperlink{namespaceaotensor__def_a0dc43bc9294a18f2fe57b67489f1702f}{aotensor},dumb) \textcolor{comment}{!Copy the tensors}
 415     \textcolor{keyword}{CALL }init\_sub\_tensor(dumb,0,0)
 416     \textcolor{keyword}{CALL }suppress\_or(dumb,1,1,1) \textcolor{comment}{! Clear entries with unresolved variables and linear and constant terms}
-417     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a4a88ee8077278486c5128ad97617969e}{copy\_tensor}(dumb,byxx)
+417     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a14f95c256cdf137ca0767ddb3c87deea}{copy\_coo}(dumb,byxx)
 418 
 419     allocstat=0
 420     \textcolor{keyword}{DEALLOCATE}(dumb, \hyperlink{namespacestat}{stat}=allocstat)
@@ -327,11 +327,11 @@ Definition at line 195 of file dec\+\_\+tensor.\+f90.
 426     \textcolor{keyword}{ALLOCATE}(dumb(\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}), \hyperlink{namespacestat}{stat}=allocstat)
 427     \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
 428 
-429     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a4a88ee8077278486c5128ad97617969e}{copy\_tensor}(\hyperlink{namespaceaotensor__def_a0dc43bc9294a18f2fe57b67489f1702f}{aotensor},dumb) \textcolor{comment}{!Copy the tensors}
+429     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a14f95c256cdf137ca0767ddb3c87deea}{copy\_coo}(\hyperlink{namespaceaotensor__def_a0dc43bc9294a18f2fe57b67489f1702f}{aotensor},dumb) \textcolor{comment}{!Copy the tensors}
 430     \textcolor{keyword}{CALL }init\_sub\_tensor(dumb,1,1)
 431     \textcolor{keyword}{CALL }suppress\_or(dumb,1,0,0) \textcolor{comment}{! Clear entries with resolved variables}
 432     \textcolor{keyword}{CALL }suppress\_or(dumb,0,1,1) \textcolor{comment}{! Suppress linear and nonlinear unresolved terms}
-433     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a4a88ee8077278486c5128ad97617969e}{copy\_tensor}(dumb,hx)
+433     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a14f95c256cdf137ca0767ddb3c87deea}{copy\_coo}(dumb,hx)
 434 
 435     allocstat=0
 436     \textcolor{keyword}{DEALLOCATE}(dumb, \hyperlink{namespacestat}{stat}=allocstat)
@@ -341,13 +341,13 @@ Definition at line 195 of file dec\+\_\+tensor.\+f90.
 440     \textcolor{keyword}{ALLOCATE}(dumb(\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}), \hyperlink{namespacestat}{stat}=allocstat)
 441     \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
 442 
-443     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a4a88ee8077278486c5128ad97617969e}{copy\_tensor}(\hyperlink{namespaceaotensor__def_a0dc43bc9294a18f2fe57b67489f1702f}{aotensor},dumb) \textcolor{comment}{!Copy the tensors}
+443     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a14f95c256cdf137ca0767ddb3c87deea}{copy\_coo}(\hyperlink{namespaceaotensor__def_a0dc43bc9294a18f2fe57b67489f1702f}{aotensor},dumb) \textcolor{comment}{!Copy the tensors}
 444     \textcolor{keyword}{CALL }init\_sub\_tensor(dumb,1,1)
 445     \textcolor{keyword}{CALL }suppress\_or(dumb,1,0,0) \textcolor{comment}{! Clear entries with resolved variables}
 446     \textcolor{keyword}{CALL }suppress\_and(dumb,0,0,0) \textcolor{comment}{! Clear constant entries}
 447     \textcolor{keyword}{CALL }suppress\_and(dumb,0,1,1) \textcolor{comment}{! Clear entries with nonlinear unresolved terms}
 448     \textcolor{keyword}{CALL }reorder(dumb,0,1) \textcolor{comment}{! Resolved variables must be the third (k) index}
-449     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a4a88ee8077278486c5128ad97617969e}{copy\_tensor}(dumb,lxy)
+449     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a14f95c256cdf137ca0767ddb3c87deea}{copy\_coo}(dumb,lxy)
 450 
 451     allocstat=0
 452     \textcolor{keyword}{DEALLOCATE}(dumb, \hyperlink{namespacestat}{stat}=allocstat)
@@ -357,13 +357,13 @@ Definition at line 195 of file dec\+\_\+tensor.\+f90.
 456     \textcolor{keyword}{ALLOCATE}(dumb(\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}), \hyperlink{namespacestat}{stat}=allocstat)
 457     \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
 458 
-459     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a4a88ee8077278486c5128ad97617969e}{copy\_tensor}(\hyperlink{namespaceaotensor__def_a0dc43bc9294a18f2fe57b67489f1702f}{aotensor},dumb) \textcolor{comment}{!Copy the tensors}
+459     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a14f95c256cdf137ca0767ddb3c87deea}{copy\_coo}(\hyperlink{namespaceaotensor__def_a0dc43bc9294a18f2fe57b67489f1702f}{aotensor},dumb) \textcolor{comment}{!Copy the tensors}
 460     \textcolor{keyword}{CALL }init\_sub\_tensor(dumb,1,1)
 461     \textcolor{keyword}{CALL }suppress\_or(dumb,0,1,1) \textcolor{comment}{! Clear entries with unresolved variables}
 462     \textcolor{keyword}{CALL }suppress\_and(dumb,1,0,0) \textcolor{comment}{! Clear entries with nonlinear resolved terms}
 463     \textcolor{keyword}{CALL }suppress\_and(dumb,1,1,1) \textcolor{comment}{! Clear constant entries}
 464     \textcolor{keyword}{CALL }reorder(dumb,1,0) \textcolor{comment}{! Resolved variables must be the third (k) index}
-465     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a4a88ee8077278486c5128ad97617969e}{copy\_tensor}(dumb,lxx)
+465     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a14f95c256cdf137ca0767ddb3c87deea}{copy\_coo}(dumb,lxx)
 466 
 467     allocstat=0
 468     \textcolor{keyword}{DEALLOCATE}(dumb, \hyperlink{namespacestat}{stat}=allocstat)
@@ -373,12 +373,12 @@ Definition at line 195 of file dec\+\_\+tensor.\+f90.
 472     \textcolor{keyword}{ALLOCATE}(dumb(\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}), \hyperlink{namespacestat}{stat}=allocstat)
 473     \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
 474 
-475     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a4a88ee8077278486c5128ad97617969e}{copy\_tensor}(\hyperlink{namespaceaotensor__def_a0dc43bc9294a18f2fe57b67489f1702f}{aotensor},dumb) \textcolor{comment}{!Copy the tensors}
+475     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a14f95c256cdf137ca0767ddb3c87deea}{copy\_coo}(\hyperlink{namespaceaotensor__def_a0dc43bc9294a18f2fe57b67489f1702f}{aotensor},dumb) \textcolor{comment}{!Copy the tensors}
 476     \textcolor{keyword}{CALL }init\_sub\_tensor(dumb,1,1)
 477     \textcolor{keyword}{CALL }suppress\_and(dumb,1,1,1) \textcolor{comment}{! Clear constant or linear terms and nonlinear unresolved only entries}
 478     \textcolor{keyword}{CALL }suppress\_and(dumb,0,0,0) \textcolor{comment}{! Clear entries with only resolved variables and constant}
 479     \textcolor{keyword}{CALL }reorder(dumb,0,1) \textcolor{comment}{! Unresolved variables must be the third (k) index}
-480     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a4a88ee8077278486c5128ad97617969e}{copy\_tensor}(dumb,bxxy)
+480     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a14f95c256cdf137ca0767ddb3c87deea}{copy\_coo}(dumb,bxxy)
 481 
 482     allocstat=0
 483     \textcolor{keyword}{DEALLOCATE}(dumb, \hyperlink{namespacestat}{stat}=allocstat)
@@ -388,10 +388,10 @@ Definition at line 195 of file dec\+\_\+tensor.\+f90.
 487     \textcolor{keyword}{ALLOCATE}(dumb(\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}), \hyperlink{namespacestat}{stat}=allocstat)
 488     \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
 489 
-490     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a4a88ee8077278486c5128ad97617969e}{copy\_tensor}(\hyperlink{namespaceaotensor__def_a0dc43bc9294a18f2fe57b67489f1702f}{aotensor},dumb) \textcolor{comment}{!Copy the tensors}
+490     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a14f95c256cdf137ca0767ddb3c87deea}{copy\_coo}(\hyperlink{namespaceaotensor__def_a0dc43bc9294a18f2fe57b67489f1702f}{aotensor},dumb) \textcolor{comment}{!Copy the tensors}
 491     \textcolor{keyword}{CALL }init\_sub\_tensor(dumb,1,1)
 492     \textcolor{keyword}{CALL }suppress\_or(dumb,1,1,1) \textcolor{comment}{! Clear entries with unresolved variables and linear and constant terms}
-493     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a4a88ee8077278486c5128ad97617969e}{copy\_tensor}(dumb,bxxx)
+493     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a14f95c256cdf137ca0767ddb3c87deea}{copy\_coo}(dumb,bxxx)
 494 
 495     allocstat=0
 496     \textcolor{keyword}{DEALLOCATE}(dumb, \hyperlink{namespacestat}{stat}=allocstat)
@@ -401,56 +401,17 @@ Definition at line 195 of file dec\+\_\+tensor.\+f90.
 500     \textcolor{keyword}{ALLOCATE}(dumb(\hyperlink{namespaceparams_a2323fe1773f086e20c14f266351c482b}{ndim}), \hyperlink{namespacestat}{stat}=allocstat)
 501     \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
 502 
-503     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a4a88ee8077278486c5128ad97617969e}{copy\_tensor}(\hyperlink{namespaceaotensor__def_a0dc43bc9294a18f2fe57b67489f1702f}{aotensor},dumb) \textcolor{comment}{!Copy the tensors}
+503     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a14f95c256cdf137ca0767ddb3c87deea}{copy\_coo}(\hyperlink{namespaceaotensor__def_a0dc43bc9294a18f2fe57b67489f1702f}{aotensor},dumb) \textcolor{comment}{!Copy the tensors}
 504     \textcolor{keyword}{CALL }init\_sub\_tensor(dumb,1,1)
 505     \textcolor{keyword}{CALL }suppress\_or(dumb,0,0,0) \textcolor{comment}{! Clear entries with resolved variables and linear and constant terms}
-506     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a4a88ee8077278486c5128ad97617969e}{copy\_tensor}(dumb,bxyy)
+506     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a14f95c256cdf137ca0767ddb3c87deea}{copy\_coo}(dumb,bxyy)
 507 
 508     allocstat=0
 509     \textcolor{keyword}{DEALLOCATE}(dumb, \hyperlink{namespacestat}{stat}=allocstat)
 510     \textcolor{keywordflow}{IF} (allocstat /= 0)  stop \textcolor{stringliteral}{"*** Problem to deallocate ! ***"}
 511 
 512 
-513     \textcolor{comment}{! ! Droping the unneeded part of the tensors to define them}
-514     \textcolor{comment}{! ! Resolved tensors :}
-515     \textcolor{comment}{! ! ss tensor}
-516     \textcolor{comment}{! CALL suppress\_or(ss\_tensor,0,1,1) ! Clear entries with unresolved variables}
-517     \textcolor{comment}{! ! sf tensor}
-518     \textcolor{comment}{! CALL suppress\_and(sf\_tensor,0,0,0) ! Clear entries with only resolved variables and constant}
-519     \textcolor{comment}{! ! Hx tensor}
-520     \textcolor{comment}{! CALL suppress\_or(Hx,0,1,1) ! Clear entries with unresolved variables}
-521     \textcolor{comment}{! CALL suppress\_or(Hx,1,0,0) ! Suppress linear and nonlinear resolved terms}
-522     \textcolor{comment}{! ! Lxx tensor}
-523     \textcolor{comment}{! CALL suppress\_or(Lxx,0,1,1) ! Clear entries with unresolved variables}
-524     \textcolor{comment}{! CALL suppress\_and(Lxx,1,0,0) ! Clear entries with nonlinear resolved terms}
-525     \textcolor{comment}{! CALL suppress\_and(Lxx,1,1,1) ! Clear constant entries}
-526     \textcolor{comment}{! CALL reorder(Lxx,1,0) ! Resolved variables must be the third (k) index}
-527     \textcolor{comment}{! ! Lxy tensor}
-528     \textcolor{comment}{! CALL suppress\_or(Lxy,1,0,0) ! Clear entries with resolved variables}
-529     \textcolor{comment}{! CALL suppress\_and(Lxy,0,0,0) ! Clear constant entries}
-530     \textcolor{comment}{! CALL suppress\_and(Lxy,0,1,1) ! Clear entries with nonlinear unresolved terms}
-531     \textcolor{comment}{! CALL reorder(Lxy,0,1) ! Unresolved variables must be the third (k) index}
-532     \textcolor{comment}{! ! Bxxy tensor}
-533     \textcolor{comment}{! CALL suppress\_and(Bxxy,1,1,1) ! Clear constant or linear terms and nonlinear unresolved only entries}
-534     \textcolor{comment}{! CALL suppress\_and(Bxxy,0,0,0) ! Clear entries with only resolved variables and constant}
-535     \textcolor{comment}{! CALL reorder(Bxxy,0,1) ! Unresolved variables must be the third (k) index}
-536     \textcolor{comment}{! ! Bxxx tensor}
-537     \textcolor{comment}{! CALL suppress\_or(Bxxx,1,1,1) ! Clear entries with unresolved variables and linear and constant terms}
-538     \textcolor{comment}{! ! Bxyy}
-539     \textcolor{comment}{! CALL suppress\_or(Bxyy,0,0,0) ! Clear entries with resolved variables and linear and constant terms}
-540 
-541     \textcolor{comment}{! ! Unresolved tensors :}
-542 
-543     \textcolor{comment}{! ! Hy tensor}
-544     \textcolor{comment}{! ! Lyy tensor}
-545     \textcolor{comment}{! ! Lyx tensor}
-546     \textcolor{comment}{! ! Byxy tensor}
-547     \textcolor{comment}{! ! Byyy tensor}
-548     \textcolor{comment}{! CALL suppress\_or(Byyy,0,0,0) ! Clear entries with resolved variables and linear and constant terms}
-549     \textcolor{comment}{! ! Byxx}
-550     \textcolor{comment}{! CALL suppress\_or(Byxx,1,1,1) ! Clear entries with unresolved variables and linear and constant terms}
-551 
-552 
+513 
 \end{DoxyCode}
 \index{dec\+\_\+tensor@{dec\+\_\+tensor}!init\+\_\+sub\+\_\+tensor@{init\+\_\+sub\+\_\+tensor}}
 \index{init\+\_\+sub\+\_\+tensor@{init\+\_\+sub\+\_\+tensor}!dec\+\_\+tensor@{dec\+\_\+tensor}}

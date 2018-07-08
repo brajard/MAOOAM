@@ -79,7 +79,7 @@ logical, public \hyperlink{namespacewl__tensor_a3aeca3d529c65d2537167b5384a92fe0
 The WL tensors used to integrate the model. 
 
 \begin{DoxyCopyright}{Copyright}
-2017 Jonathan Demaeyer. See \hyperlink{LICENSE_8txt}{L\+I\+C\+E\+N\+S\+E.\+txt} for license information. 
+2018 Jonathan Demaeyer. See \hyperlink{LICENSE_8txt}{L\+I\+C\+E\+N\+S\+E.\+txt} for license information. 
 \end{DoxyCopyright}
 \begin{DoxyRemark}{Remarks}
 
@@ -155,13 +155,13 @@ Definition at line 94 of file W\+L\+\_\+tensor.\+f90.
 141     \textcolor{keywordflow}{IF} (allocstat /= 0) stop \textcolor{stringliteral}{"*** Not enough memory ! ***"}
 142 
 143     \textcolor{comment}{!M21}
-144     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a4a88ee8077278486c5128ad97617969e}{copy\_tensor}(lxy,m21)
+144     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a14f95c256cdf137ca0767ddb3c87deea}{copy\_coo}(lxy,m21)
 145     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_aad7cd55f3a4cec4676cc7ca34b05f1a8}{add\_to\_tensor}(bxxy,m21)
 146 
 147     m21def=.not.tensor\_empty(m21)
 148     
 149     \textcolor{comment}{!M22}
-150     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a4a88ee8077278486c5128ad97617969e}{copy\_tensor}(bxyy,m22)
+150     \textcolor{keyword}{CALL }\hyperlink{namespacetensor_a14f95c256cdf137ca0767ddb3c87deea}{copy\_coo}(bxyy,m22)
 151 
 152     m22def=.not.tensor\_empty(m22)
 153     

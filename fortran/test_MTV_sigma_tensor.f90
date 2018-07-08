@@ -4,7 +4,7 @@
 !> Small program to test the MTV noise sigma matrices
 !     
 !> @copyright                                                               
-!> 2017 Jonathan Demaeyer.
+!> 2018 Jonathan Demaeyer.
 !> See LICENSE.txt for license information.                                  
 !
 !---------------------------------------------------------------------------!

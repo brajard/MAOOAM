@@ -233,6 +233,18 @@ Variables</h2></td></tr>
 <tr class="memitem:a9ffe87bb8aaab8a0d4f8d5f644b98785"><td class="memItemLeft" align="right" valign="top">real(kind=8)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceparams.html#a9ffe87bb8aaab8a0d4f8d5f644b98785">betp</a></td></tr>
 <tr class="memdesc:a9ffe87bb8aaab8a0d4f8d5f644b98785"><td class="mdescLeft">&#160;</td><td class="mdescRight">\(\beta&#39;\) - Non-dimensional beta parameter  <a href="#a9ffe87bb8aaab8a0d4f8d5f644b98785">More...</a><br /></td></tr>
 <tr class="separator:a9ffe87bb8aaab8a0d4f8d5f644b98785"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8421c6937257007fb96366980677061c"><td class="memItemLeft" align="right" valign="top">real(kind=8)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceparams.html#a8421c6937257007fb96366980677061c">nua</a> =0.D0</td></tr>
+<tr class="memdesc:a8421c6937257007fb96366980677061c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dissipation in the atmosphere.  <a href="#a8421c6937257007fb96366980677061c">More...</a><br /></td></tr>
+<tr class="separator:a8421c6937257007fb96366980677061c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49937b0c51e9f89ac9b2f332d387af2f"><td class="memItemLeft" align="right" valign="top">real(kind=8)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceparams.html#a49937b0c51e9f89ac9b2f332d387af2f">nuo</a> =0.D0</td></tr>
+<tr class="memdesc:a49937b0c51e9f89ac9b2f332d387af2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dissipation in the ocean.  <a href="#a49937b0c51e9f89ac9b2f332d387af2f">More...</a><br /></td></tr>
+<tr class="separator:a49937b0c51e9f89ac9b2f332d387af2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a0962facf5be13872568dd81f95453c"><td class="memItemLeft" align="right" valign="top">real(kind=8)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceparams.html#a3a0962facf5be13872568dd81f95453c">nuap</a></td></tr>
+<tr class="memdesc:a3a0962facf5be13872568dd81f95453c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Non-dimensional dissipation in the atmosphere.  <a href="#a3a0962facf5be13872568dd81f95453c">More...</a><br /></td></tr>
+<tr class="separator:a3a0962facf5be13872568dd81f95453c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4802663c55680d2c51142f63636abd2e"><td class="memItemLeft" align="right" valign="top">real(kind=8)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceparams.html#a4802663c55680d2c51142f63636abd2e">nuop</a></td></tr>
+<tr class="memdesc:a4802663c55680d2c51142f63636abd2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Non-dimensional dissipation in the ocean.  <a href="#a4802663c55680d2c51142f63636abd2e">More...</a><br /></td></tr>
+<tr class="separator:a4802663c55680d2c51142f63636abd2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aabf0943afa2272a8bbbd58c49ad0db38"><td class="memItemLeft" align="right" valign="top">real(kind=8)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceparams.html#aabf0943afa2272a8bbbd58c49ad0db38">t_trans</a></td></tr>
 <tr class="memdesc:aabf0943afa2272a8bbbd58c49ad0db38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transient time period.  <a href="#aabf0943afa2272a8bbbd58c49ad0db38">More...</a><br /></td></tr>
 <tr class="separator:aabf0943afa2272a8bbbd58c49ad0db38"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -298,8 +310,8 @@ Variables</h2></td></tr>
 
 <p>Read the basic parameters and mode selection from the namelist. </p>
 
-<p>Definition at line <a class="el" href="params_8f90_source.html#l00091">91</a> of file <a class="el" href="params_8f90_source.html">params.f90</a>.</p>
-<div class="fragment"><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordtype">INTEGER</span> :: allocstat</div><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    namelist /aoscale/  scale,f0,n,rra,phi0_npi</div><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    namelist /oparams/  gp,r,h,d</div><div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    namelist /aparams/  k,kp,sig0</div><div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    namelist /toparams/ go,co,to0</div><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    namelist /taparams/ ga,ca,epsa,ta0</div><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    namelist /otparams/ sc,lambda,rr,sb</div><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div><div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    namelist /modeselection/ oms,ams</div><div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    namelist /numblocs/ nboc,nbatm</div><div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div><div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    namelist /int_params/ t_trans,t_run,dt,tw,writeout</div><div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div><div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keyword">OPEN</span>(8, file=<span class="stringliteral">&quot;params.nml&quot;</span>, status=<span class="stringliteral">&#39;OLD&#39;</span>, recl=80, delim=<span class="stringliteral">&#39;APOSTROPHE&#39;</span>)</div><div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keyword">READ</span>(8,nml=aoscale)</div><div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keyword">READ</span>(8,nml=oparams)</div><div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="keyword">READ</span>(8,nml=aparams)</div><div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keyword">READ</span>(8,nml=toparams)</div><div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keyword">READ</span>(8,nml=taparams)</div><div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="keyword">READ</span>(8,nml=otparams)</div><div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div><div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="keyword">CLOSE</span>(8)</div><div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div><div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keyword">OPEN</span>(8, file=<span class="stringliteral">&quot;modeselection.nml&quot;</span>, status=<span class="stringliteral">&#39;OLD&#39;</span>, recl=80, delim=<span class="stringliteral">&#39;APOSTROPHE&#39;</span>)</div><div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="keyword">READ</span>(8,nml=numblocs)</div><div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;</div><div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <span class="keyword">ALLOCATE</span>(oms(nboc,2),ams(nbatm,2), <a class="code" href="namespacestat.html">stat</a>=allocstat)</div><div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keywordflow">IF</span> (allocstat /= 0) stop <span class="stringliteral">&quot;*** Not enough memory ! ***&quot;</span></div><div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div><div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keyword">READ</span>(8,nml=modeselection)</div><div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="keyword">CLOSE</span>(8)</div><div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;</div><div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keyword">OPEN</span>(8, file=<span class="stringliteral">&quot;int_params.nml&quot;</span>, status=<span class="stringliteral">&#39;OLD&#39;</span>, recl=80, delim=<span class="stringliteral">&#39;APOSTROPHE&#39;</span>)</div><div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="keyword">READ</span>(8,nml=int_params)</div><div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;</div><div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;</div><div class="ttc" id="namespacestat_html"><div class="ttname"><a href="namespacestat.html">stat</a></div><div class="ttdoc">Statistics accumulators. </div><div class="ttdef"><b>Definition:</b> <a href="stat_8f90_source.html#l00014">stat.f90:14</a></div></div>
+<p>Definition at line <a class="el" href="params_8f90_source.html#l00097">97</a> of file <a class="el" href="params_8f90_source.html">params.f90</a>.</p>
+<div class="fragment"><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordtype">INTEGER</span> :: allocstat</div><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    namelist /aoscale/  scale,f0,n,rra,phi0_npi</div><div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    namelist /oparams/  gp,r,h,d,nuo</div><div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    namelist /aparams/  k,kp,sig0,nua</div><div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    namelist /toparams/ go,co,to0</div><div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    namelist /taparams/ ga,ca,epsa,ta0</div><div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    namelist /otparams/ sc,lambda,rr,sb</div><div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div><div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    namelist /modeselection/ oms,ams</div><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    namelist /numblocs/ nboc,nbatm</div><div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div><div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    namelist /int_params/ t_trans,t_run,dt,tw,writeout</div><div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;</div><div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keyword">OPEN</span>(8, file=<span class="stringliteral">&quot;params.nml&quot;</span>, status=<span class="stringliteral">&#39;OLD&#39;</span>, recl=80, delim=<span class="stringliteral">&#39;APOSTROPHE&#39;</span>)</div><div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div><div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="keyword">READ</span>(8,nml=aoscale)</div><div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="keyword">READ</span>(8,nml=oparams)</div><div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keyword">READ</span>(8,nml=aparams)</div><div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keyword">READ</span>(8,nml=toparams)</div><div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="keyword">READ</span>(8,nml=taparams)</div><div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="keyword">READ</span>(8,nml=otparams)</div><div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div><div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keyword">CLOSE</span>(8)</div><div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div><div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keyword">OPEN</span>(8, file=<span class="stringliteral">&quot;modeselection.nml&quot;</span>, status=<span class="stringliteral">&#39;OLD&#39;</span>, recl=80, delim=<span class="stringliteral">&#39;APOSTROPHE&#39;</span>)</div><div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="keyword">READ</span>(8,nml=numblocs)</div><div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;</div><div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keyword">ALLOCATE</span>(oms(nboc,2),ams(nbatm,2), <a class="code" href="namespacestat.html">stat</a>=allocstat)</div><div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="keywordflow">IF</span> (allocstat /= 0) stop <span class="stringliteral">&quot;*** Not enough memory ! ***&quot;</span></div><div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;</div><div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="keyword">READ</span>(8,nml=modeselection)</div><div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <span class="keyword">CLOSE</span>(8)</div><div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;</div><div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="keyword">OPEN</span>(8, file=<span class="stringliteral">&quot;int_params.nml&quot;</span>, status=<span class="stringliteral">&#39;OLD&#39;</span>, recl=80, delim=<span class="stringliteral">&#39;APOSTROPHE&#39;</span>)</div><div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <span class="keyword">READ</span>(8,nml=int_params)</div><div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div><div class="ttc" id="namespacestat_html"><div class="ttname"><a href="namespacestat.html">stat</a></div><div class="ttdoc">Statistics accumulators. </div><div class="ttdef"><b>Definition:</b> <a href="stat_8f90_source.html#l00014">stat.f90:14</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -318,8 +330,8 @@ Variables</h2></td></tr>
 
 <p>Parameters initialisation routine. </p>
 
-<p>Definition at line <a class="el" href="params_8f90_source.html#l00133">133</a> of file <a class="el" href="params_8f90_source.html">params.f90</a>.</p>
-<div class="fragment"><div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <span class="keywordtype">INTEGER</span>, <span class="keywordtype">DIMENSION(2)</span> :: s</div><div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <span class="keywordtype">INTEGER</span> :: i</div><div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="keyword">CALL </span>init_nml</div><div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;</div><div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    <span class="comment">!---------------------------------------------------------!</span></div><div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    <span class="comment">!                                                         !</span></div><div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <span class="comment">! Computation of the dimension of the atmospheric         !</span></div><div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    <span class="comment">! and oceanic components                                  !</span></div><div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    <span class="comment">!                                                         !</span></div><div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    <span class="comment">!---------------------------------------------------------!</span></div><div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;</div><div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    natm=0</div><div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    <span class="keywordflow">DO</span> i=1,nbatm</div><div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;       <span class="keywordflow">IF</span> (ams(i,1)==1) <span class="keywordflow">THEN</span></div><div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;          natm=natm+3</div><div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;       <span class="keywordflow">ELSE</span></div><div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;          natm=natm+2</div><div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="keywordflow">       ENDIF</span></div><div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="keywordflow">    ENDDO</span></div><div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    s=shape(oms)</div><div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    noc=s(1)</div><div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;</div><div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    <a class="code" href="namespaceparams.html#a2323fe1773f086e20c14f266351c482b">ndim</a>=2*natm+2*noc</div><div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;</div><div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    <span class="comment">!---------------------------------------------------------!</span></div><div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    <span class="comment">!                                                         !</span></div><div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    <span class="comment">! Some general parameters (Domain, beta, gamma, coupling) !</span></div><div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <span class="comment">!                                                         !</span></div><div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    <span class="comment">!---------------------------------------------------------!</span></div><div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;</div><div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    pi=dacos(-1.d0)</div><div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    l=scale/pi</div><div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    phi0=phi0_npi*pi</div><div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    lr=sqrt(gp*h)/f0</div><div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    g=-l**2/lr**2</div><div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    betp=l/rra*cos(phi0)/sin(phi0)</div><div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    rp=r/f0</div><div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    dp=d/f0</div><div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    kd=k*2</div><div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    kdp=kp</div><div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;</div><div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    <span class="comment">!-----------------------------------------------------!</span></div><div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    <span class="comment">!                                                     !</span></div><div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    <span class="comment">! DERIVED QUANTITIES                                  !</span></div><div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    <span class="comment">!                                                     !</span></div><div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    <span class="comment">!-----------------------------------------------------!</span></div><div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;</div><div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    cpo=co/(go*f0) * rr/(f0**2*l**2)</div><div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    lpo=lambda/(go*f0)</div><div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    cpa=ca/(ga*f0) * rr/(f0**2*l**2)/2 <span class="comment">! Cpa acts on psi1-psi3, not on theta</span></div><div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    lpa=lambda/(ga*f0)</div><div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    sbpo=4*sb*to0**3/(go*f0) <span class="comment">! long wave radiation lost by ocean to atmosphere space</span></div><div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    sbpa=8*epsa*sb*ta0**3/(go*f0) <span class="comment">! long wave radiation from atmosphere absorbed by ocean</span></div><div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    lsbpo=2*epsa*sb*to0**3/(ga*f0) <span class="comment">! long wave radiation from ocean absorbed by atmosphere</span></div><div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    lsbpa=8*epsa*sb*ta0**3/(ga*f0) <span class="comment">! long wave radiation lost by atmosphere to space &amp; ocea</span></div><div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;</div><div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;</div><div class="ttc" id="namespaceparams_html_a2323fe1773f086e20c14f266351c482b"><div class="ttname"><a href="namespaceparams.html#a2323fe1773f086e20c14f266351c482b">params::ndim</a></div><div class="ttdeci">integer ndim</div><div class="ttdoc">Number of variables (dimension of the model) </div><div class="ttdef"><b>Definition:</b> <a href="params_8f90_source.html#l00079">params.f90:79</a></div></div>
+<p>Definition at line <a class="el" href="params_8f90_source.html#l00138">138</a> of file <a class="el" href="params_8f90_source.html">params.f90</a>.</p>
+<div class="fragment"><div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    <span class="keywordtype">INTEGER</span>, <span class="keywordtype">DIMENSION(2)</span> :: s</div><div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <span class="keywordtype">INTEGER</span> :: i</div><div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    <span class="keyword">CALL </span>init_nml</div><div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;</div><div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    <span class="comment">!---------------------------------------------------------!</span></div><div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    <span class="comment">!                                                         !</span></div><div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    <span class="comment">! Computation of the dimension of the atmospheric         !</span></div><div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    <span class="comment">! and oceanic components                                  !</span></div><div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="comment">!                                                         !</span></div><div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    <span class="comment">!---------------------------------------------------------!</span></div><div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;</div><div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    natm=0</div><div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    <span class="keywordflow">DO</span> i=1,nbatm</div><div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;       <span class="keywordflow">IF</span> (ams(i,1)==1) <span class="keywordflow">THEN</span></div><div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;          natm=natm+3</div><div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;       <span class="keywordflow">ELSE</span></div><div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;          natm=natm+2</div><div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<span class="keywordflow">       ENDIF</span></div><div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="keywordflow">    ENDDO</span></div><div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    s=shape(oms)</div><div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    noc=s(1)</div><div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;</div><div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <a class="code" href="namespaceparams.html#a2323fe1773f086e20c14f266351c482b">ndim</a>=2*natm+2*noc</div><div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;</div><div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    <span class="comment">!---------------------------------------------------------!</span></div><div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    <span class="comment">!                                                         !</span></div><div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    <span class="comment">! Some general parameters (Domain, beta, gamma, coupling) !</span></div><div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    <span class="comment">!                                                         !</span></div><div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    <span class="comment">!---------------------------------------------------------!</span></div><div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;</div><div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    pi=dacos(-1.d0)</div><div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    l=scale/pi</div><div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    phi0=phi0_npi*pi</div><div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    lr=sqrt(gp*h)/f0</div><div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    g=-l**2/lr**2</div><div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    betp=l/rra*cos(phi0)/sin(phi0)</div><div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    rp=r/f0</div><div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    dp=d/f0</div><div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    kd=k*2</div><div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    kdp=kp</div><div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;</div><div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    <span class="comment">!-----------------------------------------------------!</span></div><div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    <span class="comment">!                                                     !</span></div><div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    <span class="comment">! DERIVED QUANTITIES                                  !</span></div><div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    <span class="comment">!                                                     !</span></div><div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    <span class="comment">!-----------------------------------------------------!</span></div><div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;</div><div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    cpo=co/(go*f0) * rr/(f0**2*l**2)</div><div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    lpo=lambda/(go*f0)</div><div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    cpa=ca/(ga*f0) * rr/(f0**2*l**2)/2 <span class="comment">! Cpa acts on psi1-psi3, not on theta</span></div><div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    lpa=lambda/(ga*f0)</div><div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    sbpo=4*sb*to0**3/(go*f0) <span class="comment">! long wave radiation lost by ocean to atmosphere space</span></div><div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    sbpa=8*epsa*sb*ta0**3/(go*f0) <span class="comment">! long wave radiation from atmosphere absorbed by ocean</span></div><div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    lsbpo=2*epsa*sb*to0**3/(ga*f0) <span class="comment">! long wave radiation from ocean absorbed by atmosphere</span></div><div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    lsbpa=8*epsa*sb*ta0**3/(ga*f0) <span class="comment">! long wave radiation lost by atmosphere to space &amp; ocea</span></div><div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    nuap=nua/(f0*l**2)</div><div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    nuop=nuo/(f0*l**2)</div><div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;</div><div class="ttc" id="namespaceparams_html_a2323fe1773f086e20c14f266351c482b"><div class="ttname"><a href="namespaceparams.html#a2323fe1773f086e20c14f266351c482b">params::ndim</a></div><div class="ttdeci">integer ndim</div><div class="ttdoc">Number of variables (dimension of the model) </div><div class="ttdef"><b>Definition:</b> <a href="params_8f90_source.html#l00085">params.f90:85</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -336,8 +348,8 @@ Variables</h2></td></tr>
 
 <p>Atmospheric mode selection array. </p>
 
-<p>Definition at line <a class="el" href="params_8f90_source.html#l00081">81</a> of file <a class="el" href="params_8f90_source.html">params.f90</a>.</p>
-<div class="fragment"><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  <span class="keywordtype">INTEGER</span>, <span class="keywordtype">DIMENSION(:,:)</span>, <span class="keywordtype">ALLOCATABLE</span> :: ams<span class="comment">   !&lt; Atmospheric mode selection array</span></div></div><!-- fragment -->
+<p>Definition at line <a class="el" href="params_8f90_source.html#l00087">87</a> of file <a class="el" href="params_8f90_source.html">params.f90</a>.</p>
+<div class="fragment"><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  <span class="keywordtype">INTEGER</span>, <span class="keywordtype">DIMENSION(:,:)</span>, <span class="keywordtype">ALLOCATABLE</span> :: ams<span class="comment">   !&lt; Atmospheric mode selection array</span></div></div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="a9ffe87bb8aaab8a0d4f8d5f644b98785"></a>
@@ -465,8 +477,8 @@ Variables</h2></td></tr>
 
 <p>Integration time step. </p>
 
-<p>Definition at line <a class="el" href="params_8f90_source.html#l00071">71</a> of file <a class="el" href="params_8f90_source.html">params.f90</a>.</p>
-<div class="fragment"><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <span class="keywordtype">REAL(KIND=8)</span> :: dt<span class="comment">        !&lt; Integration time step</span></div></div><!-- fragment -->
+<p>Definition at line <a class="el" href="params_8f90_source.html#l00077">77</a> of file <a class="el" href="params_8f90_source.html">params.f90</a>.</p>
+<div class="fragment"><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <span class="keywordtype">REAL(KIND=8)</span> :: dt<span class="comment">        !&lt; Integration time step</span></div></div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="a10c96506a7d395bb9b15734461aef879"></a>
@@ -785,8 +797,8 @@ Variables</h2></td></tr>
 
 <p>Number of atmospheric basis functions. </p>
 
-<p>Definition at line <a class="el" href="params_8f90_source.html#l00077">77</a> of file <a class="el" href="params_8f90_source.html">params.f90</a>.</p>
-<div class="fragment"><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <span class="keywordtype">INTEGER</span> :: natm=0<span class="comment"> !&lt; Number of atmospheric basis functions</span></div></div><!-- fragment -->
+<p>Definition at line <a class="el" href="params_8f90_source.html#l00083">83</a> of file <a class="el" href="params_8f90_source.html">params.f90</a>.</p>
+<div class="fragment"><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  <span class="keywordtype">INTEGER</span> :: natm=0<span class="comment"> !&lt; Number of atmospheric basis functions</span></div></div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="aa5dc201b0a59d8bb25a5dc52d2ed3cac"></a>
@@ -801,8 +813,8 @@ Variables</h2></td></tr>
 
 <p>Number of oceanic blocks. </p>
 
-<p>Definition at line <a class="el" href="params_8f90_source.html#l00076">76</a> of file <a class="el" href="params_8f90_source.html">params.f90</a>.</p>
-<div class="fragment"><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <span class="keywordtype">INTEGER</span> :: nbatm<span class="comment">  !&lt; Number of oceanic blocks</span></div></div><!-- fragment -->
+<p>Definition at line <a class="el" href="params_8f90_source.html#l00082">82</a> of file <a class="el" href="params_8f90_source.html">params.f90</a>.</p>
+<div class="fragment"><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  <span class="keywordtype">INTEGER</span> :: nbatm<span class="comment">  !&lt; Number of oceanic blocks</span></div></div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="a54123b5a947703d21d0c882dec6780ac"></a>
@@ -817,8 +829,8 @@ Variables</h2></td></tr>
 
 <p>Number of atmospheric blocks. </p>
 
-<p>Definition at line <a class="el" href="params_8f90_source.html#l00075">75</a> of file <a class="el" href="params_8f90_source.html">params.f90</a>.</p>
-<div class="fragment"><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  <span class="keywordtype">INTEGER</span> :: nboc<span class="comment">   !&lt; Number of atmospheric blocks</span></div></div><!-- fragment -->
+<p>Definition at line <a class="el" href="params_8f90_source.html#l00081">81</a> of file <a class="el" href="params_8f90_source.html">params.f90</a>.</p>
+<div class="fragment"><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  <span class="keywordtype">INTEGER</span> :: nboc<span class="comment">   !&lt; Number of atmospheric blocks</span></div></div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="a2323fe1773f086e20c14f266351c482b"></a>
@@ -833,8 +845,8 @@ Variables</h2></td></tr>
 
 <p>Number of variables (dimension of the model) </p>
 
-<p>Definition at line <a class="el" href="params_8f90_source.html#l00079">79</a> of file <a class="el" href="params_8f90_source.html">params.f90</a>.</p>
-<div class="fragment"><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  <span class="keywordtype">INTEGER</span> :: <a class="code" href="namespaceparams.html#a2323fe1773f086e20c14f266351c482b">ndim</a><span class="comment">   !&lt; Number of variables (dimension of the model)</span></div><div class="ttc" id="namespaceparams_html_a2323fe1773f086e20c14f266351c482b"><div class="ttname"><a href="namespaceparams.html#a2323fe1773f086e20c14f266351c482b">params::ndim</a></div><div class="ttdeci">integer ndim</div><div class="ttdoc">Number of variables (dimension of the model) </div><div class="ttdef"><b>Definition:</b> <a href="params_8f90_source.html#l00079">params.f90:79</a></div></div>
+<p>Definition at line <a class="el" href="params_8f90_source.html#l00085">85</a> of file <a class="el" href="params_8f90_source.html">params.f90</a>.</p>
+<div class="fragment"><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  <span class="keywordtype">INTEGER</span> :: <a class="code" href="namespaceparams.html#a2323fe1773f086e20c14f266351c482b">ndim</a><span class="comment">   !&lt; Number of variables (dimension of the model)</span></div><div class="ttc" id="namespaceparams_html_a2323fe1773f086e20c14f266351c482b"><div class="ttname"><a href="namespaceparams.html#a2323fe1773f086e20c14f266351c482b">params::ndim</a></div><div class="ttdeci">integer ndim</div><div class="ttdoc">Number of variables (dimension of the model) </div><div class="ttdef"><b>Definition:</b> <a href="params_8f90_source.html#l00085">params.f90:85</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -850,8 +862,72 @@ Variables</h2></td></tr>
 
 <p>Number of oceanic basis functions. </p>
 
-<p>Definition at line <a class="el" href="params_8f90_source.html#l00078">78</a> of file <a class="el" href="params_8f90_source.html">params.f90</a>.</p>
-<div class="fragment"><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  <span class="keywordtype">INTEGER</span> :: noc=0<span class="comment">  !&lt; Number of oceanic basis functions</span></div></div><!-- fragment -->
+<p>Definition at line <a class="el" href="params_8f90_source.html#l00084">84</a> of file <a class="el" href="params_8f90_source.html">params.f90</a>.</p>
+<div class="fragment"><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  <span class="keywordtype">INTEGER</span> :: noc=0<span class="comment">  !&lt; Number of oceanic basis functions</span></div></div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a8421c6937257007fb96366980677061c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">real(kind=8) params::nua =0.D0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Dissipation in the atmosphere. </p>
+
+<p>Definition at line <a class="el" href="params_8f90_source.html#l00069">69</a> of file <a class="el" href="params_8f90_source.html">params.f90</a>.</p>
+<div class="fragment"><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <span class="keywordtype">REAL(KIND=8)</span> :: nua=0.d0  <span class="comment">!&lt; Dissipation in the atmosphere</span></div></div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a3a0962facf5be13872568dd81f95453c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">real(kind=8) params::nuap</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Non-dimensional dissipation in the atmosphere. </p>
+
+<p>Definition at line <a class="el" href="params_8f90_source.html#l00072">72</a> of file <a class="el" href="params_8f90_source.html">params.f90</a>.</p>
+<div class="fragment"><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <span class="keywordtype">REAL(KIND=8)</span> :: nuap<span class="comment">      !&lt; Non-dimensional dissipation in the atmosphere</span></div></div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a49937b0c51e9f89ac9b2f332d387af2f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">real(kind=8) params::nuo =0.D0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Dissipation in the ocean. </p>
+
+<p>Definition at line <a class="el" href="params_8f90_source.html#l00070">70</a> of file <a class="el" href="params_8f90_source.html">params.f90</a>.</p>
+<div class="fragment"><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <span class="keywordtype">REAL(KIND=8)</span> :: nuo=0.d0  <span class="comment">!&lt; Dissipation in the ocean</span></div></div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a4802663c55680d2c51142f63636abd2e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">real(kind=8) params::nuop</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Non-dimensional dissipation in the ocean. </p>
+
+<p>Definition at line <a class="el" href="params_8f90_source.html#l00073">73</a> of file <a class="el" href="params_8f90_source.html">params.f90</a>.</p>
+<div class="fragment"><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <span class="keywordtype">REAL(KIND=8)</span> :: nuop<span class="comment">      !&lt; Non-dimensional dissipation in the ocean</span></div></div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="a5e25e072992d5908eea5308243b7ec63"></a>
@@ -866,8 +942,8 @@ Variables</h2></td></tr>
 
 <p>Ocean mode selection array. </p>
 
-<p>Definition at line <a class="el" href="params_8f90_source.html#l00080">80</a> of file <a class="el" href="params_8f90_source.html">params.f90</a>.</p>
-<div class="fragment"><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  <span class="keywordtype">INTEGER</span>, <span class="keywordtype">DIMENSION(:,:)</span>, <span class="keywordtype">ALLOCATABLE</span> :: oms<span class="comment">   !&lt; Ocean mode selection array</span></div></div><!-- fragment -->
+<p>Definition at line <a class="el" href="params_8f90_source.html#l00086">86</a> of file <a class="el" href="params_8f90_source.html">params.f90</a>.</p>
+<div class="fragment"><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  <span class="keywordtype">INTEGER</span>, <span class="keywordtype">DIMENSION(:,:)</span>, <span class="keywordtype">ALLOCATABLE</span> :: oms<span class="comment">   !&lt; Ocean mode selection array</span></div></div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="a7e58166ca3fb2153f781aa623c5c31e6"></a>
@@ -1090,8 +1166,8 @@ Variables</h2></td></tr>
 
 <p>Effective intergration time (length of the generated trajectory) </p>
 
-<p>Definition at line <a class="el" href="params_8f90_source.html#l00070">70</a> of file <a class="el" href="params_8f90_source.html">params.f90</a>.</p>
-<div class="fragment"><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <span class="keywordtype">REAL(KIND=8)</span> :: t_run<span class="comment">     !&lt; Effective intergration time (length of the generated trajectory)</span></div></div><!-- fragment -->
+<p>Definition at line <a class="el" href="params_8f90_source.html#l00076">76</a> of file <a class="el" href="params_8f90_source.html">params.f90</a>.</p>
+<div class="fragment"><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <span class="keywordtype">REAL(KIND=8)</span> :: t_run<span class="comment">     !&lt; Effective intergration time (length of the generated trajectory)</span></div></div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="aabf0943afa2272a8bbbd58c49ad0db38"></a>
@@ -1106,8 +1182,8 @@ Variables</h2></td></tr>
 
 <p>Transient time period. </p>
 
-<p>Definition at line <a class="el" href="params_8f90_source.html#l00069">69</a> of file <a class="el" href="params_8f90_source.html">params.f90</a>.</p>
-<div class="fragment"><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <span class="keywordtype">REAL(KIND=8)</span> :: t_trans<span class="comment">   !&lt; Transient time period</span></div></div><!-- fragment -->
+<p>Definition at line <a class="el" href="params_8f90_source.html#l00075">75</a> of file <a class="el" href="params_8f90_source.html">params.f90</a>.</p>
+<div class="fragment"><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  <span class="keywordtype">REAL(KIND=8)</span> :: t_trans<span class="comment">   !&lt; Transient time period</span></div></div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="af3fdd8c130a667bca95de5ebf9e5f492"></a>
@@ -1154,8 +1230,8 @@ Variables</h2></td></tr>
 
 <p>Write all variables every tw time units. </p>
 
-<p>Definition at line <a class="el" href="params_8f90_source.html#l00072">72</a> of file <a class="el" href="params_8f90_source.html">params.f90</a>.</p>
-<div class="fragment"><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <span class="keywordtype">REAL(KIND=8)</span> :: tw<span class="comment">        !&lt; Write all variables every tw time units</span></div></div><!-- fragment -->
+<p>Definition at line <a class="el" href="params_8f90_source.html#l00078">78</a> of file <a class="el" href="params_8f90_source.html">params.f90</a>.</p>
+<div class="fragment"><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  <span class="keywordtype">REAL(KIND=8)</span> :: tw<span class="comment">        !&lt; Write all variables every tw time units</span></div></div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="affc7b423a975c0e92b62e67ed04edea5"></a>
@@ -1170,14 +1246,14 @@ Variables</h2></td></tr>
 
 <p>Write to file boolean. </p>
 
-<p>Definition at line <a class="el" href="params_8f90_source.html#l00073">73</a> of file <a class="el" href="params_8f90_source.html">params.f90</a>.</p>
-<div class="fragment"><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <span class="keywordtype">LOGICAL</span> :: writeout<span class="comment">       !&lt; Write to file boolean</span></div></div><!-- fragment -->
+<p>Definition at line <a class="el" href="params_8f90_source.html#l00079">79</a> of file <a class="el" href="params_8f90_source.html">params.f90</a>.</p>
+<div class="fragment"><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  <span class="keywordtype">LOGICAL</span> :: writeout<span class="comment">       !&lt; Write to file boolean</span></div></div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Dec 19 2017 15:41:19 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Jul 8 2018 16:01:44 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.11
 </small></address>

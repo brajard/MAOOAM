@@ -1,6 +1,6 @@
 !------------------------------------------------------------------------------!
 ! Namelist file :                                                              !
-! Fast variables specification (1 -> fast, 0 -> slow)                          !
+! Unresolved variables specification (1 -> unresolved, 0 -> resolved)                          !
 !------------------------------------------------------------------------------!
  
 &SFLIST

@@ -102,11 +102,15 @@ Some additional parameters complete the options possible for the MTV parameters 
 
 The following definition files are needed by the parameterization, depending on the value of the parameters described above.
 Examples of those files are joined to the code. The files include:
-     - 'correxpo.def': Coefficients \f$a_i\f$ of the fit of the correlations with the function \f[   a_4+a_0 \, \exp\left(-\frac{t}{a_1}\right) \, \cos(a_2 \, t + a_3) \f]
-		       where \f$t\f$ is the lag-time and \f$\tau\f$ is the decorrelation time. Used if stoch_params::load_mode is set to 'expo'.
-     - 'corrspline.def': Coefficients \f$b_i\f$ of the spline used to model the correlation functions. Used if stoch_params::load_mode is set to 'spli'.
+     - 'mean.def' : Mean \f$\langle \boldsymbol y \rangle\f$ of the unresolved variables.  
+     - 'correxpo.def': Coefficients \f$a_k\f$ of the fit of the elements of the correlations matrix \f$\langle \boldsymbol y \otimes \boldsymbol y^s \rangle\f$ with the function \f[   a_4+a_0 \, \exp\left(-\frac{s}{a_1}\right) \, \cos(a_2 \, s + a_3) \f]
+                       where \f$t\f$ is the lag-time and \f$\tau\f$ is the decorrelation time. Used if stoch_params::load_mode is set to 'expo'.
+     - 'corrspline.def': Coefficients \f$b_k\f$ of the spline used to model the elements of the correlation matrix \f$\langle \boldsymbol y \otimes \boldsymbol y^s \rangle\f$. Used if stoch_params::load_mode is set to 'spli'.
      - 'corrint.def': File holding the matrix \f$\boldsymbol\Sigma\f$. Used if stoch_params::int_corr_mode is set to 'file'.
      - 'corr2int.def': File holding the matrix \f$\boldsymbol\Sigma_2\f$.
+
+The various terms are then constructed according to these definition files.
+More details on the format of the definition files can be found [here](def_doc.md). 
 
 ------------------------------------------------------------------------
 
@@ -157,13 +161,14 @@ Note that the stoch_params::mode must absolutely be set to 'ures', by definition
 
 The following definition files are needed by the parameterization, depending on the value of the parameters described above.
 Examples of those files are joined to the code. The files include:
-     - 'correxpo.def': Coefficients \f$a_i\f$ of the fit of the correlations with the function \f[   a_4+a_0 \, \exp\left(-\frac{t}{a_1}\right) \, \cos(a_2 \, t + a_3) \f]
-		       where \f$t\f$ is the lag-time and \f$\tau\f$ is the decorrelation time. Used if stoch_params::load_mode is set to 'expo'.
-     - 'corrspline.def': Coefficients \f$b_i\f$ of the spline used to model the correlation functions. Used if stoch_params::load_mode is set to 'spli'.
+     - 'correxpo.def': Coefficients \f$a_k\f$ of the fit of the elements of the correlations matrix \f$\langle \boldsymbol y \otimes \boldsymbol y^s \rangle\f$ with the function \f[   a_4+a_0 \, \exp\left(-\frac{s}{a_1}\right) \, \cos(a_2 \, s + a_3) \f]
+                       where \f$t\f$ is the lag-time and \f$\tau\f$ is the decorrelation time. Used if stoch_params::load_mode is set to 'expo'.
+     - 'corrspline.def': Coefficients \f$b_k\f$ of the spline used to model the elements of the correlation matrix \f$\langle \boldsymbol y \otimes \boldsymbol y^s \rangle\f$. Used if stoch_params::load_mode is set to 'spli'.
      - 'MAR_R_params.def': File specifying the \f$\boldsymbol R = \boldsymbol Q^2\f$ matrix for the MAR.
      - 'MAR_W_params.def': File specifying the \f$\boldsymbol W_i\f$ matrices for the MAR.
 
 The various terms are then constructed according to these definition files.
+More details on the format of the definition files can be found [here](def_doc.md). 
 
 ------------------------------------------------------------------------
 
@@ -189,7 +194,7 @@ Journal of the atmospheric sciences, 62(6), 1722-1745, 2005.
 correlations and memory.
 Journal of Statistical Mechanics: Theory and Experiment, 2012(03), P03003, 2012.
 
-* Demaeyer, J., & Vannitsem, S.: Stochastic parametrization of subgrid‐scale
+* Demaeyer, J., & Vannitsem, S.: Stochastic parametrization of subgrid-scale
 processes in coupled ocean–atmosphere systems: benefits and limitations of response theory,
 Quarterly Journal of the Royal Meteorological Society, 143(703), 881-896, 2017. 
 

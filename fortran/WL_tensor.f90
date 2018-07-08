@@ -4,7 +4,7 @@
 !>  The WL tensors used to integrate the model
 !
 !> @copyright                                                               
-!> 2017 Jonathan Demaeyer.
+!> 2018 Jonathan Demaeyer.
 !> See LICENSE.txt for license information.                                  
 !
 !---------------------------------------------------------------------------!
@@ -141,13 +141,13 @@ CONTAINS
     IF (AllocStat /= 0) STOP "*** Not enough memory ! ***"
 
     !M21
-    CALL copy_tensor(Lxy,M21)
+    CALL copy_coo(Lxy,M21)
     CALL add_to_tensor(Bxxy,M21)
 
     M21def=.not.tensor_empty(M21)
     
     !M22
-    CALL copy_tensor(Bxyy,M22)
+    CALL copy_coo(Bxyy,M22)
 
     M22def=.not.tensor_empty(M22)
     

@@ -23,7 +23,7 @@ PROGRAM maooam
   REAL(KIND=8) :: t=0.D0                             !< Time variable
   REAL(KIND=8) :: t_up
 
-  PRINT*, 'Model MAOOAM v1.2'
+  PRINT*, 'Model MAOOAM v1.3'
   PRINT*, 'Loading information...'
 
   CALL init_aotensor    ! Compute the tensor
@@ -53,6 +53,7 @@ PROGRAM maooam
   CALL init_stat
   
   t=0.D0
+  t_up=dt/t_run*100.D0
 
   IF (writeout) WRITE(10,*) t,X(1:ndim)
 

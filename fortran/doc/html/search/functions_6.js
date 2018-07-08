@@ -31,5 +31,6 @@ var searchData=
   ['integrate',['integrate',['../namespaceint__comp.html#abe29ceac2104e45aafacb9cfaed81678',1,'int_comp']]],
   ['invmat',['invmat',['../namespaceutil.html#a52a5fbd944196d1cf077be77aefa34a2',1,'util']]],
   ['ireduce',['ireduce',['../namespaceutil.html#a92433c6b81993d62682f54ff5c8834a0',1,'util']]],
+  ['isin',['isin',['../namespaceutil.html#a1e2cd46baa2070e28949e28c8a3e037e',1,'util']]],
   ['iter',['iter',['../namespacestat.html#aca30ccb65a1fc6af92be1018ec40f6c6',1,'stat']]]
 ];
