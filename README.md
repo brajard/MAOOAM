@@ -16,7 +16,9 @@ Ocean-Atmosphere Model: MAOOAM v1.0, Geosci. Model Dev., 9, 2793-2808,
 
 for the MAOOAM original code, and with
 
-*
+* Demaeyer, J. and Vannitsem, S.: Comparison of stochastic parameterizations
+in the framework of a coupled ocean-atmosphere model, Nonlin. Processes Geophys.
+Discuss., 2018.
 
 for the stochastic part.
 
@@ -41,6 +43,8 @@ all published in the Journal of Atmospheric Sciences. The ocean component is
 based on the papers of Pierini (2012), Barsugli and Battisti (1998). The
 coupling between the two components includes wind forcings, radiative and heat
 exchanges.
+
+![](./misc/figs/movie_10x10_GMD.gif)
 
 ------------------------------------------------------------------------
 

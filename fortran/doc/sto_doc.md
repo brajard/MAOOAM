@@ -198,4 +198,8 @@ Journal of Statistical Mechanics: Theory and Experiment, 2012(03), P03003, 2012.
 processes in coupled ocean–atmosphere systems: benefits and limitations of response theory,
 Quarterly Journal of the Royal Meteorological Society, 143(703), 881-896, 2017. 
 
-Please see the main article for the full list of references.
+Please see the main article for the full list of references:
+
+* Demaeyer, J. and Vannitsem, S.: Comparison of stochastic parameterizations in the framework
+of a coupled ocean-atmosphere model, Nonlin. Processes Geophys. Discuss., 2018.
+
